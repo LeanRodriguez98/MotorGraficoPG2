@@ -3,38 +3,41 @@
 #include "Window.h"
 #include "../external/glm-0.9.9.0/glm/glm.hpp"
 #include "../external/glm-0.9.9.0/glm/gtc/matrix_transform.hpp"
-#define PRIMITIVE_TRIANGLE 0x0004
-#define PRIMITIVE_TRIANGLE_STRIP 0x0005
-#define PRIMITIVE_TRIANGLE_FAN 0x0006
-using namespace glm;
+
+#include <iostream>
 using namespace std;
+using namespace glm;
 class ENGINEDLL_API Renderer
 {
 private:
-	Window * _window;
-	void * VertexArray;
+	unsigned int VertexArray;
+	Window * window;
 	mat4 modelMatrix;
 	mat4 viewMatrix;
 	mat4 projectionMatrix;
 	mat4 modelViewProjectionMatrix;
+
 public:
 	Renderer();
 	~Renderer();
-	bool Start(Window * window);
+	bool Start(Window *windowPTR);
 	bool Stop();
+	void ClearWindow();
 	void SetClearColor(float r, float g, float b, float a);
 	void SwapBuffer();
-	void ClearWindow();
-	unsigned int GenerateVertexBuffer(float * buffer, int size);
-	unsigned int GenerateColorBuffer(float * buffer, int size);
-	void EnableVertexAttribute(unsigned int attribute);
-	void BindBuffer(unsigned int buffer, unsigned int attribute);
-	void DrawArrayBuffers(int drawSystem,int size);
-	void DisableVertexAttribute(unsigned int attribute);
+	unsigned int  GenerateBuffer(float* buffer, int size);
+	unsigned int  GenerateColorBuffer(float* buffer, int size);
+	unsigned int GenerateTextureBuffer(int width, int height, unsigned char* data);
+	void BindBuffer(unsigned int vtxbuffer, unsigned int name);
+	void BindColorBuffer(unsigned int clrbuffer, unsigned int name);
+	void BindTextureBuffer(unsigned int txtrebuffer, unsigned int name);
+	void EnableVertexAttribute(unsigned int name);
+	void DisableVertexAttribute(unsigned int name);
+	void DrawArrayBuffers(int size, int drawType);
+	void DestroyBuffer(unsigned int buffer);
 	void UpdateModelViewProjectionMatrix();
-	void SetModel(mat4 model);
+	mat4&  GetModelViewProjectionMatrix();
 	void LoadIdentityMatrix();
-	void MultiplyModel(mat4 model);
-	mat4& GetModelViewProjectionMatrix();
+	void MultiplyModelMatrix(mat4 mat);
+	void MultiplyWorldMatrix(mat4 mat);
 };
-

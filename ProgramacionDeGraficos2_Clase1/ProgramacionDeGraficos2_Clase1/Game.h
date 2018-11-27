@@ -1,27 +1,30 @@
-#pragma once
-#include "../EngineDll/GameBase.h"
-#include "../EngineDll/Renderer.h"
-#include "../EngineDll/Triangle.h"
-#include "../EngineDll/Square.h"
-#include "../EngineDll/Circle.h"
-
-class Game :public GameBase
-{
+#include "../EngineDLL/Gamebase.h"
+#include "../EngineDLL/Triangle.h"
+#include "../EngineDLL/Square.h"
+#include "../EngineDLL/Circle.h"
+#include "../EngineDLL/Material.h"
+#include "../EngineDLL/TextureImporter.h"
+#include "../EngineDLL/Sprite.h"
+#include "../EngineDll/Definitions.h"
+#include "../EngineDll/CollisionManager.h"
+#include <iostream>
+class Game : public Gamebase {
 private:
-	Triangle * triangle_1;
-	Square * square_1;
-	Circle * circle_1;
+	int i;
+	Triangle * triangle1;
+	Square *square1;
+	Circle   *circle1;
 	Material * material1;
 	Material * material2;
-protected:
-	bool onStart() override;
-	bool onStop() override;
-	bool onUpdate() override;
-	bool OnDraw() override;
-
+	Sprite  * sprite1;
+	Sprite  * sprite2;
 public:
-	int i;
 	Game();
 	~Game();
+protected:
+	bool OnStart() override;
+	bool OnStop() override;
+	bool OnUpdate() override;
+	void OnDraw() override;
 };
 

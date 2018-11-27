@@ -1,17 +1,35 @@
 #pragma once
 #include "Entity.h"
 #include "Material.h"
-class ENGINEDLL_API Shape: public Entity
-{
-public:
 
-	float * vertex;
-	unsigned int vertexBuffer;
+#define PRIMITIVE_TRIANGLE 0x0004
+#define PRIMITIVE_TRIANGLE_STRIP 0x0005
+#define PRIMITIVE_TRIANGLE_FAN 0x0006
+
+class  ENGINEDLL_API Shape :public Entity
+{
+protected:
 	Material * material;
-	void SetVertexBuffer(float * vertex, int cant);	
-	Shape(Renderer * renderer);
+
+	unsigned int vertexBufferID;
+	unsigned int colorBufferID;
+	float * vertex;
+	float * colorVertex;
+	int vertexCount;
+	int colorVertexCount;
+
+
+public:
+	Shape(Renderer *render);
 	~Shape();
+	void SetVertexBuffer(float* _vertex, int _cant);
+	void SetColorBuffer(float* _vertex, int _cant);
 	virtual void Draw() = 0;
-	void SetMaterial(Material * _material);
+	virtual void  DrawMesh(int drawType);
+	void SetMaterial(Material* material);
+
+
 };
+
+
 

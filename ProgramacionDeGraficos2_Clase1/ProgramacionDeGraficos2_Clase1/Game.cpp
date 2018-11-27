@@ -1,69 +1,77 @@
 #include "Game.h"
 
-
-
 Game::Game()
 {
+	i = 0;
 }
-
-
 Game::~Game()
 {
 }
-
-
-bool Game::onStart()
-{
-	i = 0;
+bool Game::OnStart() {
 	material1 = new Material();
+	unsigned int programID = material1->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
 	material2 = new Material();
-	unsigned int ProgramID = material1->LoadShaders("colorvertexshader.txt", "colorfragmentshader.txt");
-	unsigned int ProgramID2 = material2->LoadShaders("vertexshader.txt", "fragmentshader.txt");
+	unsigned int programID2 = material2->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
+	/*triangle1 = new Triangle(renderer);
+	triangle1->SetMaterial(material1);
 
-	square_1 = new Square(renderer);
-	square_1->SetMaterial(material1);
-	square_1->SetTranslation(-5, 0, 0);
-	square_1->SetScale(3, 3, 0);
+	square1 = new Square(renderer);
+	square1->SetMaterial(material1);
 
-	triangle_1 = new Triangle(renderer);
-	triangle_1->SetMaterial(material2);
-	triangle_1->SetTranslation(5, 0, 0);
-	triangle_1->SetScale(3, 3, 0);
+	circle1 = new Circle(renderer, 1, 20);
+	circle1->SetMaterial(material1);*/
 
-	circle_1 = new Circle(renderer);
-	circle_1->SetMaterial(material1);
+	sprite1 = new Sprite(renderer,9);
+	sprite1->SetMaterial(material1);
+	sprite1->LoadTexture("SpriteSheet.bmp");
+	sprite1->SetCollider(vec3(0,0,0), 1, 1, player, false);
+	sprite1->SetTranslationX(-5);
+
+	sprite2 = new Sprite(renderer, 1);
+	sprite2->SetMaterial(material2);
+	sprite2->LoadTexture("bmp.bmp");
+	sprite2->SetCollider(vec3(0, 0, 0),2,2, enemy, false);
+	sprite2->SetTranslationX(-2);
+
+	/*triangle1->SetTranslation(6, 0, 0)
+	square1->SetTranslation(3, 0, 0);
+	circle1->SetTranslation(-5, 0, 0);*/
+
+	CollisionManager::GetInstance()->AddCollisionEntity(sprite1, player);
+	CollisionManager::GetInstance()->AddCollisionEntity(sprite2, enemy);
+
+	
 
 	return true;
 }
+bool Game::OnStop() {
 
-bool Game::onStop()
-{
+	delete material1;
+	delete triangle1;
+	delete square1;
+	delete circle1;
+	delete sprite1;
+	
 	return false;
 }
-
-bool Game::onUpdate()
-{
+bool Game::OnUpdate() {
 	i++;
-	
-	if (i < 100000000)
-	{
-		circle_1->SetRotationZ(i / 50);
-		triangle_1->SetRotationZ(i / 50);
-		square_1->SetRotationZ(i / 50);
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+	//triangle1->SetRotation(0.0f, 0.0f, i / 5);
+	sprite1->Update();
+	sprite1->SetTranslationX(sprite1->GetTranslationX() + 0.001);
+	sprite2->Update();
+	//sprite2->SetTranslationX(sprite2->GetTranslationX() - 0.001);
+	CollisionManager::GetInstance()->CollisionDetector();
 
+	return true;
 }
 
-bool Game::OnDraw() 
+void Game::OnDraw()
 {
-	triangle_1->Draw();
-	square_1->Draw();
-	circle_1->Draw();
-	return true;
+	//triangle1->Draw();
+	//square1->Draw();
+	//circle1->Draw();
+	sprite1->Draw();
+	sprite2->Draw();
 }
 

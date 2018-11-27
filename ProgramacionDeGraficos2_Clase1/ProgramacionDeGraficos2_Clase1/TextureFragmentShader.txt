@@ -1,0 +1,20 @@
+#version 330 core
+in vec2 UV;
+out vec3 color;
+uniform sampler2D myTextureSampler;
+
+void main()
+{
+	float colorR = 1.0f;
+	float colorG = 0.0f;
+	float colorB = 0.0f;
+	color = texture( myTextureSampler, UV ).rgb;
+	if(color.r == colorR && color.g == colorG && color.b == colorB)
+	{
+		discard;
+	}
+	else
+	{
+		color = texture( myTextureSampler, UV ).rgb;
+	}
+}

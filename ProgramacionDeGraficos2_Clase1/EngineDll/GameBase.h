@@ -1,25 +1,26 @@
-#pragma once
 #include "Exports.h"
 #include "Renderer.h"
 #include "Window.h"
+#include "TypeDefs.h"
+#include <iostream>
+#include "Time.h"
 
-class ENGINEDLL_API GameBase
-{
-protected:
-	virtual bool onStart() = 0;
-	virtual bool onStop() = 0;
-	virtual bool onUpdate() = 0;
-	virtual	bool OnDraw() = 0;
+using namespace std;
+class ENGINEDLL_API Gamebase {
+private:
 
-public:
-	Renderer * renderer;
 	Window * window;
-	bool start();
-	bool stop();
-	void loop();
-
-	bool gameover;
-	GameBase();
-	~GameBase();
+public:
+	Gamebase();
+	~Gamebase();
+	bool Start();
+	bool Stop();
+	void Loop();
+protected:
+	Renderer * renderer;
+	virtual bool OnStart() = 0;
+	virtual bool OnStop() = 0;
+	virtual bool OnUpdate() = 0;
+	virtual void OnDraw() = 0;
 };
 

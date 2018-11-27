@@ -1,0 +1,5 @@
+﻿  Animation.cpp
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.h(12): warning C4091: 'static ': se ha omitido a la izquierda de 'Time' cuando no hay ninguna variable declarada
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\animation.cpp(8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\animation.cpp(12): warning C4305: '=': truncamiento de 'double' a 'float'
+  EngineDll.vcxproj -> C:\Users\lean1\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\EngineDll.dll

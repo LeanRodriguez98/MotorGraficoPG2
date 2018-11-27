@@ -1,17 +1,17 @@
 #include "Game.h"
-#include <iostream>
-using namespace std;
-int main() 
-{
-	Game * game = new Game();
-	
-	//Todo Startup
-	if (game->start())
-	{
-		game->loop();
+
+int main() {
+
+	Gamebase* game = new Game();
+
+	//TODO: startup
+	if (game->Start()) {
+		game->Loop();
 	}
-	game->stop();
+
+	game->Stop();
+
 	delete game;
-	cin.get();
+	std::cin.get();
 	return 0;
 }

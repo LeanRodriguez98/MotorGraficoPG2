@@ -1,22 +1,23 @@
+
 #pragma once
 #include "Exports.h"
 #include <iostream>
 using namespace std;
 class ENGINEDLL_API Window
 {
+private:
+	void* window;
+	int width;
+	int height;
+	const char* name;
 public:
-	Window(int _whith, int _height, char * _windwName);
+	Window();
 	~Window();
-	bool start();
-	bool stop();
+	bool Start(int w, int h, const char* n);
+	bool Stop();
 	bool ShouldClose();
 	void PollEvents();
-	void * GetWindowPtr();
-private:
-	int whith;
-	int height;
-	const char * name;
-	string windowName;
-	void * window;
+	void* GetWindow();
 };
+
 

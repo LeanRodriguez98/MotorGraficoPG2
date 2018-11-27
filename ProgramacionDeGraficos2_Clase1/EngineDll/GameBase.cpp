@@ -1,59 +1,45 @@
-#include "GameBase.h"
-#include "TypeDefs.h"
-#include <iostream>
+#include "Gamebase.h"
 
-GameBase::GameBase()
-{
-	renderer = new Renderer;
+Gamebase::Gamebase() {
+
 }
-
-
-GameBase::~GameBase()
-{
-	delete renderer;
+Gamebase::~Gamebase() {
 }
+bool Gamebase::Start() {
 
-bool GameBase::start()
-{
-	window = new Window(800, 600,  (char *)"window");
-	window->start();
+	window = new Window();
+	if (!window->Start(800, 600, " "))
+		return false;
 
+	renderer = new Renderer();
 	if (!renderer->Start(window))
-	{
-		cout << "no se pudo iniciar el renderer" << endl;
-		cin.get();
 		return false;
-	}
-
-	renderer->SetClearColor(0.5f,0.5f,0.5f,1);
-
-	return onStart();
-
+	renderer->SetClearColor(0.5f, 0.5f, 0.5f, 1);
+	return OnStart();
 }
+void Gamebase::Loop() {
+	bool loop = true;
+	Time::FirstMeasure();
 
-bool GameBase::stop()
-{
-	onStop();
-	if (!renderer->Stop())
+	while (loop && !window->ShouldClose())
 	{
-		cout << "no se pudo detener el renderer" << endl;
-		cin.get();
-		return false;
-	}
-	window->stop();
-	return true;
-}
+		Time::Measure();
 
-void GameBase::loop() 
-{
-	gameover = false;
-	while (!gameover && (!window->ShouldClose()))
-	{
-		gameover = onUpdate();
+		loop = OnUpdate();
 		renderer->ClearWindow();
 		OnDraw();
 		renderer->SwapBuffer();
 		window->PollEvents();
-
 	}
 }
+bool Gamebase::Stop() {
+	OnStop();
+	renderer->Stop();
+	window->Stop();
+
+	delete renderer;
+	delete window;
+	return true;
+}
+
+
