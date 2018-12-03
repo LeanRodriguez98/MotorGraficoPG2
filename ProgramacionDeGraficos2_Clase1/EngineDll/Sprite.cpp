@@ -7,7 +7,7 @@ Sprite::Sprite(Renderer* renderer, int _cantFrames) : Shape(renderer)
 	UVBufferId = -1;
 	textureBufferId = -1;
 	animation = new Animation(_cantFrames);
-
+	dispouse = false;
 	vertex = new float[12]
 	{
 		-1.0f,-1.0f , 0.0f ,
@@ -32,8 +32,14 @@ Sprite::~Sprite()
 
 void Sprite::SetTextureVertices(float* _vertex, int _cant)
 {
+	if (dispouse)
+	{
+		renderer->DestroyBuffer(UVBufferId);
+		dispouse = false;
+	}
 
 	UVBufferId = renderer->GenerateBuffer(_vertex, sizeof(float)* _cant * 2);
+	dispouse = true;
 }
 
 void Sprite::LoadTexture(const char* _name)

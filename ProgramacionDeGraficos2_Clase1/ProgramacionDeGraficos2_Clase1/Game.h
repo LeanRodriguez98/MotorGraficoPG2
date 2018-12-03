@@ -16,8 +16,14 @@ private:
 	Circle   *circle1;
 	Material * material1;
 	Material * material2;
+	Material * material3;
+	Material * material4;
+	Material * material5;
 	Sprite  * sprite1;
 	Sprite  * sprite2;
+	Sprite  * sprite3;
+
+
 public:
 	Game();
 	~Game();

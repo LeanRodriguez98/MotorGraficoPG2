@@ -13,6 +13,7 @@ class ENGINEDLL_API Sprite :public Shape
 	float *textureUVvertex;
 	int textreVertexCount;
 	Animation * animation;
+	bool dispouse;
 public:
 	Sprite(Renderer * render, int _cantFrames);
 	~Sprite();
