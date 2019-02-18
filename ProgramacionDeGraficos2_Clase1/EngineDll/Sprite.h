@@ -1,19 +1,14 @@
 #pragma once
 #include "Exports.h"
 #include "Shape.h"
-#include "TextureImporter.h"
 #include "Animation.h"
 
 class ENGINEDLL_API Sprite :public Shape
 {
-	BMPData header;
 	const char* file;
-	unsigned int textureBufferId;
-	unsigned int UVBufferId;
-	float *textureUVvertex;
+
 	int textreVertexCount;
 	Animation * animation;
-	bool dispouse;
 public:
 	Sprite(Renderer * render, int _cantFrames);
 	~Sprite();

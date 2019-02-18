@@ -8,7 +8,7 @@ Gamebase::~Gamebase() {
 bool Gamebase::Start() {
 
 	window = new Window();
-	if (!window->Start(800, 600, " "))
+	if (!window->Start(800, 600, "Game"))
 		return false;
 
 	renderer = new Renderer();

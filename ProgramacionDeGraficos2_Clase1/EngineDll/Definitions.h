@@ -5,6 +5,7 @@ enum  Layers
 	enemy,
 	walkeable,
 	not_walkeable,
+	tiles,
 	count
 
 };

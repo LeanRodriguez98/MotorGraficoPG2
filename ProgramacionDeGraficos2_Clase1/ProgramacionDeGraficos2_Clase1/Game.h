@@ -7,6 +7,7 @@
 #include "../EngineDLL/Sprite.h"
 #include "../EngineDll/Definitions.h"
 #include "../EngineDll/CollisionManager.h"
+#include "../EngineDll/Tilemap.h"
 #include <iostream>
 class Game : public Gamebase {
 private:
@@ -19,10 +20,11 @@ private:
 	Material * material3;
 	Material * material4;
 	Material * material5;
+	Material * materialTilemap1;
 	Sprite  * sprite1;
 	Sprite  * sprite2;
 	Sprite  * sprite3;
-
+	Tilemap * tilemap1;
 
 public:
 	Game();

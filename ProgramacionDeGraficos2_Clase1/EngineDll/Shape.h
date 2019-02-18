@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "Material.h"
+#include "TextureImporter.h"
 
 #define PRIMITIVE_TRIANGLE 0x0004
 #define PRIMITIVE_TRIANGLE_STRIP 0x0005
@@ -10,11 +11,17 @@ class  ENGINEDLL_API Shape :public Entity
 {
 protected:
 	Material * material;
+	BMPData header;
 
 	unsigned int vertexBufferID;
 	unsigned int colorBufferID;
+	unsigned int textureBufferId;
+	unsigned int UVBufferId;
 	float * vertex;
 	float * colorVertex;
+	float * textureUVvertex;
+	bool dispouse;
+
 	int vertexCount;
 	int colorVertexCount;
 
