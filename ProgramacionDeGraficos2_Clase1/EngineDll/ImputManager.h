@@ -8,7 +8,8 @@ enum Key
 	RightKey = 262,
 	LeftKey = 263,
 	DownKey = 264,
-	UpKey = 265
+	UpKey = 265,
+	Space = 32
 };
 
 

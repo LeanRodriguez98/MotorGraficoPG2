@@ -9,21 +9,29 @@ using namespace std;
 class ENGINEDLL_API Tilemap : public Shape
 {
 private:
-	static Tilemap* instance;
-	int mapWidth;
-	int mapHeight;
+	int tilemapWidth;
+	int tilemapHeight;
 	int cantUVvertex;
-	float cantX;
-	float cantY;
+	float cantTilesX;
+	float cantTilesY;
+	float tileOffset;
+	float tileSize;
 	vector<int>* mapIds;
-	vector<vector<int>> indexes;
 	vector<float> vertexArrayPos;
 	vector<vector<int>> bidimensionalIDs;
-	vector<int> tilesWithCollides;
+	vector<int>* tilesWithCollides;
+	struct TileColliderData 
+	{
+		float positionX;
+		float width;
+		float positionY;
+		float height;
+	};
+
+	vector<TileColliderData>* tilesColliderData;
 public:
-	Tilemap(Renderer* rend, float width, float height, const char* filename, float cantTilesX, float cantTilesY);
+	Tilemap(Renderer* _renderer, float _tilemapWidth, float _tilemapHeight, const char* _filename, float _cantTilesX, float _cantTilesY,float _tileOffset, float _tileSize , vector<int>* _colliderTiles);
 	~Tilemap();
-	static Tilemap* GetInstance();
 	void Draw() override;
 	void DrawMesh(int _drawType);
 	void SetTextures(float* vertex, int cant);
@@ -31,10 +39,9 @@ public:
 	void LoadUVs();
 	void LoadMapIDs(const char* file);
 	void SetTilemapVertex(float* vertex, int cant);
-	void UpdateTilemap();
-	void SetColliderTiles(vector<int> v);
-	bool NextTileIsCollider(float x, float y);
-	float GetTileX(float x);
-	float GetTileY(float y);
+
+	bool NextTileIsCollider(float _playerTranslationX, float _playerTranslationY, float _playerHight, float _playerWidht);
+
+
 };
 

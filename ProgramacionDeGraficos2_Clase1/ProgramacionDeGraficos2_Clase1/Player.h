@@ -12,11 +12,12 @@ class Player
 private:
 	Sprite * playerSprite;
 	Material * playerMaterial;
+	Tilemap * tilemapToCollide;
 	float speed;
 	unsigned int programID;
 public:
 
-	Player(Renderer * _renderer, float _animation, const char* filename, float _speed, float _positionX, float _positionY, float _positionZ);
+	Player(Renderer * _renderer, float _animation, const char* filename, float _speed, float _positionX, float _positionY, float _positionZ, Tilemap * _tilemapToCollide);
 	~Player();
 	void Update();
 	void Movement();

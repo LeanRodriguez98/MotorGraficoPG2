@@ -57,10 +57,17 @@ bool Game::OnStart() {
 
 	materialTilemap1 = new Material();
 	unsigned int programID6 = materialTilemap1->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
-	tilemap1 = new Tilemap(renderer, 20, 10, "TilemapTest.csv", 10.0f, 7.0f);
+	vector<int> * colliderTiles = new vector<int>();
+	colliderTiles->push_back(5);
+	colliderTiles->push_back(10);
+	colliderTiles->push_back(13);
+	colliderTiles->push_back(14);
+	colliderTiles->push_back(15);
+	colliderTiles->push_back(16);
+	colliderTiles->push_back(17);
+	tilemap1 = new Tilemap(renderer, 20, 10, "TilemapTest.csv", 10.0f, 7.0f, 10.0f, 2.0f, colliderTiles);
 	tilemap1->SetMaterial(materialTilemap1);
 	tilemap1->LoadTexture("TileMap.bmp");
-
 
 
 	CollisionManager::GetInstance()->AddCollisionEntity(sprite1, player);
@@ -68,7 +75,7 @@ bool Game::OnStart() {
 	CollisionManager::GetInstance()->AddCollisionEntity(sprite3, walkeable);*/
 	ImputManager::GetInstance()->SetWindow(window);
 
-	player1 = new Player(renderer,9, "SpriteSheet.bmp",10,0,0,0);
+	player1 = new Player(renderer,9, "SpriteSheet.bmp",10,0,0,0,tilemap1);
 	player1->SetCollisionEntity(player);
 	return true;
 }

@@ -2,7 +2,7 @@
 
 
 
-Player::Player(Renderer * _renderer,float _animation, const char* filename, float _speed, float _positionX, float _positionY, float _positionZ)
+Player::Player(Renderer * _renderer,float _animation, const char* filename, float _speed, float _positionX, float _positionY, float _positionZ, Tilemap * _tilemapToCollide)
 {
 	playerSprite = new Sprite(_renderer, _animation);
 	playerMaterial = new Material();
@@ -13,6 +13,7 @@ Player::Player(Renderer * _renderer,float _animation, const char* filename, floa
 	playerSprite->SetCollider(vec3(0, 0, 0), 1, 1, player, false);
 	playerSprite->SetTranslation(_positionX, _positionY, _positionZ);
 	speed = _speed;
+	tilemapToCollide = _tilemapToCollide;
 }
 
 void Player::SetCollisionEntity(Layers _layer)
@@ -32,21 +33,44 @@ void Player::Update()
 
 void Player::Movement() 
 {
+
+	if (ImputManager::GetInstance()->GetKeyDown(Space))
+	{
+	}
 	if (ImputManager::GetInstance()->GetKeyDown(RightKey))
 	{
 		playerSprite->SetTranslationX(playerSprite->GetTranslationX() + (Time::dt * speed));
+		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), 1.6f, 1.0f))
+		{
+			playerSprite->SetTranslationX(playerSprite->GetTranslationX() - (Time::dt * speed));
+		}
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(LeftKey))
 	{
 		playerSprite->SetTranslationX(playerSprite->GetTranslationX() - (Time::dt * speed));
+		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), 1.6f, 1.0f))
+		{
+			playerSprite->SetTranslationX(playerSprite->GetTranslationX() + (Time::dt * speed));
+
+		}
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(UpKey))
 	{
 		playerSprite->SetTranslationY(playerSprite->GetTranslationY() + (Time::dt * speed));
+		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(),playerSprite->GetTranslationY(),1.6f,1.0f))
+		{
+			playerSprite->SetTranslationY(playerSprite->GetTranslationY() - (Time::dt * speed));
+
+		}
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(DownKey))
 	{
 		playerSprite->SetTranslationY(playerSprite->GetTranslationY() - (Time::dt * speed));
+		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), 1.6f,1.0f))
+		{
+			playerSprite->SetTranslationY(playerSprite->GetTranslationY() + (Time::dt * speed));
+
+		}
 	}
 }
 

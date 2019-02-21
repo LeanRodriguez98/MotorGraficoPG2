@@ -37,16 +37,6 @@ c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\
           [
               _Ty=Entity *
           ]
-c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): warning C4251: 'Tilemap::indexes': class 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
-          with
-          [
-              _Ty=int
-          ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
-          with
-          [
-              _Ty=int
-          ]
 c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(20): warning C4251: 'Tilemap::vertexArrayPos': class 'std::vector<float,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
           with
           [
@@ -62,17 +52,7 @@ c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\
           [
               _Ty=int
           ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
-          with
-          [
-              _Ty=int
-          ]
-c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(22): warning C4251: 'Tilemap::tilesWithCollides': class 'std::vector<int,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
-          with
-          [
-              _Ty=int
-          ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(18): note: vea la declaración de 'std::vector<int,std::allocator<_Ty>>'
+  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(21): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
           with
           [
               _Ty=int
@@ -115,16 +95,6 @@ c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\
           [
               _Ty=Entity *
           ]
-c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): warning C4251: 'Tilemap::indexes': class 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
-          with
-          [
-              _Ty=int
-          ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
-          with
-          [
-              _Ty=int
-          ]
 c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(20): warning C4251: 'Tilemap::vertexArrayPos': class 'std::vector<float,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
           with
           [
@@ -140,17 +110,7 @@ c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\
           [
               _Ty=int
           ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
-          with
-          [
-              _Ty=int
-          ]
-c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(22): warning C4251: 'Tilemap::tilesWithCollides': class 'std::vector<int,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
-          with
-          [
-              _Ty=int
-          ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(18): note: vea la declaración de 'std::vector<int,std::allocator<_Ty>>'
+  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(21): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
           with
           [
               _Ty=int
@@ -196,16 +156,6 @@ c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\
           [
               _Ty=Entity *
           ]
-c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): warning C4251: 'Tilemap::indexes': class 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
-          with
-          [
-              _Ty=int
-          ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
-          with
-          [
-              _Ty=int
-          ]
 c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(20): warning C4251: 'Tilemap::vertexArrayPos': class 'std::vector<float,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
           with
           [
@@ -221,17 +171,7 @@ c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\
           [
               _Ty=int
           ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(19): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
-          with
-          [
-              _Ty=int
-          ]
-c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(22): warning C4251: 'Tilemap::tilesWithCollides': class 'std::vector<int,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
-          with
-          [
-              _Ty=int
-          ]
-  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(18): note: vea la declaración de 'std::vector<int,std::allocator<_Ty>>'
+  c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(21): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
           with
           [
               _Ty=int

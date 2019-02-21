@@ -1,53 +1,69 @@
 #include "Tilemap.h"
 
-Tilemap* Tilemap::instance = 0;
-Tilemap * Tilemap::GetInstance()
-{
-	return instance;
-}
 
-Tilemap::Tilemap(Renderer* rend, float width, float height, const char* filename, float cantTilesX, float cantTilesY)
-	: Shape(rend), mapWidth(width), mapHeight(height), cantX(cantTilesX), cantY(cantTilesY)
+Tilemap::Tilemap(Renderer* _renderer, float _tilemapWidth, float _tilemapHeight, const char* _filename, float _cantTilesX, float _cantTilesY, float _tileOffset, float _tileSize, vector<int>* _colliderTiles): Shape(_renderer)
 {
 	
+	tilemapWidth = _tilemapWidth;
+	tilemapHeight = _tilemapHeight;
+	cantTilesX = _cantTilesX;
+	cantTilesY = _cantTilesY;
+	tileOffset = _tileOffset;
+	tileSize = _tileSize;
+	vertexCount = _tilemapWidth * _tilemapHeight * 4 * 3;
+	cantUVvertex = _tilemapWidth * _tilemapHeight * 4 * 2;
 	
 
-	vertexCount = width * height * 4 * 3;
-	cantUVvertex = width * height * 4 * 2;
-	
-	for (int i = 0; i < height; i++)
+	mapIds = new vector<int>();
+	LoadMapIDs(_filename);
+	tilesWithCollides = new vector<int>();
+	tilesWithCollides = _colliderTiles;
+	tilesColliderData = new vector<TileColliderData>();
+	int aux = 0;
+	for (int i = 0; i < _tilemapHeight; i++)
 	{
-		for (int j = 0; j < width; j++)
+		for (int j = 0; j < _tilemapWidth; j++)
 		{
 
 			int col = j * 2;
 			int row = i * 2;
 
-			vertexArrayPos.push_back(-10.0f + col);
-			vertexArrayPos.push_back(10.0f - row);
+			vertexArrayPos.push_back(-tileOffset + col);
+			vertexArrayPos.push_back(tileOffset - row);
 			vertexArrayPos.push_back(0.0f);
 
-			vertexArrayPos.push_back(-10.0f + col);
-			vertexArrayPos.push_back(8.0f - row);
+			vertexArrayPos.push_back(-tileOffset + col);
+			vertexArrayPos.push_back((tileOffset - tileSize) - row);
 			vertexArrayPos.push_back(0.0f);
 
-			vertexArrayPos.push_back(-8.0f + col);
-			vertexArrayPos.push_back(8.0f - row);
+			vertexArrayPos.push_back(-(tileOffset - tileSize) + col);
+			vertexArrayPos.push_back((tileOffset - tileSize) - row);
 			vertexArrayPos.push_back(0.0f);
 
-			vertexArrayPos.push_back(-8.0f + col);
-			vertexArrayPos.push_back(10.0f - row);
+			vertexArrayPos.push_back(-(tileOffset - tileSize) + col);
+			vertexArrayPos.push_back(tileOffset - row);
 			vertexArrayPos.push_back(0.0f);
+
+			for (int k = 0; k < tilesWithCollides->size(); k++)
+			{
+				if (mapIds->at(aux) == tilesWithCollides->at(k))
+				{
+					TileColliderData colliderAux;
+				
+					colliderAux.positionY = (tileOffset - row) - tileSize;
+					colliderAux.positionX = (-tileOffset + col);
+					//cout << colliderAux.positionX << " - " << colliderAux.positionY << endl;
+					colliderAux.height = tileSize;
+					colliderAux.width = tileSize;
+					tilesColliderData->push_back(colliderAux);
+				}
+			}
+
+			aux++;
+		
 		}
 	}
 	float* p = &vertexArrayPos[0];
-
-	
-	mapIds = new vector<int>();
-	LoadMapIDs(filename);
-
-	bidimensionalIDs = vector<vector<int>>(height, vector<int>(width));
-	UpdateTilemap();
 
 	textureUVvertex = new float[cantUVvertex];
 	LoadUVs();
@@ -55,7 +71,6 @@ Tilemap::Tilemap(Renderer* rend, float width, float height, const char* filename
 	SetTilemapVertex(p, vertexCount);
 
 	SetTextures(textureUVvertex, cantUVvertex);
-
 }
 
 Tilemap::~Tilemap()
@@ -75,7 +90,7 @@ void Tilemap::LoadTexture(const char* name)
 
 
 
-void Tilemap::DrawMesh(int drawType)
+void Tilemap::DrawMesh(int _drawType)
 {
 	renderer->LoadIdentityMatrix();
 	renderer->MultiplyModelMatrix(model);
@@ -91,7 +106,7 @@ void Tilemap::DrawMesh(int drawType)
 	renderer->EnableVertexAttribute(1);
 	renderer->BindBuffer(vertexBufferID, 0);
 	renderer->BindTextureBuffer(UVBufferId, 1);
-	renderer->DrawArrayBuffers(vertexCount, drawType);
+	renderer->DrawArrayBuffers(vertexCount, _drawType);
 	renderer->DisableVertexAttribute(0);
 	renderer->DisableVertexAttribute(1);
 }
@@ -101,10 +116,10 @@ void Tilemap::Draw()
 	DrawMesh(PRIMITIVE_QUAD);
 }
 
-void Tilemap::LoadMapIDs(const char* file)
+void Tilemap::LoadMapIDs(const char* _file)
 {
 	string buffer;
-	ifstream tileFile(file);
+	ifstream tileFile(_file);
 
 	while (getline(tileFile, buffer, ','))
 	{
@@ -114,51 +129,43 @@ void Tilemap::LoadMapIDs(const char* file)
 
 void Tilemap::LoadUVs()
 {
-	float textureW = 1 / cantX;
-	float textureH = 1 / cantY;
+	float textureW = 1 / cantTilesX;
+	float textureH = 1 / cantTilesY;
 
 	int idIndex = 0;
 
 	for (int i = 0; i < cantUVvertex; i = i + 8)
 	{
-		// Coordenada 1
 		textureUVvertex[i] = 0.0f;
 		textureUVvertex[i + 1] = 1.0f;
 
-		// Coordenada 2
 		textureUVvertex[i + 2] = 0.0f;
 		textureUVvertex[i + 3] = 1.0f - textureH;
 
-		// Coordenada 3
 		textureUVvertex[i + 4] = textureW;
 		textureUVvertex[i + 5] = 1.0f - textureH;
 
-		// Coordenada 4
 		textureUVvertex[i + 6] = textureW;
 		textureUVvertex[i + 7] = 1.0f;
 
 		int row = 0;
 		int column = mapIds->at(idIndex);
 
-		while (column >= cantX)
+		while (column >= cantTilesX)
 		{
-			column -= cantX;
+			column -= cantTilesX;
 			row++;
 		}
 
-		// Coordenada 1
 		textureUVvertex[i] += textureW * column;
 		textureUVvertex[i + 1] -= textureH * row;
 
-		// Coordenada 2
 		textureUVvertex[i + 2] += textureW * column;
 		textureUVvertex[i + 3] -= textureH * row;
 
-		// Coordenada 3
 		textureUVvertex[i + 4] += textureW * column;
 		textureUVvertex[i + 5] -= textureH * row;
 
-		// Coordenada 4
 		textureUVvertex[i + 6] += textureW * column;
 		textureUVvertex[i + 7] -= textureH * row;
 
@@ -166,66 +173,24 @@ void Tilemap::LoadUVs()
 	}
 }
 
-void Tilemap::SetTilemapVertex(float* vertex, int cant)
+void Tilemap::SetTilemapVertex(float* _vertex, int _cant)
 {
-	vertexBufferID = renderer->GenerateBuffer(vertex, sizeof(float) * cant);
+	vertexBufferID = renderer->GenerateBuffer(_vertex, sizeof(float) * _cant);
 }
 
-void Tilemap::UpdateTilemap()
+
+bool Tilemap::NextTileIsCollider(float _playerTranslationX, float _playerTranslationY, float _playerHeight, float _playerWidht)
 {
-	int count = 0;
 
-	for (int i = 0; i < mapHeight; i++)
+	float col = (((_playerTranslationX - GetTranslationX()) / tileSize) * tileSize) + GetTranslationX();
+	float row = (((_playerTranslationY + GetTranslationY()) / tileSize) * tileSize) - GetTranslationY();
+
+	for (int i = 0; i < tilesColliderData->size(); i++)
 	{
-		for (int j = 0; j < mapWidth; j++)
+		if (((col + (_playerWidht/2)) >= tilesColliderData->at(i).positionX) && ((col - (_playerWidht / 2)) <= tilesColliderData->at(i).positionX + tilesColliderData->at(i).width) && (row + (_playerHeight/2)  >= tilesColliderData->at(i).positionY) && (row - (_playerHeight / 2) <= tilesColliderData->at(i).positionY + tilesColliderData->at(i).height))
 		{
-			bidimensionalIDs[i][j] = mapIds->at(count);
-			count++;
-		}
-	}
-}
-
-bool Tilemap::NextTileIsCollider(float x, float y)
-{
-	int tileID;
-
-	x = (x - GetTranslationX());
-	y = -(y + GetTranslationY());
-
-	if (x >= 0 && y >= 0)
-	{
-		int col = x / 2.0f;
-		int row = y / 2.0f;
-
-		std::cout << "x: " << x << " - y: " << y << " - col: " << col << " - row: " << row << endl;
-
-		int temp = indexes.size();
-		if (col >= 0 && col < indexes[0].size() && row >= 0 && row < temp)
-		{
-			tileID = indexes[row][col];
-			for (vector<int>::iterator it = tilesWithCollides.begin(); it < tilesWithCollides.end(); it++)
-			{
-				if (*it == tileID)
-				{
-					return true;
-				}
-			}
+			return true;
 		}
 	}
 	return false;
-}
-void Tilemap::SetColliderTiles(vector<int> v)
-{
-	tilesWithCollides = v;
-}
-float Tilemap::GetTileX(float x)
-{
-	int col = (x - GetTranslationX()) / 2.0f;
-	return col * 2.0f + GetTranslationX();
-}
-float Tilemap::GetTileY(float y)
-{
-	int row = (y + GetTranslationY()) / 2.0f;
-
-	return row * 2.0f- GetTranslationY();
 }
