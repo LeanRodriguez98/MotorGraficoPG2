@@ -9,13 +9,20 @@ using namespace std;
 class ENGINEDLL_API Gamebase {
 private:
 
-	Window * window;
+	int screenHeight;
+	int screenWidth;
 public:
 	Gamebase();
 	~Gamebase();
+	Window * window;
+
 	bool Start();
 	bool Stop();
 	void Loop();
+	void SetScreenHeight(int _screenHeight);
+	void SetScreenWidth(int _screenWidth);
+	int GetScreenHeight();
+	int GetScreenWidth();
 protected:
 	Renderer * renderer;
 	virtual bool OnStart() = 0;

@@ -11,7 +11,6 @@ class ENGINEDLL_API Renderer
 {
 private:
 	unsigned int VertexArray;
-	Window * window;
 	mat4 modelMatrix;
 	mat4 viewMatrix;
 	mat4 projectionMatrix;
@@ -40,4 +39,7 @@ public:
 	void LoadIdentityMatrix();
 	void MultiplyModelMatrix(mat4 mat);
 	void MultiplyWorldMatrix(mat4 mat);
+	void CameraFollow(vec3 _playerPosition);
+	Window * window;
+
 };

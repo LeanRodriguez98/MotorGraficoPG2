@@ -8,7 +8,7 @@ Gamebase::~Gamebase() {
 bool Gamebase::Start() {
 
 	window = new Window();
-	if (!window->Start(800, 600, "Game"))
+	if (!window->Start(screenWidth, screenHeight, "Game"))
 		return false;
 
 	renderer = new Renderer();
@@ -42,4 +42,20 @@ bool Gamebase::Stop() {
 	return true;
 }
 
+void Gamebase::SetScreenHeight(int _screenHeight)
+{
+	screenHeight = _screenHeight;
+}
+void Gamebase::SetScreenWidth(int _screenWidth) 
+{
+	screenWidth = _screenWidth;
+}
+int Gamebase::GetScreenHeight() 
+{
+	return screenHeight;
+}
+int Gamebase::GetScreenWidth() 
+{
+	return screenWidth;
+}
 

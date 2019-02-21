@@ -20,7 +20,6 @@ Sprite::Sprite(Renderer* renderer, int _cantFrames) : Shape(renderer)
 
 	textureUVvertex = animation->UpdateFrame();
 	
-
 	SetTextureVertices(textureUVvertex, 4);
 
 }

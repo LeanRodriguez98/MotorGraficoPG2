@@ -8,6 +8,10 @@
 #include "../EngineDll/Definitions.h"
 #include "../EngineDll/CollisionManager.h"
 #include "../EngineDll/Tilemap.h"
+#include "../EngineDll/ImputManager.h"
+
+#include "Player.h"
+
 #include <iostream>
 class Game : public Gamebase {
 private:
@@ -25,6 +29,8 @@ private:
 	Sprite  * sprite2;
 	Sprite  * sprite3;
 	Tilemap * tilemap1;
+
+	Player * player1;
 
 public:
 	Game();

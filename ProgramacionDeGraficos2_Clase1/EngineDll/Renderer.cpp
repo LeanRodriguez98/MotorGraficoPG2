@@ -12,6 +12,7 @@ Renderer::~Renderer()
 }
 bool Renderer::Start(Window * windowPTR) {
 
+
 	if (windowPTR != NULL)
 	{
 		window = windowPTR;
@@ -184,3 +185,7 @@ void Renderer::MultiplyModelMatrix(glm::mat4 mat)
 	UpdateModelViewProjectionMatrix();
 }
 
+void Renderer::CameraFollow(vec3 _playerPosition)
+{
+	viewMatrix = glm::lookAt(_playerPosition - glm::vec3(0.0f, 0.0f, -1.0f), _playerPosition, glm::vec3(0.0f, 1.0f, 0.0f));
+}

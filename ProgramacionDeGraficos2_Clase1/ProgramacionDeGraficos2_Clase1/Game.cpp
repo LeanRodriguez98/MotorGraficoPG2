@@ -57,23 +57,19 @@ bool Game::OnStart() {
 
 	materialTilemap1 = new Material();
 	unsigned int programID6 = materialTilemap1->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
-	tilemap1 = new Tilemap(renderer, "TilemapTest.csv",10,10, materialTilemap1, "TileMap.bmp",10, 7);
-	tilemap1->RegisterCollisionableTiles(10,true);// Columnas centro
-	tilemap1->RegisterCollisionableTiles(13, true);// Pared horizontal
-	tilemap1->RegisterCollisionableTiles(5, true);// Pared Vertical
-	tilemap1->RegisterCollisionableTiles(14, true);// Esquina inferior izquierda
-	tilemap1->RegisterCollisionableTiles(15, true);// Esquina inferior derecha
-	tilemap1->RegisterCollisionableTiles(16, true);// Esquina superior izquierda
-	tilemap1->RegisterCollisionableTiles(17, true);// Esquina superior derecha
+	tilemap1 = new Tilemap(renderer, 20, 10, "TilemapTest.csv", 10.0f, 7.0f);
+	tilemap1->SetMaterial(materialTilemap1);
+	tilemap1->LoadTexture("TileMap.bmp");
 
 
 
 	CollisionManager::GetInstance()->AddCollisionEntity(sprite1, player);
 	/*CollisionManager::GetInstance()->AddCollisionEntity(sprite2, enemy);
 	CollisionManager::GetInstance()->AddCollisionEntity(sprite3, walkeable);*/
+	ImputManager::GetInstance()->SetWindow(window);
 
-	
-	
+	player1 = new Player(renderer,9, "SpriteSheet.bmp",10,0,0,0);
+	player1->SetCollisionEntity(player);
 	return true;
 }
 bool Game::OnStop() {
@@ -103,11 +99,14 @@ bool Game::OnUpdate() {
 		circle1->SetScale(circle1->GetScaleX() + Time::dt, circle1->GetScaleY() + Time::dt, 0.0f);
 	}*/
 	
-	sprite1->Update();
+	/*sprite1->Update();
 	sprite1->SetTranslationX(sprite1->GetTranslationX() + Time::dt);
-	
-	/*sprite2->Update();
+	renderer->CameraFollow(sprite1->GetTranslation());*/
 
+	player1->Update();
+	renderer->CameraFollow(player1->GetSprite()->GetTranslation());
+	/*sprite2->Update();
+	
 	sprite3->Update();
 	sprite3->SetTranslationY(sprite3->GetTranslationY() - Time::dt);*/
 	CollisionManager::GetInstance()->CollisionDetector();
@@ -124,8 +123,8 @@ void Game::OnDraw()
 	
 	sprite2->Draw();
 	sprite3->Draw();*/
-	tilemap1->DrawTileMap();
-	sprite1->Draw();
-
+	tilemap1->Draw();
+	//sprite1->Draw();
+	player1->Draw();
 }
 
