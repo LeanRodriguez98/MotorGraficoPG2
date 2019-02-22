@@ -15,9 +15,16 @@ private:
 	Tilemap * tilemapToCollide;
 	float speed;
 	unsigned int programID;
+
+	unsigned int animationRightBuffer;
+	unsigned int animationLeftBuffer;
+	unsigned int animationUpBuffer;
+	unsigned int animationDownBuffer;
+
+	bool firstDraw;
 public:
 
-	Player(Renderer * _renderer, float _animation, const char* filename, float _speed, float _positionX, float _positionY, float _positionZ, Tilemap * _tilemapToCollide);
+	Player(Renderer * _renderer, float _animation, float _speed, float _positionX, float _positionY, float _positionZ, Tilemap * _tilemapToCollide);
 	~Player();
 	void Update();
 	void Movement();

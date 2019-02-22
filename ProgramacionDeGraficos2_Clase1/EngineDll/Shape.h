@@ -22,7 +22,6 @@ protected:
 	float * colorVertex;
 	float * textureUVvertex;
 	bool dispouse;
-
 	int vertexCount;
 	int colorVertexCount;
 

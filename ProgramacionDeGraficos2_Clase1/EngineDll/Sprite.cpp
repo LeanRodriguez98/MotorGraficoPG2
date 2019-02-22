@@ -41,14 +41,18 @@ void Sprite::SetTextureVertices(float* _vertex, int _cant)
 	dispouse = true;
 }
 
-void Sprite::LoadTexture(const char* _name)
+unsigned int Sprite::LoadTexture(const char* _name)
 {
 	header = TextureImporter::LoadBMP(_name);
-	textureBufferId = renderer->GenerateTextureBuffer(header.width, header.height, header.data);
+
+	return renderer->GenerateTextureBuffer(header.width, header.height, header.data);
 }
 
 
-
+void Sprite::SetTextureBufferId(unsigned int _textureBufferId) 
+{
+	textureBufferId = _textureBufferId;
+}
 
 void Sprite::DrawMesh(int drawType)
 {

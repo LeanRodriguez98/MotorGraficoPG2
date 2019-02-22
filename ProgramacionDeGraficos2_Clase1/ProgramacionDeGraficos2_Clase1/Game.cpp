@@ -31,11 +31,7 @@ bool Game::OnStart() {
 	circle1 = new Circle(renderer, 1, 200);
 	circle1->SetMaterial(material5);
 	*/
-	sprite1 = new Sprite(renderer,9);
-	sprite1->SetMaterial(material1);
-	sprite1->LoadTexture("SpriteSheet.bmp");
-	sprite1->SetCollider(vec3(0,0,0), 1, 1, player, false);
-	sprite1->SetTranslationX(-5);
+
 	
 	/*sprite2 = new Sprite(renderer, 1);
 	sprite2->SetMaterial(material2);
@@ -75,7 +71,7 @@ bool Game::OnStart() {
 	CollisionManager::GetInstance()->AddCollisionEntity(sprite3, walkeable);*/
 	ImputManager::GetInstance()->SetWindow(window);
 
-	player1 = new Player(renderer,9, "SpriteSheet.bmp",10,0,0,0,tilemap1);
+	player1 = new Player(renderer,9,2,0,0,0,tilemap1);
 	player1->SetCollisionEntity(player);
 	return true;
 }

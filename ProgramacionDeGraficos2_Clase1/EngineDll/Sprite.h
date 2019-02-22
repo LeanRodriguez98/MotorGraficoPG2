@@ -13,9 +13,10 @@ public:
 	Sprite(Renderer * render, int _cantFrames);
 	~Sprite();
 	void SetTextureVertices(float* _vertex, int _cant);
-	void LoadTexture(const char* _name);
+	unsigned int LoadTexture(const char* _name);
 	void Draw() override;
 	void DrawMesh(int _drawType) override;
 	void Update();
+	void SetTextureBufferId(unsigned int _textureBufferId);
 };
 
