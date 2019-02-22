@@ -15,19 +15,9 @@
 #include <iostream>
 class Game : public Gamebase {
 private:
-	int i;
-	Triangle * triangle1;
-	Square *square1;
-	Circle   *circle1;
-	Material * material1;
-	Material * material2;
-	Material * material3;
-	Material * material4;
-	Material * material5;
+
 	Material * materialTilemap1;
-	Sprite  * sprite1;
-	Sprite  * sprite2;
-	Sprite  * sprite3;
+
 	Tilemap * tilemap1;
 
 	Player * player1;

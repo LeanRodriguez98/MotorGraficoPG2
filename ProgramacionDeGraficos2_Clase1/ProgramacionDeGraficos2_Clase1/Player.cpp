@@ -30,6 +30,8 @@ void Player::SetCollisionEntity(Layers _layer)
 
 Player::~Player()
 {
+	delete playerSprite;
+	delete playerMaterial;
 }
 
 void Player::Update() 

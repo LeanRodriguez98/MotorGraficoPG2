@@ -2,73 +2,28 @@
 
 Game::Game()
 {
-	i = 0;
 }
 Game::~Game()
 {
 }
 bool Game::OnStart() {
-	material1 = new Material();
-	unsigned int programID = material1->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
-	
-	/*material2 = new Material();
-	unsigned int programID2 = material2->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
-	material3 = new Material();
-	unsigned int programID3 = material3->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
-
-	material4 = new Material();
-	unsigned int programID4 = material4->LoadShaders("VertexShader.txt", "FragmentShader.txt");
-
-	material5 = new Material();
-	unsigned int programID5 = material5->LoadShaders("ColorVertexShader.txt", "ColorFragmentShader.txt");
-	
-	triangle1 = new Triangle(renderer);
-	triangle1->SetMaterial(material4);
-	
-	square1 = new Square(renderer);
-	square1->SetMaterial(material5);
-
-	circle1 = new Circle(renderer, 1, 200);
-	circle1->SetMaterial(material5);
-	*/
-
-	
-	/*sprite2 = new Sprite(renderer, 1);
-	sprite2->SetMaterial(material2);
-	sprite2->LoadTexture("bmp.bmp");
-	sprite2->SetCollider(vec3(0, 0, 0),2,2, enemy, false);
-	sprite2->SetTranslationX(-2);
-
-	sprite3 = new Sprite(renderer, 1);
-	sprite3->SetMaterial(material3);
-	sprite3->LoadTexture("bmp.bmp");
-	sprite3->SetCollider(vec3(0, 0, 0), 2, 2, walkeable, false);
-	sprite3->SetTranslation(1.6F,4.5f,0);
-
-	triangle1->SetTranslation(6, 5, 0);
-	square1->SetTranslation(-1, 5, 0);
-	circle1->SetTranslation(-5, 5, 0);
-
-	*/
-
 	materialTilemap1 = new Material();
-	unsigned int programID6 = materialTilemap1->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
+	unsigned int programID = materialTilemap1->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
 	vector<int> * colliderTiles = new vector<int>();
+	colliderTiles->push_back(3);
+	colliderTiles->push_back(4);
 	colliderTiles->push_back(5);
+	colliderTiles->push_back(6);
 	colliderTiles->push_back(10);
 	colliderTiles->push_back(13);
 	colliderTiles->push_back(14);
 	colliderTiles->push_back(15);
 	colliderTiles->push_back(16);
 	colliderTiles->push_back(17);
-	tilemap1 = new Tilemap(renderer, 20, 10, "TilemapTest.csv", 10.0f, 7.0f, 10.0f, 2.0f, colliderTiles);
+	tilemap1 = new Tilemap(renderer, 40, 40, "TileMapFinal.csv", 10.0f, 7.0f, 10.0f, 2.0f, colliderTiles);
 	tilemap1->SetMaterial(materialTilemap1);
 	tilemap1->LoadTexture("TileMap.bmp");
-
-
-	CollisionManager::GetInstance()->AddCollisionEntity(sprite1, player);
-	/*CollisionManager::GetInstance()->AddCollisionEntity(sprite2, enemy);
-	CollisionManager::GetInstance()->AddCollisionEntity(sprite3, walkeable);*/
+	
 	ImputManager::GetInstance()->SetWindow(window);
 
 	player1 = new Player(renderer,9,2,0,0,0,tilemap1);
@@ -77,41 +32,16 @@ bool Game::OnStart() {
 }
 bool Game::OnStop() {
 
-	/*delete material1;
-	delete material2;
-	delete material3;
-	delete material4;
-	delete material5;
-	delete triangle1;
-	delete square1;
-	delete circle1;*/
-	delete sprite1;
-	/*delete sprite2;
-	delete sprite3;*/
-	
 	delete materialTilemap1;
 	delete tilemap1;
+	delete player1;
 	return false;
 }
 bool Game::OnUpdate() {
-	i++;
-	/*triangle1->SetRotation(0.0f, 0.0f, triangle1->GetRotationZ() + Time::dt);
-	
-	if (circle1->GetScaleX() < 3)
-	{
-		circle1->SetScale(circle1->GetScaleX() + Time::dt, circle1->GetScaleY() + Time::dt, 0.0f);
-	}*/
-	
-	/*sprite1->Update();
-	sprite1->SetTranslationX(sprite1->GetTranslationX() + Time::dt);
-	renderer->CameraFollow(sprite1->GetTranslation());*/
 
 	player1->Update();
 	renderer->CameraFollow(player1->GetSprite()->GetTranslation());
-	/*sprite2->Update();
-	
-	sprite3->Update();
-	sprite3->SetTranslationY(sprite3->GetTranslationY() - Time::dt);*/
+
 	CollisionManager::GetInstance()->CollisionDetector();
 	
 	return true;
@@ -119,15 +49,8 @@ bool Game::OnUpdate() {
 
 void Game::OnDraw()
 {
-	/*triangle1->Draw();
-	square1->Draw();
-	circle1->Draw();
-	
-	
-	sprite2->Draw();
-	sprite3->Draw();*/
+
 	tilemap1->Draw();
-	//sprite1->Draw();
 	player1->Draw();
 }
 

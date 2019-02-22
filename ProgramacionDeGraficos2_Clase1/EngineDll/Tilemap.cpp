@@ -194,3 +194,12 @@ bool Tilemap::NextTileIsCollider(float _playerTranslationX, float _playerTransla
 	}
 	return false;
 }
+
+void Tilemap::UpdateTilemapColliderPosition(float _diferenceX, float _diferenceY) 
+{
+	for (int i = 0; i < tilesColliderData->size(); i++)
+	{
+		tilesColliderData->at(i).positionX += _diferenceX;
+		tilesColliderData->at(i).positionY += _diferenceY;
+	}
+}

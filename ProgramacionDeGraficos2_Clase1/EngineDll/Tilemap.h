@@ -42,6 +42,6 @@ public:
 
 	bool NextTileIsCollider(float _playerTranslationX, float _playerTranslationY, float _playerHight, float _playerWidht);
 
-
+	void UpdateTilemapColliderPosition(float _diferenceX, float _diferenceY);
 };
 
