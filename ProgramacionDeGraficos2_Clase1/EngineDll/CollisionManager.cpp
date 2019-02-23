@@ -69,50 +69,62 @@ void CollisionManager::CollisionBoxResolver(Entity* A, Entity* B)
 
 		if (penetrationX > penetrationY)
 		{
-			float factor = 1;
-			if (A->GetTranslationY() < B->GetTranslationY())
-			{
-				factor = -1;
-			}
 			if (A->GetColliderIsStatic())
 			{
-				B->SetTranslation(B->GetTranslationX(), B->GetTranslationY() - (penetrationY * factor), 0.0f);
+				if (B->GetTranslationY() < A->GetTranslationY())
+					B->SetTranslation(B->GetTranslationX(), B->GetTranslationY() - penetrationY, B->GetTranslationZ());
+				else
+					B->SetTranslation(B->GetTranslationX(), B->GetTranslationY() + penetrationY, B->GetTranslationZ());
 			}
 			else if (B->GetColliderIsStatic())
 			{
-				A->SetTranslation(A->GetTranslationX(), A->GetTranslationY() + (penetrationY * factor), 0.0f);
+				if (A->GetTranslationY() < B->GetTranslationY())
+					A->SetTranslation(A->GetTranslationX(), A->GetTranslationY() - penetrationY, A->GetTranslationZ());
+				else
+					A->SetTranslation(A->GetTranslationX(), A->GetTranslationY() + penetrationY, A->GetTranslationZ());
 			}
 			else
 			{
-				A->SetTranslation(A->GetTranslationX(), A->GetTranslationY() - ((penetrationY / 2.0f) * factor), 0.0f);
-				B->SetTranslation(B->GetTranslationX(), B->GetTranslationY() + ((penetrationY / 2.0f) * factor), 0.0f);
+				if (B->GetTranslationY() < A->GetTranslationY())
+				{
+					A->SetTranslation(A->GetTranslationX(), A->GetTranslationY() + (penetrationY / 2), A->GetTranslationZ());
+					B->SetTranslation(B->GetTranslationX(), B->GetTranslationY() - (penetrationY / 2), B->GetTranslationZ());
+				}
+				else
+				{
+					A->SetTranslation(A->GetTranslationX(), A->GetTranslationY() - (penetrationY / 2), A->GetTranslationZ());
+					B->SetTranslation(B->GetTranslationX(), B->GetTranslationY() + (penetrationY / 2), B->GetTranslationZ());
+				}
 			}
-	
-	
 		}
-		else
+		else if (penetrationX < penetrationY)
 		{
-
-			float factor = 1;
-			if (A->GetTranslationX() < B->GetTranslationX())
-			{
-				factor = -1;
-			}
-
-
 			if (A->GetColliderIsStatic())
 			{
-				B->SetTranslation(B->GetTranslationX() - (penetrationX * factor), B->GetTranslationY(), 0.0f);
+				if (B->GetTranslationX() < A->GetTranslationX())
+					B->SetTranslation(B->GetTranslationX() - penetrationX, B->GetTranslationY(), B->GetTranslationZ());
+				else
+					B->SetTranslation(B->GetTranslationX() + penetrationX, B->GetTranslationY(), B->GetTranslationZ());
 			}
 			else if (B->GetColliderIsStatic())
 			{
-				A->SetTranslation(A->GetTranslationX() + (penetrationX * factor), A->GetTranslationY(), 0.0f);
+				if (A->GetTranslationX() < B->GetTranslationX())
+					A->SetTranslation(A->GetTranslationX() - penetrationX, A->GetTranslationY(), A->GetTranslationZ());
+				else
+					A->SetTranslation(A->GetTranslationX() + penetrationX, A->GetTranslationY(), A->GetTranslationZ());
 			}
 			else
 			{
-				A->SetTranslation(A->GetTranslationX() + ((penetrationX / 2.0f) * factor), A->GetTranslationY(), 0.0f);
-				B->SetTranslation(B->GetTranslationX() - ((penetrationX / 2.0f) * factor), B->GetTranslationY(), 0.0f);
-	
+				if (B->GetTranslationX() < A->GetTranslationX())
+				{
+					A->SetTranslation(A->GetTranslationX() + (penetrationX / 2), A->GetTranslationY(), A->GetTranslationZ());
+					B->SetTranslation(B->GetTranslationX() - (penetrationX / 2), B->GetTranslationY(), B->GetTranslationZ());
+				}
+				else
+				{
+					A->SetTranslation(A->GetTranslationX() - (penetrationX / 2), A->GetTranslationY(), A->GetTranslationZ());
+					B->SetTranslation(B->GetTranslationX() + (penetrationX / 2), B->GetTranslationY(), B->GetTranslationZ());
+				}
 			}
 		}
 	}

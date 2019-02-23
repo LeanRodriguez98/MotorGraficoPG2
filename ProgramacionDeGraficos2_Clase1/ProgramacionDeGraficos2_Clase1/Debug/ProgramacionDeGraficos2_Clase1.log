@@ -57,4 +57,13 @@ c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\
           [
               _Ty=int
           ]
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(55): warning C4018: '<': no coinciden signed/unsigned
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(72): warning C4018: '<': no coinciden signed/unsigned
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(80): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(88): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(143): warning C4018: '<': no coinciden signed/unsigned
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(149): warning C4018: '<': no coinciden signed/unsigned
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(186): warning C4018: '<': no coinciden signed/unsigned
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(190): warning C4018: '<': no coinciden signed/unsigned
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(195): warning C4018: '<': no coinciden signed/unsigned
   ProgramacionDeGraficos2_Clase1.vcxproj -> C:\Users\lean1\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\ProgramacionDeGraficos2_Clase1.exe

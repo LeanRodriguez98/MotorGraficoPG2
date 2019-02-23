@@ -1,6 +1,5 @@
 #pragma once
 #include "../EngineDLL/Material.h"
-#include "../EngineDLL/TextureImporter.h"
 #include "../EngineDLL/Sprite.h"
 #include "../EngineDll/Definitions.h"
 #include "../EngineDll/CollisionManager.h"
@@ -14,7 +13,8 @@ private:
 	Material * playerMaterial;
 	Tilemap * tilemapToCollide;
 	float speed;
-	unsigned int programID;
+	float height;
+	float widht;
 
 	unsigned int animationRightBuffer;
 	unsigned int animationLeftBuffer;
@@ -24,12 +24,14 @@ private:
 	bool firstDraw;
 public:
 
-	Player(Renderer * _renderer, float _animation, float _speed, float _positionX, float _positionY, float _positionZ, Tilemap * _tilemapToCollide);
+	Player(Renderer * _renderer, float _animation, float _speed, float _height, float _widht, float _positionX, float _positionY, float _positionZ, Tilemap * _tilemapToCollide);
 	~Player();
 	void Update();
 	void Movement();
 	void SetCollisionEntity(Layers _layer);
 	void Draw();
+	float GetHeight();
+	float GetWidht();
 	Sprite* GetSprite();
 };
 

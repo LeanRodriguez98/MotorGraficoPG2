@@ -2,7 +2,7 @@
 
 
 
-Player::Player(Renderer * _renderer,float _animation, float _speed, float _positionX, float _positionY, float _positionZ, Tilemap * _tilemapToCollide)
+Player::Player(Renderer * _renderer,float _animation, float _speed, float _height, float _widht, float _positionX, float _positionY, float _positionZ, Tilemap * _tilemapToCollide)
 {
 	playerSprite = new Sprite(_renderer, _animation);
 	playerMaterial = new Material();
@@ -12,6 +12,8 @@ Player::Player(Renderer * _renderer,float _animation, float _speed, float _posit
 	playerSprite->SetCollider(vec3(0, 0, 0), 1, 1, player, false);
 	playerSprite->SetTranslation(_positionX, _positionY, _positionZ);
 	speed = _speed;
+	height = _height;
+	widht = _widht;
 	tilemapToCollide = _tilemapToCollide;
 
 	animationRightBuffer = playerSprite->LoadTexture("SpriteSheetRight.bmp");
@@ -47,15 +49,12 @@ void Player::Update()
 void Player::Movement() 
 {
 
-	if (ImputManager::GetInstance()->GetKeyDown(Space))
-	{
-	}
 
 	if (ImputManager::GetInstance()->GetKeyDown(RightKey))
 	{
 		playerSprite->SetTextureBufferId(animationRightBuffer);
 		playerSprite->SetTranslationX(playerSprite->GetTranslationX() + (Time::dt * speed));
-		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), 1.6f, 1.0f))
+		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), height, widht))
 		{
 			playerSprite->SetTranslationX(playerSprite->GetTranslationX() - (Time::dt * speed));
 		}
@@ -65,7 +64,7 @@ void Player::Movement()
 	{
 		playerSprite->SetTextureBufferId(animationLeftBuffer);
 		playerSprite->SetTranslationX(playerSprite->GetTranslationX() - (Time::dt * speed));
-		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), 1.6f, 1.0f))
+		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), height, widht))
 		{
 			playerSprite->SetTranslationX(playerSprite->GetTranslationX() + (Time::dt * speed));
 		}
@@ -75,7 +74,7 @@ void Player::Movement()
 	{
 		playerSprite->SetTextureBufferId(animationUpBuffer);
 		playerSprite->SetTranslationY(playerSprite->GetTranslationY() + (Time::dt * speed));
-		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(),playerSprite->GetTranslationY(),1.6f,1.0f))
+		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(),playerSprite->GetTranslationY(), height, widht))
 		{
 			playerSprite->SetTranslationY(playerSprite->GetTranslationY() - (Time::dt * speed));
 		}
@@ -85,7 +84,7 @@ void Player::Movement()
 	{
 		playerSprite->SetTextureBufferId(animationDownBuffer);
 		playerSprite->SetTranslationY(playerSprite->GetTranslationY() - (Time::dt * speed));
-		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), 1.6f,1.0f))
+		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), height, widht))
 		{
 			playerSprite->SetTranslationY(playerSprite->GetTranslationY() + (Time::dt * speed));
 		}
@@ -101,4 +100,13 @@ void Player::Draw()
 Sprite* Player::GetSprite() 
 {
 	return playerSprite;
+}
+
+float Player::GetHeight() 
+{
+	return height;
+}
+float Player::GetWidht()
+{
+	return widht;
 }

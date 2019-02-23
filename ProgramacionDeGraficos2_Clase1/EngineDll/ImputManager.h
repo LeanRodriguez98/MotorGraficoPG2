@@ -9,7 +9,9 @@ enum Key
 	LeftKey = 263,
 	DownKey = 264,
 	UpKey = 265,
-	Space = 32
+	Space = 32,
+	Escape = 256
+
 };
 
 
