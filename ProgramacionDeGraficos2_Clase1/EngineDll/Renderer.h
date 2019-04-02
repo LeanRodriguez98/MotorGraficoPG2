@@ -41,5 +41,8 @@ public:
 	void MultiplyWorldMatrix(mat4 mat);
 	void CameraFollow(vec3 _playerPosition);
 	Window * window;
+	void SetProjectionOrtho(float _left, float _right, float _bottom, float _top, float _zNear, float _zFar);
+	void SetProjectionPerspective(float _fovy, float _aspect, float _zNear, float _zFar);
+	void SetViewMatrix(vec3 _eye, vec3 _center, vec3 _up);
 
 };

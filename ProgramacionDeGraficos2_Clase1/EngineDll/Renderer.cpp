@@ -26,8 +26,8 @@ bool Renderer::Start(Window * windowPTR) {
 		glGenVertexArrays(1, &VertexArray);
 		glBindVertexArray(VertexArray);
 
-		projectionMatrix = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.0f, 100.f);
-		viewMatrix = glm::lookAt(
+		projectionMatrix = ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.0f, 100.f);
+		viewMatrix = lookAt(
 			glm::vec3(0, 0, 3),
 			glm::vec3(0, 0, 0),
 			glm::vec3(0, 1, 0)
@@ -187,5 +187,20 @@ void Renderer::MultiplyModelMatrix(glm::mat4 mat)
 
 void Renderer::CameraFollow(vec3 _playerPosition)
 {
-	viewMatrix = glm::lookAt(_playerPosition - glm::vec3(0.0f, 0.0f, -1.0f), _playerPosition, glm::vec3(0.0f, 1.0f, 0.0f));
+	viewMatrix = lookAt(_playerPosition - vec3(0.0f, 0.0f, -1.0f), _playerPosition, vec3(0.0f, 1.0f, 0.0f));
+}
+
+void Renderer::SetProjectionOrtho(float _left, float _right, float _bottom, float _top, float _zNear, float _zFar)
+{
+	projectionMatrix = ortho(_left, _right, _bottom, _top, _zNear, _zFar);
+}
+
+void Renderer::SetProjectionPerspective(float _fovy, float _aspect, float _zNear, float _zFar)
+{
+	projectionMatrix = perspective(_fovy, _aspect, _zNear, _zFar);
+}
+
+void Renderer::SetViewMatrix(glm::vec3 _eye, glm::vec3 _center, glm::vec3 _up)
+{
+	viewMatrix = glm::lookAt(_eye, _center, _up);
 }
