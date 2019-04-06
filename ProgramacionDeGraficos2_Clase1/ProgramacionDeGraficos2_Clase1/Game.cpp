@@ -127,7 +127,7 @@ bool Game::OnUpdate() {
 	else if (gamestate == GameState::InGame)
 	{
 		player1->Update();
-		renderer->CameraFollow(player1->GetSprite()->GetTranslation());
+		//renderer->CameraFollow(player1->GetSprite()->GetTranslation());
 		CollisionManager::GetInstance()->CollisionDetector();
 
 		for (size_t i = 0; i < bones->size(); i++)

@@ -78,6 +78,9 @@
     <ClInclude Include="ImputManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBase.cpp">
@@ -132,6 +135,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="ImputManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
