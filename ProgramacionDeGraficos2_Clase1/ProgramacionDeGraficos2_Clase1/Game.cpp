@@ -94,6 +94,8 @@ bool Game::OnStart() {
 
 	gamestate = GameState::MainMenu;
 
+	camera = new Camera(renderer);
+
 	return true;
 }
 bool Game::OnStop() {
@@ -108,7 +110,8 @@ bool Game::OnStop() {
 }
 bool Game::OnUpdate() {
 
-
+	renderer->SetProjectionPerspective(90.0F,16.4F,0.0F,100.0F);
+	camera->CameraRoll(-1.0F);
 	if (ImputManager::GetInstance()->GetKeyDown(Escape))
 	{
 		return false;

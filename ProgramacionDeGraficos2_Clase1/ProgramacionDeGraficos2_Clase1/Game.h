@@ -9,6 +9,7 @@
 #include "../EngineDll/CollisionManager.h"
 #include "../EngineDll/Tilemap.h"
 #include "../EngineDll/ImputManager.h"
+#include "../EngineDll/Camera.h"
 
 #include "Player.h"
 #include "CollectableItem.h"
@@ -37,6 +38,7 @@ private:
 	Material * gameOverMaterial;
 	Sprite * mainMenuSprite;
 	Sprite * gameOverSprite;
+	Camera * camera;
 	GameState gamestate;
 public:
 	Game();
