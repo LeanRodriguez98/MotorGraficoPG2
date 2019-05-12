@@ -1,95 +1,67 @@
 #include "Camera.h"
-#include "Time.h"
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/transform.hpp>
 
-Camera::Camera(Renderer * _renderer)
+
+Camera::Camera(Renderer *render)
 {
-	renderer = _renderer;
-	cameraPosition = vec3(0.0f, 0.0f, 0.0f);
-	foward = vec3(0.0f, 0.0f, 1.0f);
-	right = vec3(1.0f, 0.0f, 0.0f);
-	up = vec3(0.0f, 1.0f, 0.0f);
-	cameraRotation = vec3(0.0f, 0.0f, 0.0f) + foward;
+	renderer = render;
+	eyePosition = vec3(0.0f, 0.0f, 10.0f);
+	upVector = vec3(0.0f, 1.0f, 0.0f);
 
+
+	forward = vec4(0.0f, 0.0f, -1.0f, 0.0f);
+	right = vec4(1.0f, 0.0f, 0.0f, 0.0f);
+	up = vec4(0.0f, 1.0f, 0.0f, 0.0f);
+
+	cameraPosition = eyePosition + (vec3)forward;
 }
-
 
 Camera::~Camera()
 {
-
 }
 
-
-void Camera::CameraWalk(float _directionMatrix) 
+void Camera::UpdateViewMatrix()
 {
-	cameraPosition += foward * _directionMatrix * Time::dt;
-	UpdateViewMatrix();
-
+	renderer->SetViewMatrix(eyePosition, cameraPosition, upVector);
 }
-void Camera::CameraStrafe(float _directionMatrix)
+void Camera::CameraWalk(float direction)
 {
-	cameraPosition += right * _directionMatrix * Time::dt;
+	cameraPosition += (vec3)forward * direction;
+	eyePosition += (vec3)forward * direction;
 	UpdateViewMatrix();
 }
-
-void Camera::UpdateViewMatrix() 
+void Camera::CameraStrafe(float direction)
 {
-	renderer->SetViewMatrix(cameraPosition, cameraRotation,up);
-}
-
-void Camera::CameraRoll(float _rotationMatrix)
-{
-	glm::mat4 rot = rotate(glm::mat4(1.0f), (float)(_rotationMatrix * Time::dt), foward);
-	glm::vec4 aux = glm::vec4(foward.x, foward.y, foward.z, 0.0f);
-	aux = rot * aux;
-	foward.x = aux.x;
-	foward.y = aux.y;
-	foward.z = aux.z;
-
-	aux = glm::vec4(up.x, up.y, up.z, 0.0f);
-	aux = rot * aux;
-	up.x = aux.x;
-	up.y = aux.y;
-	up.z = aux.z;
-
+	cameraPosition += (vec3)right * direction;
+	eyePosition += (vec3)right * direction;
 	UpdateViewMatrix();
-
 }
-void Camera::CameraYaw(float _rotationMatrix)
+void Camera::CameraPitch(float direction)
 {
-	glm::mat4 rot = rotate(glm::mat4(1.0f), (float)(_rotationMatrix * Time::dt), up);
-	glm::vec4 aux = glm::vec4(foward.x, foward.y, foward.z, 0.0f);
-	aux = rot * aux;
-	foward.x = aux.x;
-	foward.y = aux.y;
-	foward.z = aux.z;
+	forward = glm::rotate(mat4(1.0f), direction, vec3(right.x, right.y, right.z)) * forward;
+	up = glm::rotate(mat4(1.0f), direction, vec3(right.x, right.y, right.z)) * up;
 
-	aux = glm::vec4(up.x, up.y, up.z, 0.0f);
-	aux = rot * aux;
-	up.x = aux.x;
-	up.y = aux.y;
-	up.z = aux.z;
-
+	upVector = (vec3)up;
+	cameraPosition = eyePosition + (vec3)forward;
 	UpdateViewMatrix();
-
 }
-void Camera::CameraPitch(float _rotationMatrix)
+void Camera::CameraYaw(float direction)
 {
-	glm::mat4 rot = rotate(glm::mat4(1.0f), (float)(_rotationMatrix * Time::dt), right);
-	glm::vec4 aux = glm::vec4(foward.x, foward.y, foward.z, 0.0f);
-	aux = rot * aux;
-	foward.x = aux.x;
-	foward.y = aux.y;
-	foward.z = aux.z;
+	forward = glm::rotate(mat4(1.0f), direction, vec3(upVector.x, upVector.y, upVector.z)) * forward;
+	right = glm::rotate(mat4(1.0f), direction, vec3(upVector.x, upVector.y, upVector.z)) * right;
 
-	aux = glm::vec4(up.x, up.y, up.z, 0.0f);
-	aux = rot * aux;
-	up.x = aux.x;
-	up.y = aux.y;
-	up.z = aux.z;
-
+	upVector = (vec3)up;
+	cameraPosition = eyePosition + (vec3)forward;
 	UpdateViewMatrix();
+}
+void Camera::CameraRoll(float direction)
+{
+	mat4 rot = rotate(mat4(1.0f), direction, vec3(forward.x, forward.y, forward.z));
+	right = rot * right;
+	up = rot * up;
 
-
+	upVector = (vec3)up;
+	cameraPosition = eyePosition + (vec3)forward;
+	UpdateViewMatrix();
 }

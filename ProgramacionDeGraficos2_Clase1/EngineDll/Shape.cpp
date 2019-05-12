@@ -52,4 +52,9 @@ void Shape::DrawMesh(int drawType)
 	renderer->DisableVertexAttribute(1);
 }
 
-
+void Shape::SetIndexBuffer(unsigned int * vertices, int count)
+{
+	vertexCount = count;
+	dispuseColor = true;
+	indexBufferID = renderer->GenerateIndexBuffer(vertices, sizeof(unsigned int)* count);
+}

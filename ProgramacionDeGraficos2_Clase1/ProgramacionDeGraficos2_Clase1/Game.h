@@ -10,6 +10,8 @@
 #include "../EngineDll/Tilemap.h"
 #include "../EngineDll/ImputManager.h"
 #include "../EngineDll/Camera.h"
+#include "../EngineDll/Mesh.h"
+
 
 #include "Player.h"
 #include "CollectableItem.h"
@@ -40,6 +42,9 @@ private:
 	Sprite * gameOverSprite;
 	Camera * camera;
 	GameState gamestate;
+
+	Mesh * cube;
+	Material * cubeMaterial;
 public:
 	Game();
 	~Game();

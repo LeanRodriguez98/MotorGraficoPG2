@@ -96,6 +96,13 @@ bool Game::OnStart() {
 
 	camera = new Camera(renderer);
 
+	cubeMaterial = new Material();
+	unsigned int cubeColorID = cubeMaterial->LoadShaders("ColorVertexShader.txt", "ColorFragmentShader.txt");
+	cube = new Mesh(renderer);
+	cube->SetMaterial(cubeMaterial);
+
+
+
 	return true;
 }
 bool Game::OnStop() {
@@ -111,13 +118,39 @@ bool Game::OnStop() {
 bool Game::OnUpdate() {
 
 	renderer->SetProjectionPerspective(90.0F,16.4F,0.0F,100.0F);
-	camera->CameraRoll(-1.0F);
+	if (ImputManager::GetInstance()->GetKeyDown(DownKey))
+	{
+		camera->CameraWalk(-10.0F * Time::dt);
+
+	}
+
+	if (ImputManager::GetInstance()->GetKeyDown(UpKey))
+	{
+		camera->CameraWalk(10.0F * Time::dt);
+
+	}
+
+	if (ImputManager::GetInstance()->GetKeyDown(LeftKey))
+	{
+		camera->CameraStrafe(-10.0F * Time::dt);
+
+	}
+
+	if (ImputManager::GetInstance()->GetKeyDown(RightKey))
+	{
+		camera->CameraStrafe(10.0F * Time::dt);
+
+	}
+
+	cube->SetRotationY(cube->GetRotationY() + (1.0f * Time::dt));
+
+
 	if (ImputManager::GetInstance()->GetKeyDown(Escape))
 	{
 		return false;
 	}
 
-	if (gamestate == GameState::MainMenu)
+	/*if (gamestate == GameState::MainMenu)
 	{
 		mainMenuSprite->Update();
 		renderer->CameraFollow(mainMenuSprite->GetTranslation());
@@ -169,16 +202,16 @@ bool Game::OnUpdate() {
 		{
 			return false;
 		}
-	}
+	}*/
 	return true;
 }
 
 void Game::OnDraw()
 {
+	cube->Draw();
 
 
-
-	if (gamestate == GameState::MainMenu)
+	/*if (gamestate == GameState::MainMenu)
 	{
 		mainMenuSprite->Draw();
 	}
@@ -204,6 +237,8 @@ void Game::OnDraw()
 	else if (gamestate == GameState::GameOver)
 	{
 		gameOverSprite->Draw();
-	}
+	}*/
+
+
 }
 

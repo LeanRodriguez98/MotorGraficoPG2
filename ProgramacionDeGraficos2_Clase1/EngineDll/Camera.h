@@ -1,26 +1,28 @@
-#pragma once
 #include "Exports.h"
 #include "Renderer.h"
+
 using namespace glm;
-
-
 class ENGINEDLL_API Camera
 {
 private:
 	Renderer * renderer;
+	vec3 eyePosition;
 	vec3 cameraPosition;
-	vec3 cameraRotation;
-	vec3 foward;
-	vec3 right;
-	vec3 up;
+	vec3 upVector;
+
+	vec4 forward;
+	vec4 right;
+	vec4 up;
 
 public:
-	Camera(Renderer * _renderer);
+	Camera(Renderer * renderer);
 	~Camera();
-	void CameraWalk(float _directionMatrix);
-	void CameraStrafe(float _directionMatrix);
-	void CameraRoll(float _rotationMatrix);
-	void CameraYaw(float _rotationMatrix);
-	void CameraPitch(float _rotationMatrix);
 	void UpdateViewMatrix();
+	void CameraWalk(float direction);
+	void CameraStrafe(float direction);
+	void CameraPitch(float direction);
+	void CameraYaw(float direction);
+	void CameraRoll(float direction);
+
 };
+

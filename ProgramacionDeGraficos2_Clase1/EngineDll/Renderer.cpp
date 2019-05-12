@@ -102,9 +102,36 @@ unsigned int Renderer::GenerateTextureBuffer(int width, int height, unsigned cha
 	return texturebuffer;
 }
 
+unsigned int Renderer::GenerateIndexBuffer(unsigned int* buffer, int size)
+{
+	unsigned int indexbuffer;
+	glGenBuffers(1, &indexbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size * sizeof(unsigned int), &buffer[0], GL_STATIC_DRAW);
+
+	return indexbuffer;
+}
+
+
+void Renderer::BindMeshBuffer(unsigned int indexbuffer)
+{
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
+
+}
+
 void Renderer::DrawArrayBuffers(int size, int drawType)
 {
 	glDrawArrays(drawType, 0, size);
+}
+
+void Renderer::DrawIndexBuffer(int indexcount)
+{
+	glDrawElements(
+		GL_TRIANGLES,
+		indexcount,
+		GL_UNSIGNED_INT,
+		(void*)0
+	);
 }
 
 void Renderer::DestroyBuffer(unsigned int buffer)
