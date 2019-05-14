@@ -32,7 +32,7 @@ Mesh::Mesh(Renderer *render) :Shape(render)
 
 	indexBuffer = new unsigned int[36]
 	{
-			0, 1, 2,
+		0, 1, 2,
 		2, 3, 0,
 		1, 5, 6,
 		6, 2, 1,
@@ -45,7 +45,7 @@ Mesh::Mesh(Renderer *render) :Shape(render)
 		3, 2, 6,
 		6, 7, 3
 	};
-	SetIndexBuffer(indexBuffer, 8);
+	SetIndexBuffer(indexBuffer, 36);
 
 }
 
@@ -74,6 +74,7 @@ void Mesh::DrawMesh(int drawType)
 	renderer->BindColorBuffer(colorBufferID, 1);
 	renderer->BindMeshBuffer(indexBufferID);
 	renderer->DrawIndexBuffer(vertexCount);
+
 	renderer->DisableVertexAttribute(0);
 	renderer->DisableVertexAttribute(1);
 }

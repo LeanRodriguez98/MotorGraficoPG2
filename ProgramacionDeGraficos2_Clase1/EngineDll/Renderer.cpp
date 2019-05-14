@@ -37,6 +37,8 @@ bool Renderer::Start(Window * windowPTR) {
 		UpdateModelViewProjectionMatrix();
 
 		cout << "Renderer::Start()" << endl;
+		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LESS);
 		return true;
 	}
 
