@@ -11,7 +11,7 @@
 #include "../EngineDll/ImputManager.h"
 #include "../EngineDll/Camera.h"
 #include "../EngineDll/Mesh.h"
-
+#include "../EngineDll/MeshImporter.h"
 
 #include "Player.h"
 #include "CollectableItem.h"
@@ -45,6 +45,8 @@ private:
 
 	Mesh * cube;
 	Material * cubeMaterial;
+
+	MeshImporter * meshImporter;
 public:
 	Game();
 	~Game();

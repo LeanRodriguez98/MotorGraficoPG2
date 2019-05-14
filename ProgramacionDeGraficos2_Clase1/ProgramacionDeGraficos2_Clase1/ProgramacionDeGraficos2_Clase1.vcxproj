@@ -76,8 +76,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\lean1\Desktop\ProgramacionDeGraficos2_Clase1\EngineDll;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\lean1\Desktop\ProgramacionDeGraficos2_Clase1\EngineDll;C:\Users\lean1\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\external\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)external\assimp\lib\assimp-vc140-mt.dll $(OutDir) /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

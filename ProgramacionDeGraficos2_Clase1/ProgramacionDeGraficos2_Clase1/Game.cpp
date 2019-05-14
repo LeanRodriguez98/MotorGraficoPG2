@@ -101,7 +101,7 @@ bool Game::OnStart() {
 	cube = new Mesh(renderer);
 	cube->SetMaterial(cubeMaterial);
 
-
+	meshImporter = new MeshImporter();
 
 	return true;
 }
