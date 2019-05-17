@@ -3,9 +3,9 @@
 #include <glm/gtx/transform.hpp>
 
 
-Camera::Camera(Renderer *render)
+Camera::Camera(Renderer *_renderer)
 {
-	renderer = render;
+	renderer = _renderer;
 	eyePosition = vec3(0.0f, 0.0f, 10.0f);
 	upVector = vec3(0.0f, 1.0f, 0.0f);
 

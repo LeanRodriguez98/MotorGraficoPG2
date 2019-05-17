@@ -46,7 +46,6 @@ private:
 	Mesh * cube;
 	Material * cubeMaterial;
 
-	MeshImporter * meshImporter;
 public:
 	Game();
 	~Game();
