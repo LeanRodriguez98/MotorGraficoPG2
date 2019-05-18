@@ -98,8 +98,8 @@ bool Game::OnStart() {
 
 	cubeMaterial = new Material();
 	unsigned int cubeColorID = cubeMaterial->LoadShaders("ColorVertexShader.txt", "ColorFragmentShader.txt");
-	cube = new Mesh(renderer);
-	cube->SetMaterial(cubeMaterial);
+	//cube = new Mesh(renderer);
+	//cube->SetMaterial(cubeMaterial);
 
 
 	return true;
@@ -207,7 +207,7 @@ bool Game::OnUpdate() {
 
 void Game::OnDraw()
 {
-	cube->Draw();
+	//cube->Draw();
 
 
 	/*if (gamestate == GameState::MainMenu)

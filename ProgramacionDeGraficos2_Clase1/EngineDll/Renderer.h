@@ -5,6 +5,7 @@
 #include "../external/glm-0.9.9.0/glm/gtc/matrix_transform.hpp"
 
 #include <iostream>
+#include <vector>
 using namespace std;
 using namespace glm;
 class ENGINEDLL_API Renderer
@@ -28,6 +29,7 @@ public:
 	unsigned int  GenerateColorBuffer(float* buffer, int size);
 	unsigned int GenerateTextureBuffer(int width, int height, unsigned char* data);
 	unsigned int GenerateIndexBuffer(unsigned int* buffer, int size);
+	unsigned int GenerateIndexBuffer(vector<unsigned int> index);
 	void BindBuffer(unsigned int vtxbuffer, unsigned int name);
 	void BindColorBuffer(unsigned int clrbuffer, unsigned int name);
 	void BindTextureBuffer(unsigned int txtrebuffer, unsigned int name);

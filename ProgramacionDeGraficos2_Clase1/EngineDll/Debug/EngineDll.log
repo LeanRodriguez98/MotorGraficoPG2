@@ -1,3 +1,538 @@
-﻿     Creando biblioteca C:\Users\lean1\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\EngineDll.lib y objeto C:\Users\lean1\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\EngineDll.exp
-MSVCRTD.lib(initializers.obj) : warning LNK4098: la biblioteca predeterminada'msvcrt.lib' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
-  EngineDll.vcxproj -> C:\Users\lean1\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\EngineDll.dll
+﻿  Animation.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.h(12): warning C4091: 'static ': se ha omitido a la izquierda de 'Time' cuando no hay ninguna variable declarada
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\animation.cpp(8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\animation.cpp(12): warning C4305: '=': truncamiento de 'double' a 'float'
+  Camera.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\camera.h(9): warning C4251: 'Camera::eyePosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Camera'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\camera.h(10): warning C4251: 'Camera::cameraPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Camera'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\camera.h(11): warning C4251: 'Camera::upVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Camera'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\camera.h(13): warning C4251: 'Camera::forward': struct 'glm::vec<4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Camera'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(335): note: vea la declaración de 'glm::vec<4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\camera.h(14): warning C4251: 'Camera::right': struct 'glm::vec<4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Camera'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(335): note: vea la declaración de 'glm::vec<4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\camera.h(15): warning C4251: 'Camera::up': struct 'glm::vec<4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Camera'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(335): note: vea la declaración de 'glm::vec<4,float,0>'
+  Circle.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+  CircleCollider.cpp
+  Collider.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.cpp(21): warning C4244: 'return': conversión de 'T' a 'unsigned int'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.cpp(25): warning C4244: 'return': conversión de 'T' a 'unsigned int'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.cpp(33): warning C4244: 'return': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.cpp(37): warning C4244: 'return': conversión de 'float' a 'unsigned int'; posible pérdida de datos
+  CollisionManager.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collisionmanager.h(16): warning C4251: 'CollisionManager::CollisionGroups': class 'std::vector<std::list<Entity *,std::allocator<_Ty>> *,std::allocator<std::list<_Ty,std::allocator<_Ty>>*>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CollisionManager'
+          with
+          [
+              _Ty=Entity *
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collisionmanager.h(16): note: vea la declaración de 'std::vector<std::list<Entity *,std::allocator<_Ty>> *,std::allocator<std::list<_Ty,std::allocator<_Ty>>*>>'
+          with
+          [
+              _Ty=Entity *
+          ]
+  Entity.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+  GameBase.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.h(12): warning C4091: 'static ': se ha omitido a la izquierda de 'Time' cuando no hay ninguna variable declarada
+  ImputManager.cpp
+  Material.cpp
+  Mesh.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(16): warning C4251: 'Vertex::m_pos': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(17): warning C4251: 'Vertex::m_tex': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(18): warning C4251: 'Vertex::m_normal': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(16): warning C4251: 'Mesh::m_Entries': class 'std::vector<MeshEntry,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+          with
+          [
+              _Ty=MeshEntry
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(34): note: vea la declaración de 'std::vector<MeshEntry,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=MeshEntry
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(17): warning C4251: 'Mesh::m_Textures': class 'std::vector<BMPData *,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+          with
+          [
+              _Ty=BMPData *
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(35): note: vea la declaración de 'std::vector<BMPData *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=BMPData *
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(18): warning C4251: 'Mesh::bufferTextures': class 'std::vector<unsigned int,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+          with
+          [
+              _Ty=unsigned int
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(32): note: vea la declaración de 'std::vector<unsigned int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=unsigned int
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.cpp(58): warning C4018: '<': no coinciden signed/unsigned
+  MeshImporter.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(34): error C2065: 'MeshEntry': identificador no declarado
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(34): error C2923: 'std::vector': 'MeshEntry' no es un argumento de tipo de plantilla válido para el parámetro '_Ty'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(34): error C2903: 'allocator': el símbolo no es plantilla de clase ni plantilla de función
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(34): error C3203: 'allocator': clase plantilla sin especializar no se puede utilizar como argumento de plantilla para el parámetro de plantilla '_Alloc'; se esperaba un tipo real
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(37): error C2065: 'MeshEntry': identificador no declarado
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(37): error C2923: 'std::vector': 'MeshEntry' no es un argumento de tipo de plantilla válido para el parámetro '_Ty'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(37): error C2903: 'allocator': el símbolo no es plantilla de clase ni plantilla de función
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(37): error C3203: 'allocator': clase plantilla sin especializar no se puede utilizar como argumento de plantilla para el parámetro de plantilla '_Alloc'; se esperaba un tipo real
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(38): error C2065: 'MeshEntry': identificador no declarado
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(38): error C2923: 'std::vector': 'MeshEntry' no es un argumento de tipo de plantilla válido para el parámetro '_Ty'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(38): error C2903: 'allocator': el símbolo no es plantilla de clase ni plantilla de función
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(38): error C3203: 'allocator': clase plantilla sin especializar no se puede utilizar como argumento de plantilla para el parámetro de plantilla '_Alloc'; se esperaba un tipo real
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(16): error C2065: 'MeshEntry': identificador no declarado
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(16): error C2923: 'std::vector': 'MeshEntry' no es un argumento de tipo de plantilla válido para el parámetro '_Ty'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(16): error C2903: 'allocator': el símbolo no es plantilla de clase ni plantilla de función
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(16): error C3203: 'allocator': clase plantilla sin especializar no se puede utilizar como argumento de plantilla para el parámetro de plantilla '_Alloc'; se esperaba un tipo real
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(16): warning C4251: 'Mesh::m_Entries': class 'std::vector' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\vector(625): note: vea la declaración de 'std::vector'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(17): warning C4251: 'Mesh::m_Textures': class 'std::vector<BMPData *,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+          with
+          [
+              _Ty=BMPData *
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.h(35): note: vea la declaración de 'std::vector<BMPData *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=BMPData *
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(18): warning C4251: 'Mesh::bufferTextures': class 'std::vector<unsigned int,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+          with
+          [
+              _Ty=unsigned int
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(32): note: vea la declaración de 'std::vector<unsigned int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=unsigned int
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(16): warning C4251: 'Vertex::m_pos': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(17): warning C4251: 'Vertex::m_tex': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(18): warning C4251: 'Vertex::m_normal': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+  MeshLoader.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(16): warning C4251: 'Vertex::m_pos': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(17): warning C4251: 'Vertex::m_tex': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshimporter.h(18): warning C4251: 'Vertex::m_normal': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'Vertex'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(16): warning C4251: 'Mesh::m_Entries': class 'std::vector<MeshEntry,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+          with
+          [
+              _Ty=MeshEntry
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(16): note: vea la declaración de 'std::vector<MeshEntry,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=MeshEntry
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(17): warning C4251: 'Mesh::m_Textures': class 'std::vector<BMPData *,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+          with
+          [
+              _Ty=BMPData *
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(17): note: vea la declaración de 'std::vector<BMPData *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=BMPData *
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\mesh.h(18): warning C4251: 'Mesh::bufferTextures': class 'std::vector<unsigned int,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Mesh'
+          with
+          [
+              _Ty=unsigned int
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(32): note: vea la declaración de 'std::vector<unsigned int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=unsigned int
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\meshloader.cpp(15): warning C4018: '<': no coinciden signed/unsigned
+  Renderer.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.cpp(23): warning C4305: 'return': truncamiento de 'int' a 'bool'
+  Shape.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+  Sprite.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\sprite.cpp(9): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Square.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+  TextureImporter.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+  Tilemap.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(20): warning C4251: 'Tilemap::vertexArrayPos': class 'std::vector<float,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
+          with
+          [
+              _Ty=float
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(20): note: vea la declaración de 'std::vector<float,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=float
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(21): warning C4251: 'Tilemap::bidimensionalIDs': class 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Tilemap'
+          with
+          [
+              _Ty=int
+          ]
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.h(21): note: vea la declaración de 'std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>'
+          with
+          [
+              _Ty=int
+          ]
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.cpp(7): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.cpp(8): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.cpp(13): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.cpp(14): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.cpp(47): warning C4018: '<': no coinciden signed/unsigned
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.cpp(156): warning C4244: '-=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.cpp(188): warning C4018: '<': no coinciden signed/unsigned
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\tilemap.cpp(200): warning C4018: '<': no coinciden signed/unsigned
+  Time.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.h(12): warning C4091: 'static ': se ha omitido a la izquierda de 'Time' cuando no hay ninguna variable declarada
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.cpp(13): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  Generando código...
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.cpp(56): warning C4715: 'TextureImporter::RightBMPFormat': no todas las rutas de acceso de control devuelven un valor
+  Compilando...
+  Triangle.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(16): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::projectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(18): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(14): warning C4251: 'Entity::rotationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(15): warning C4251: 'Entity::scaleVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(18): warning C4251: 'Entity::pivotPosition': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(229): note: vea la declaración de 'glm::vec<3,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(23): warning C4251: 'Entity::model': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(24): warning C4251: 'Entity::translationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(25): warning C4251: 'Entity::rotationMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(26): warning C4251: 'Entity::scaleMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
+  c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
+  Window.cpp
+c:\users\admin\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\window.cpp(17): warning C4305: 'return': truncamiento de 'int' a 'bool'
+  Generando código...

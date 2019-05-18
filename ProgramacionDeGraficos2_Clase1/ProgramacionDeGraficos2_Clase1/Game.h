@@ -11,7 +11,6 @@
 #include "../EngineDll/ImputManager.h"
 #include "../EngineDll/Camera.h"
 #include "../EngineDll/Mesh.h"
-#include "../EngineDll/MeshImporter.h"
 
 #include "Player.h"
 #include "CollectableItem.h"
@@ -27,7 +26,7 @@ private:
 	{
 		MainMenu,
 		InGame,
-		GameOver
+		GameOver 
 	};
 
 	Material * materialTilemap1;
@@ -43,7 +42,7 @@ private:
 	Camera * camera;
 	GameState gamestate;
 
-	Mesh * cube;
+	//Mesh * cube;
 	Material * cubeMaterial;
 
 public:

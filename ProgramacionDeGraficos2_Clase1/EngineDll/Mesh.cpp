@@ -2,9 +2,9 @@
 
 
 
-Mesh::Mesh(Renderer *render) :Shape(render)
+Mesh::Mesh(Renderer *_renderer, Material* material, Layers tag, string modelPath, string texturePath) :Shape(_renderer)
 {
-	vertex = new float[24]
+	/*vertex = new float[24]
 	{
 		-1.0, -1.0, 1.0,
 		1.0, -1.0, 1.0,
@@ -45,8 +45,20 @@ Mesh::Mesh(Renderer *render) :Shape(render)
 		3, 2, 6,
 		6, 7, 3
 	};
-	SetIndexBuffer(indexBuffer, 36);
+	SetIndexBuffer(indexBuffer, 36);*/
+	renderer = _renderer;
 
+	this->texturePath = new char[texturePath.size() + 1];
+	texturePath.copy(this->texturePath, texturePath.size() + 1);
+	this->texturePath[texturePath.size()] = '\0';
+
+	MeshLoader::GetInstance()->LoadMesh(modelPath, texturePath, m_Entries, m_Textures);
+
+
+	for (int i = 0; i < m_Textures.size(); i++)
+	{
+		bufferTextures.push_back(renderer->GenerateTextureBuffer(m_Textures[i]->width, m_Textures[i]->height, m_Textures[i]->data));
+	}
 }
 
 

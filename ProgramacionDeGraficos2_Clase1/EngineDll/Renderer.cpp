@@ -114,6 +114,15 @@ unsigned int Renderer::GenerateIndexBuffer(unsigned int* buffer, int size)
 	return indexbuffer;
 }
 
+unsigned int Renderer::GenerateIndexBuffer(vector<unsigned int> index)
+{
+	unsigned int indexbuffer;
+	glGenBuffers(1, &indexbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index.size() * sizeof(unsigned int), &index[0], GL_STATIC_DRAW);
+
+	return indexbuffer;
+}
 
 void Renderer::BindMeshBuffer(unsigned int indexbuffer)
 {
