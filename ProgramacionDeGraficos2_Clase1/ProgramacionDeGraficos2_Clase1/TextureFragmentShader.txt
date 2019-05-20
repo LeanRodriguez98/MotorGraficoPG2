@@ -5,9 +5,9 @@ uniform sampler2D myTextureSampler;
 
 void main()
 {
-	float colorR = 1.0f;
-	float colorG = 0.0f;
-	float colorB = 0.0f;
+	float colorR = 0.0f;
+	float colorG = 1.0f;
+	float colorB = 1.0f;
 	color = texture( myTextureSampler, UV ).rgb;
 	if(color.r == colorR && color.g == colorG && color.b == colorB)
 	{

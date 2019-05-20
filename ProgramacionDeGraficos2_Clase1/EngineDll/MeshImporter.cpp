@@ -1,58 +1,41 @@
 #include "MeshImporter.h"
 
-
-
-MeshImporter::MeshImporter()
-{
-}
-
-
-MeshImporter::~MeshImporter()
-{
-}
-
-
 MeshEntry::MeshEntry()
 {
-	verticesBuffer = NULL;
-	indicesBuffer = NULL;
-	NumIndices = 0;
-	MaterialIndex = NULL;
-}
+	vertexBuffer = NULL;
+	indexBuffer = NULL;
+	cantIndex = 0;
+};
 
 MeshEntry::~MeshEntry()
 {
-	if (verticesBuffer != NULL) 
-		glDeleteBuffers(1, &verticesBuffer);
-	if (indicesBuffer != NULL)
-		glDeleteBuffers(1, &indicesBuffer);
+	if (vertexBuffer != NULL) 
+		glDeleteBuffers(1, &vertexBuffer);
+	if (indexBuffer != NULL) 
+		glDeleteBuffers(1, &indexBuffer);
 }
 
-void MeshEntry::Init(const vector<Vertex>& Vertices,
-	const vector<unsigned int>& Indices
-	
-	)
+void MeshEntry::Init(const vector<Vertex>& _vertex, const vector<unsigned int>& _index, Renderer* _renderer)
 {
-	NumIndices = Indices.size();
+	cantIndex = _index.size();
 
-	float* positions = new float[Vertices.size() * 3];
-	float* textures = new float[Vertices.size() * 2];
-	float* normals = new float[Vertices.size() * 3];
+	float* meshPositions = new float[_vertex.size() * 3];
+	float* meshTextures = new float[_vertex.size() * 2];
+	float* meshNormals = new float[_vertex.size() * 3];
 
-	for (size_t i = 0; i < Vertices.size(); i++)
+	for (int i = 0; i < _vertex.size(); i++)
 	{
-		positions[i * 3] = Vertices[i].m_pos.x;
-		positions[i * 3 + 1] = Vertices[i].m_pos.y;
-		positions[i * 3 + 2] = Vertices[i].m_pos.z;
-		textures[i * 2] = Vertices[i].m_tex.x;
-		textures[i * 2 + 1] = Vertices[i].m_tex.y;
-		normals[i * 3] = Vertices[i].m_normal.x;
-		normals[i * 3 + 1] = Vertices[i].m_normal.y;
-		normals[i * 3 + 2] = Vertices[i].m_normal.z;
+		meshPositions[i * 3] = _vertex[i].vertexPosition.x;
+		meshPositions[i * 3 + 1] = _vertex[i].vertexPosition.y;
+		meshPositions[i * 3 + 2] = _vertex[i].vertexPosition.z;
+		meshTextures[i * 2] = _vertex[i].vertexTexture.x;
+		meshTextures[i * 2 + 1] = _vertex[i].vertexTexture.y;
+		meshNormals[i * 3] = _vertex[i].vertexNormal.x;
+		meshNormals[i * 3 + 1] = _vertex[i].vertexNormal.y;
+		meshNormals[i * 3 + 2] = _vertex[i].vertexNormal.z;
 	}
 
-	//verticesBuffer = renderer->GenVertexBuffer(Vertices);
-	/*verticesBuffer = mesh.renderer->GenerateBuffer(positions, sizeof(float) * Vertices.size() * 3);
-	indicesBuffer = mesh.renderer->GenerateIndexBuffer(Indices);
-	uvBuffer = mesh.renderer->GenerateBuffer(textures, sizeof(float) * Vertices.size() * 2);*/
+	vertexBuffer = _renderer->GenerateBuffer(meshPositions, sizeof(float) * _vertex.size() * 3);
+	indexBuffer = _renderer->GenerateIndexBuffer(_index);
+	uvBuffer = _renderer->GenerateBuffer(meshTextures, sizeof(float) * _vertex.size() * 2);
 }

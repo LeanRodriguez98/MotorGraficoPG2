@@ -25,41 +25,41 @@ void Camera::UpdateViewMatrix()
 {
 	renderer->SetViewMatrix(eyePosition, cameraPosition, upVector);
 }
-void Camera::CameraWalk(float direction)
+void Camera::CameraWalk(float _direction)
 {
-	cameraPosition += (vec3)forward * direction;
-	eyePosition += (vec3)forward * direction;
+	cameraPosition += (vec3)forward * _direction;
+	eyePosition += (vec3)forward * _direction;
 	UpdateViewMatrix();
 }
-void Camera::CameraStrafe(float direction)
+void Camera::CameraStrafe(float _direction)
 {
-	cameraPosition += (vec3)right * direction;
-	eyePosition += (vec3)right * direction;
+	cameraPosition += (vec3)right * _direction;
+	eyePosition += (vec3)right * _direction;
 	UpdateViewMatrix();
 }
-void Camera::CameraPitch(float direction)
+void Camera::CameraPitch(float _direction)
 {
-	forward = glm::rotate(mat4(1.0f), direction, vec3(right.x, right.y, right.z)) * forward;
-	up = glm::rotate(mat4(1.0f), direction, vec3(right.x, right.y, right.z)) * up;
+	forward = rotate(mat4(1.0f), _direction, vec3(right.x, right.y, right.z)) * forward;
+	up = rotate(mat4(1.0f), _direction, vec3(right.x, right.y, right.z)) * up;
 
 	upVector = (vec3)up;
 	cameraPosition = eyePosition + (vec3)forward;
 	UpdateViewMatrix();
 }
-void Camera::CameraYaw(float direction)
+void Camera::CameraYaw(float _direction)
 {
-	forward = glm::rotate(mat4(1.0f), direction, vec3(upVector.x, upVector.y, upVector.z)) * forward;
-	right = glm::rotate(mat4(1.0f), direction, vec3(upVector.x, upVector.y, upVector.z)) * right;
+	forward = rotate(mat4(1.0f), _direction, vec3(upVector.x, upVector.y, upVector.z)) * forward;
+	right = rotate(mat4(1.0f), _direction, vec3(upVector.x, upVector.y, upVector.z)) * right;
 
 	upVector = (vec3)up;
 	cameraPosition = eyePosition + (vec3)forward;
 	UpdateViewMatrix();
 }
-void Camera::CameraRoll(float direction)
+void Camera::CameraRoll(float _direction)
 {
-	mat4 rot = rotate(mat4(1.0f), direction, vec3(forward.x, forward.y, forward.z));
-	right = rot * right;
-	up = rot * up;
+	mat4 auxRotation = rotate(mat4(1.0f), _direction, vec3(forward.x, forward.y, forward.z));
+	right = auxRotation * right;
+	up = auxRotation * up;
 
 	upVector = (vec3)up;
 	cameraPosition = eyePosition + (vec3)forward;

@@ -1,23 +1,21 @@
 #pragma once
-#include "Exports.h"
-#include "Entity.h"
+
 #include "Shape.h"
-#include "MeshImporter.h"
+#include "Definitions.h"
 #include "MeshLoader.h"
-class ENGINEDLL_API  Mesh : public Shape
+#include "TextureImporter.h"
+
+class ENGINEDLL_API Mesh : public Shape
 {
-public:
-	Mesh(Renderer * _renderer, Material* material, Layers layer, string modelPath, string texturePath);
-	~Mesh();
-	void Draw();
-	void DrawMesh(int drawType) override;
-	Renderer * renderer;
-
-	vector<MeshEntry> m_Entries;
-	vector<BMPData*> m_Textures;
-	vector<unsigned int> bufferTextures;
-
+private:
 	char* texturePath;
+	vector<MeshEntry> meshEntries;
+	vector<BMPData> meshTextures;
+	vector<unsigned int> bufferTextureID;
 
+public:
+	void Draw() override;
+	void Update();
+	Mesh(string _modelPath, string _texturePath, Renderer* _renderer);
+	~Mesh();
 };
-

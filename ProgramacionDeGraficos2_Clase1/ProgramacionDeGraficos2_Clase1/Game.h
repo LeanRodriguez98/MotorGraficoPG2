@@ -18,7 +18,6 @@
 #include "mobileObject.h"
 #include <iostream>
 
-#define PLAYER_SPEED 20.0f
 
 class Game : public Gamebase {
 private:
@@ -29,21 +28,11 @@ private:
 		GameOver 
 	};
 
-	Material * materialTilemap1;
-	Tilemap * tilemap1;
-	Player * player1;
-	vector<CollectableItem*> * bones;
-	vector<StaticObject*> * trees;
-	vector<MobileObject*> * rocks;
-	Material * mainMenuMaterial;
-	Material * gameOverMaterial;
-	Sprite * mainMenuSprite;
-	Sprite * gameOverSprite;
-	Camera * camera;
-	GameState gamestate;
 
-	//Mesh * cube;
-	Material * cubeMaterial;
+	Camera * camera;
+
+	Mesh * mesh1;
+	Material * materialMesh1;
 
 public:
 	Game();
