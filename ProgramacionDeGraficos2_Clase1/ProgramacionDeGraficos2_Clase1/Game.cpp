@@ -13,15 +13,26 @@ bool Game::OnStart() {
 
 	camera = new Camera(renderer);
 	
-	//mesh1 = new Mesh("3DAssets//Car.fbx", "3DAssets//CarTexture.bmp", renderer);
-	//mesh1->SetScale(0.1f, 0.1f, 0.1f);
+
 
 	mesh1 = new Mesh("3DAssets//Toad.obj", "3DAssets//ToadTexture.bmp", renderer);
 
 	materialMesh1 = new Material();
 	materialMesh1->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
 	mesh1->SetMaterial(materialMesh1);
-	mesh1->SetTranslation(0.0f, 0.0f, -100.0f);
+	mesh1->SetTranslation(50.0f, 0.0f, -100.0f);
+
+
+
+
+	mesh2 = new Mesh("3DAssets//Car.fbx", "3DAssets//CarTexture.bmp", renderer);
+	mesh2->SetScale(0.1f, 0.1f, 0.1f);
+
+	materialMesh2 = new Material();
+	materialMesh2->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
+	mesh2->SetMaterial(materialMesh2);
+	mesh2->SetTranslation(0.0f, 0.0f, -100.0f);
+
 
 	renderer->SetProjectionPerspective(45.0F, 2.4F, 0.1F, 100000.0F);
 
@@ -77,6 +88,7 @@ bool Game::OnUpdate() {
 	}
 
 	mesh1->SetRotationY(mesh1->GetRotationY() + (2.0f * Time::dt));
+	mesh2->SetRotationY(mesh2->GetRotationY() - (2.0f * Time::dt));
 
 	if (ImputManager::GetInstance()->GetKeyDown(Escape))
 	{
@@ -90,5 +102,6 @@ bool Game::OnUpdate() {
 void Game::OnDraw()
 {
 	mesh1->Draw();
+	mesh2->Draw();
 }
 

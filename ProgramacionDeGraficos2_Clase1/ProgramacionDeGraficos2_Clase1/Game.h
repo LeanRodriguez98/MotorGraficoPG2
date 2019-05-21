@@ -34,6 +34,9 @@ private:
 	Mesh * mesh1;
 	Material * materialMesh1;
 
+	Mesh * mesh2;
+	Material * materialMesh2;
+
 public:
 	Game();
 	~Game();

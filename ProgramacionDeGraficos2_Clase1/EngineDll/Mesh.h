@@ -11,7 +11,7 @@ private:
 	char* texturePath;
 	vector<MeshEntry> meshEntries;
 	vector<BMPData> meshTextures;
-	vector<unsigned int> bufferTextureID;
+	vector<unsigned int> buffersTextureID;
 
 public:
 	void Draw() override;
