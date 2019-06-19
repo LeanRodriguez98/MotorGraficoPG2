@@ -11,9 +11,6 @@
 #include "../EngineDll/ImputManager.h"
 
 #include "Player.h"
-#include "CollectableItem.h"
-#include "StaticObject.h"
-#include "mobileObject.h"
 #include <iostream>
 
 #define PLAYER_SPEED 20.0f
@@ -23,6 +20,8 @@ private:
 	
 
 	Player * player1;
+	Square * sqr;
+	Square * sqr2;
 public:
 	Game();
 	~Game();

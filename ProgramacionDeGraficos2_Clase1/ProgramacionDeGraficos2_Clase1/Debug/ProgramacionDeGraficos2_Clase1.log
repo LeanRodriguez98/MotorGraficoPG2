@@ -1,4 +1,4 @@
-﻿  Player.cpp
+﻿  Game.cpp
 c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(14): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
   c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
 c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
@@ -7,6 +7,7 @@ c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\en
   c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
 c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(17): warning C4251: 'Renderer::modelViewProjectionMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
   c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
+c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.h(12): warning C4091: 'static ': se ha omitido a la izquierda de 'Time' cuando no hay ninguna variable declarada
 c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\collider.h(14): warning C4251: 'Collider::pivotPosition': struct 'glm::vec<2,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Collider'
   c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_vec.hpp(119): note: vea la declaración de 'glm::vec<2,float,0>'
 c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\entity.h(13): warning C4251: 'Entity::translationVector': struct 'glm::vec<3,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Entity'
@@ -56,6 +57,7 @@ c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\en
           [
               _Ty=int
           ]
-c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.h(12): warning C4091: 'static ': se ha omitido a la izquierda de 'Time' cuando no hay ninguna variable declarada
-c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\player.cpp(7): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(22): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(27): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(28): warning C4305: 'argumento': truncamiento de 'double' a 'float'
   ProgramacionDeGraficos2_Clase1.vcxproj -> C:\Users\Administrador\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\ProgramacionDeGraficos2_Clase1.exe

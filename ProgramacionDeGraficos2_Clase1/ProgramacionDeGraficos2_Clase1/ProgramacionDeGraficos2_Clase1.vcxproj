@@ -119,12 +119,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CollectableItem.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mobileObject.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="StaticObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EngineDll\EngineDll.vcxproj">
@@ -132,11 +129,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CollectableItem.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="mobileObject.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="StaticObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

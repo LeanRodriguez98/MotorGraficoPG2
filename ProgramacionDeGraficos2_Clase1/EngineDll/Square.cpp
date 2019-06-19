@@ -14,10 +14,10 @@ Square::Square(Renderer *render) :Shape(render)
 
 	colorVertex = new float[12]
 	{
-		0.0f, 0.0f , 0.0f ,
-		1.0f, 0.0f , 0.0f ,
-		0.0f, 1.0f , 0.0f ,
-		1.0f, 1.0f , 0.0f
+		1.0f, 1.0f , 1.0f ,
+		1.0f, 1.0f , 1.0f ,
+		1.0f, 1.0f , 1.0f ,
+		1.0f, 1.0f , 1.0f
 	};
 	SetColorBuffer(colorVertex, 4);
 }
