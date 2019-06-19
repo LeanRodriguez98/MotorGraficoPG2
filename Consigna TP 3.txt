@@ -1,0 +1,14 @@
+Consigna TP 3
+- Integrar la libreria de física elegida (Box2D o Physx)
+- Utilizando las caracteristicas de la libreria elegida, implementar un Lunar Lander
+- El juego tiene que tener:
+	- Un terreno irregular con zonas planas donde pueda aterrizar la nave.
+	- Como opcional puede existir un modelo que represente el pad de aterrizaje y que se ubique de forma aleatoria en el terreno y la nave deba aterrizar en él.
+	- La nave debe seguir las reglas del juego ejemplo: http://moonlander.seb.ly/ (movimiento, colisiones, combustible, etc)
+- PUNTO ADICIONAL OPCIONAL:
+	- Generar el terreno de forma procedural
+- PUNTO EXTRA OBLIGATORIO PARA Box2D (UNICAMENTE):
+	- Sobre el terreno deben existir un número aleatorio de cañones que le disparen a la nave a medida que vaya moviendose. El algoritmo de disparo (la IA de los cañones) debe ser diseñada por cada alumno de forma individual, debe documentarse y luego escribir el código.
+	
+	
+	
