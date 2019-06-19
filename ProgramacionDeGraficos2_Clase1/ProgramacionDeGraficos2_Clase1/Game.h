@@ -20,8 +20,8 @@ private:
 	
 
 	Player * player1;
-	Square * sqr;
-	Square * sqr2;
+	vector<Square*> * terrain;
+	
 public:
 	Game();
 	~Game();

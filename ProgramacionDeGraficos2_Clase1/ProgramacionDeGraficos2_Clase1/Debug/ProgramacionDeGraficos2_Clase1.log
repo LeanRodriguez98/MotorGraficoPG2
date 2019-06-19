@@ -57,7 +57,6 @@ c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\en
           [
               _Ty=int
           ]
-c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(22): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(27): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(28): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(26): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\administrador\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\game.cpp(66): warning C4018: '<': no coinciden signed/unsigned
   ProgramacionDeGraficos2_Clase1.vcxproj -> C:\Users\Administrador\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\ProgramacionDeGraficos2_Clase1.exe

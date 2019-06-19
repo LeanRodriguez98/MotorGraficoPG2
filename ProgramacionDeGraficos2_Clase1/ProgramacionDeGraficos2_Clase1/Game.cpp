@@ -16,16 +16,28 @@ bool Game::OnStart() {
 	Material * m1 = new Material();
 	unsigned int ProgramID = m1->LoadShaders("colorvertexshader.txt", "colorfragmentshader.txt");
 
-	sqr = new Square(renderer);
-	sqr->SetMaterial(m1);
-	sqr->SetTranslation(-8, -8, 0);
-	sqr->SetScale(1, 0.2, 0);
+	
+	terrain = new vector<Square*>();
 
+	for (int i = 0; i < 19; i++)
+	{
+		Square * sqr = new Square(renderer);
+		sqr->SetMaterial(m1);
+		sqr->SetScale(1, 0.2, 0);
+		sqr->SetTranslation(-9 + (i * sqr->GetScaleX()), -8 + (sqr->GetScaleY()* 2 * i), 0);
 
-	sqr2 = new Square(renderer);
-	sqr2->SetMaterial(m1);
-	sqr2->SetTranslation(-7, -7.6, 0);
-	sqr2->SetScale(1, 0.2, 0);
+		/*if (i % 2 == 0)
+		{
+
+		}
+		else
+		{
+			sqr->SetTranslation(-9 + (i * 2), -8 - (0.2*i), 0);
+
+		}*/
+		terrain->push_back(sqr);
+	}
+
 	return true;
 }
 bool Game::OnStop() {
@@ -51,8 +63,10 @@ void Game::OnDraw()
 
 
 		player1->Draw();
-		sqr->Draw();
-		sqr2->Draw();
+		for (int i = 0; i < terrain->size(); i++)
+		{
+			terrain->at(i)->Draw();
+		}
 
 }
 
