@@ -54,40 +54,28 @@ void Player::Movement()
 	{
 		playerSprite->SetTextureBufferId(animationRightBuffer);
 		playerSprite->SetTranslationX(playerSprite->GetTranslationX() + (Time::dt * speed));
-		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), height, widht))
-		{
-			playerSprite->SetTranslationX(playerSprite->GetTranslationX() - (Time::dt * speed));
-		}
+		
 		playerSprite->Update();
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(LeftKey))
 	{
 		playerSprite->SetTextureBufferId(animationLeftBuffer);
 		playerSprite->SetTranslationX(playerSprite->GetTranslationX() - (Time::dt * speed));
-		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), height, widht))
-		{
-			playerSprite->SetTranslationX(playerSprite->GetTranslationX() + (Time::dt * speed));
-		}
+		
 		playerSprite->Update();
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(UpKey))
 	{
 		playerSprite->SetTextureBufferId(animationUpBuffer);
 		playerSprite->SetTranslationY(playerSprite->GetTranslationY() + (Time::dt * speed));
-		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(),playerSprite->GetTranslationY(), height, widht))
-		{
-			playerSprite->SetTranslationY(playerSprite->GetTranslationY() - (Time::dt * speed));
-		}
+		
 		playerSprite->Update();
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(DownKey))
 	{
 		playerSprite->SetTextureBufferId(animationDownBuffer);
 		playerSprite->SetTranslationY(playerSprite->GetTranslationY() - (Time::dt * speed));
-		if (tilemapToCollide->NextTileIsCollider(playerSprite->GetTranslationX(), playerSprite->GetTranslationY(), height, widht))
-		{
-			playerSprite->SetTranslationY(playerSprite->GetTranslationY() + (Time::dt * speed));
-		}
+		
 		playerSprite->Update();
 	}
 }

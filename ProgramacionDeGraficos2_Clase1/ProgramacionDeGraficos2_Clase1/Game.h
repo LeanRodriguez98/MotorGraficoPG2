@@ -20,24 +20,9 @@
 
 class Game : public Gamebase {
 private:
-	enum GameState 
-	{
-		MainMenu,
-		InGame,
-		GameOver
-	};
+	
 
-	Material * materialTilemap1;
-	Tilemap * tilemap1;
 	Player * player1;
-	vector<CollectableItem*> * bones;
-	vector<StaticObject*> * trees;
-	vector<MobileObject*> * rocks;
-	Material * mainMenuMaterial;
-	Material * gameOverMaterial;
-	Sprite * mainMenuSprite;
-	Sprite * gameOverSprite;
-	GameState gamestate;
 public:
 	Game();
 	~Game();
