@@ -9,10 +9,13 @@
 #include "../EngineDll/CollisionManager.h"
 #include "../EngineDll/Tilemap.h"
 #include "../EngineDll/ImputManager.h"
+#include <Box2D/Box2D.h>
 
 #include "Player.h"
 #include <iostream>
 
+#include "GroundChunk.h"
+#include "Ship.h"
 #define PLAYER_SPEED 20.0f
 
 class Game : public Gamebase {
@@ -21,7 +24,14 @@ private:
 
 	Player * player1;
 	vector<Square*> * terrain;
+
+
+
+	b2World * gameWorld;
 	
+	GroundChunk * groundChunk;
+	Ship * ship;
+
 public:
 	Game();
 	~Game();

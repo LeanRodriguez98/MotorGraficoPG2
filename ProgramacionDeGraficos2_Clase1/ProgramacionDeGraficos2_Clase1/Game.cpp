@@ -1,5 +1,4 @@
 #include "Game.h"
-#include <Box2D/Box2D.h>
 Game::Game()
 {
 }
@@ -39,6 +38,12 @@ bool Game::OnStart() {
 		terrain->push_back(sqr);
 	}
 
+
+	gameWorld = new b2World(b2Vec2(0.0f, -9.81f));
+
+	groundChunk = new GroundChunk(renderer, gameWorld);
+	ship = new Ship(renderer, gameWorld);
+
 	return true;
 }
 bool Game::OnStop() {
@@ -49,6 +54,8 @@ bool Game::OnStop() {
 bool Game::OnUpdate() {
 
 	player1->Update();
+	gameWorld->Step(Time::dt, 8, 8);
+	gameWorld->ClearForces();
 	if (ImputManager::GetInstance()->GetKeyDown(Escape))
 	{
 		return false;
@@ -61,13 +68,13 @@ bool Game::OnUpdate() {
 void Game::OnDraw()
 {
 
-
-
-		player1->Draw();
+	groundChunk->Draw();
+	ship->Draw();
+		/*player1->Draw();
 		for (int i = 0; i < terrain->size(); i++)
 		{
 			terrain->at(i)->Draw();
 		}
-
+		*/
 }
 
