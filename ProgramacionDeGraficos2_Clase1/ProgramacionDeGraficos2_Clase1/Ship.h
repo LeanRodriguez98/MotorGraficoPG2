@@ -25,7 +25,9 @@ public:
 	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale);
 	~Ship();
 	void Draw();
+	void Update();
 	vec2 GetPosition();
 	vec2 GetScale();
+	Sprite* GetSprite();
 };
 

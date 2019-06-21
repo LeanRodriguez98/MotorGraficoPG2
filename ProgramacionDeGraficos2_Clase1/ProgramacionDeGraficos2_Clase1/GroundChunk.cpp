@@ -2,7 +2,7 @@
 
 
 
-GroundChunk::GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale)
+GroundChunk::GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, bool _canLand)
 {
 
 	sprite = new Square(_renderer);
@@ -13,7 +13,7 @@ GroundChunk::GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position,
 	scale = _scale;
 	sprite->SetTranslation(position.x, position.y, 0.0f);
 	sprite->SetScale(scale.x, scale.y, 0);
-
+	canLand = _canLand;
 	bodyDef.type = b2BodyType::b2_staticBody;
 	bodyDef.position = b2Vec2(position.x, position.y);
 	body = _world->CreateBody(&bodyDef);

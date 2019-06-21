@@ -7,30 +7,27 @@
 #include "../EngineDLL/Sprite.h"
 #include "../EngineDll/Definitions.h"
 #include "../EngineDll/CollisionManager.h"
-#include "../EngineDll/Tilemap.h"
 #include "../EngineDll/ImputManager.h"
 #include <Box2D/Box2D.h>
 
-#include "Player.h"
 #include <iostream>
 
 #include "GroundChunk.h"
 #include "Ship.h"
 #define PLAYER_SPEED 20.0f
+#define SCREEN_WIDHT 10.5f
 
-#define START_GENERATE_POSITION vec2(-11.0f, -1.0f)
-#define GROUND_CHUNK_SIZE vec2(0.05f, 0.1f)
+#define START_GENERATE_POSITION vec2(-10.0f, -3.0f)
+#define GROUND_CHUNK_SIZE vec2(0.05f, 0.3f)
+#define LAND_PLATFORM_SIZE vec2(0.8f, 0.3f)
+#define VEC2_MINUS_X vec2(-1.0f,1.0f)
+#define VEC2_MINUS_Y vec2(1.0f,-1.0f)
 
-#define VEC2_X2 vec2(2.0f,2.0f)
-#define VEC2_X2_MINUS_Y vec2(2.0f,-2.0f)
-
-#define SCREEN_WIDHT 10.5
 
 class Game : public Gamebase {
 private:
 	
 
-	Player * player1;
 	b2World * gameWorld;
 
 	vector<GroundChunk*> * terrain;

@@ -22,10 +22,12 @@ private:
 	vec2 position;
 	vec2 scale;
 
+	bool canLand;
+
 public:
 
 
-	GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale);
+	GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, bool _canLand);
 	~GroundChunk();
 	void Draw();
 	vec2 GetPosition();

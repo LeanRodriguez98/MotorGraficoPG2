@@ -48,3 +48,13 @@ vec2 Ship::GetScale()
 {
 	return scale;
 }
+
+Sprite* Ship::GetSprite()
+{
+	return sprite;
+}
+
+void Ship::Update() 
+{
+
+}
