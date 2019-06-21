@@ -17,10 +17,15 @@ private:
 	b2BodyDef bodyDef;
 	b2Fixture * fixture;
 	b2FixtureDef fixtureDef;
+
+
+	vec2 position;
+	vec2 scale;
 public:
-	Ship(Renderer * _renderer, b2World * _world);
+	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale);
 	~Ship();
 	void Draw();
-
+	vec2 GetPosition();
+	vec2 GetScale();
 };
 

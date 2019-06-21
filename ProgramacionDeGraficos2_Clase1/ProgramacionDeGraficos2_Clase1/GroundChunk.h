@@ -4,11 +4,12 @@
 #include "../EngineDll/Definitions.h"
 #include "../EngineDll/ImputManager.h"
 #include "../EngineDll/Time.h"
+#include "../EngineDll//Square.h"
 #include <Box2D/Box2D.h>
 class GroundChunk
 {
 private:
-	Sprite * sprite;
+	Square * sprite;
 	Material * material;
 	float height;
 	float widht;
@@ -18,11 +19,16 @@ private:
 	b2Fixture * fixture;
 	b2FixtureDef fixtureDef;
 
+	vec2 position;
+	vec2 scale;
+
 public:
 
 
-	GroundChunk(Renderer * _renderer, b2World * _world);
+	GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale);
 	~GroundChunk();
 	void Draw();
+	vec2 GetPosition();
+	vec2 GetScale();
 };
 
