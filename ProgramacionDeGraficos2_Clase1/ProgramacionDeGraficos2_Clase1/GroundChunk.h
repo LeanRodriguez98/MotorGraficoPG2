@@ -23,7 +23,7 @@ private:
 	vec2 scale;
 
 	bool canLand;
-
+	b2World * b2Wolrd;
 public:
 
 

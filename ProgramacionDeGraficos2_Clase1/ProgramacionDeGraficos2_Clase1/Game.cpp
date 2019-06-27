@@ -57,25 +57,22 @@ void Game::GenerateTerrain()
 	for (float i = SCREEN_WIDHT; i > 0; i+=0)
 	{
 		GroundChunk * groundChunk;
-		int r = rand() % 100;
-		if (r == 99 && !landPlatformGenerated)
+		int r = rand() % 200;
+		if (r == 199 && !landPlatformGenerated)
 		{
 			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (LAND_PLATFORM_SIZE + lastChunkSize), LAND_PLATFORM_SIZE, true);
 			lastChunkSize = vec2(LAND_PLATFORM_SIZE.x, 0.0f);
 			landPlatformGenerated = true;
-
 		}
 		else if (r % 2 == 0)
 		{
 			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize), GROUND_CHUNK_SIZE, false);
 			lastChunkSize = vec2(GROUND_CHUNK_SIZE.x, 0.0f);
-
 		}
 		else
 		{
 			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + ((GROUND_CHUNK_SIZE + lastChunkSize) * VEC2_MINUS_Y), GROUND_CHUNK_SIZE, false);
 			lastChunkSize = vec2(GROUND_CHUNK_SIZE.x, 0.0f);
-
 		}
 		i -= groundChunk->GetScale().x;
 		lastPositionGenerated = groundChunk->GetPosition();
@@ -84,6 +81,10 @@ void Game::GenerateTerrain()
 
 	if (!landPlatformGenerated)
 	{
+		for (int i = 0; i < terrain->size(); i++)
+		{
+			delete terrain->at(i);
+		}
 		terrain->clear();
 		GenerateTerrain();
 	}

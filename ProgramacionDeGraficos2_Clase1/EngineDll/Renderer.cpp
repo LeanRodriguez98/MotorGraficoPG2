@@ -36,7 +36,7 @@ bool Renderer::Start(Window * windowPTR) {
 
 		UpdateModelViewProjectionMatrix();
 
-		cout << "Renderer::Start()" << endl;
+		//cout << "Renderer::Start()" << endl;
 		return true;
 	}
 
@@ -44,7 +44,7 @@ bool Renderer::Start(Window * windowPTR) {
 
 }
 bool Renderer::Stop() {
-	cout << "Renderer::Stop()" << endl;
+	//cout << "Renderer::Stop()" << endl;
 	return false;
 }
 

@@ -22,13 +22,16 @@ GroundChunk::GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position,
 	shape.SetAsBox(scale.x, scale.y);
 	fixtureDef.shape = &shape;
 	fixture = body->CreateFixture(&fixtureDef);
-
+	b2Wolrd = _world;
 }
 
 
 GroundChunk::~GroundChunk()
 {
+	b2Wolrd->DestroyBody(body);
 
+	delete sprite;
+	delete material;
 }
 
 void GroundChunk::Draw()

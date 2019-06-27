@@ -6,11 +6,11 @@
 #include "../EngineDLL/TextureImporter.h"
 #include "../EngineDLL/Sprite.h"
 #include "../EngineDll/Definitions.h"
-#include "../EngineDll/CollisionManager.h"
 #include "../EngineDll/ImputManager.h"
 #include <Box2D/Box2D.h>
 
 #include <iostream>
+#include <vector>
 
 #include "GroundChunk.h"
 #include "Ship.h"
