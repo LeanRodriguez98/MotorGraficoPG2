@@ -21,6 +21,8 @@ private:
 
 	vec2 position;
 	vec2 scale;
+
+	bool firstDraw = false;
 public:
 	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale);
 	~Ship();

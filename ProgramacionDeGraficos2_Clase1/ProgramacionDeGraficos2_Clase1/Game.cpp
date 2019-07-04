@@ -15,7 +15,7 @@ bool Game::OnStart() {
 	terrain = new vector<GroundChunk*>();
 	GenerateTerrain();
 
-	ship = new Ship(renderer, gameWorld, vec2(-5.0f, 6.0f), vec2(0.4f,0.4f));
+	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f,0.4f));
 
 	return true;
 }
@@ -31,6 +31,7 @@ bool Game::OnStop() {
 bool Game::OnUpdate() {
 	UpdatePhisics();
 	renderer->CameraFollow(vec3(0.0f, ship->GetSprite()->GetTranslation().y ,0.0f));
+	ship->Update();
 	if (ImputManager::GetInstance()->GetKeyDown(Escape))
 	{
 		return false;
