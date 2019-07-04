@@ -28,6 +28,6 @@ c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\
 c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
 c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.h(12): warning C4091: 'static ': se ha omitido a la izquierda de 'Time' cuando no hay ninguna variable declarada
 c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\ship.cpp(8): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\ship.cpp(75): warning C4244: 'argumento': conversión de 'double' a 'float32'; posible pérdida de datos
 c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\ship.cpp(80): warning C4244: 'argumento': conversión de 'double' a 'float32'; posible pérdida de datos
+c:\users\lean1\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\ship.cpp(85): warning C4244: 'argumento': conversión de 'double' a 'float32'; posible pérdida de datos
   ProgramacionDeGraficos2_Clase1.vcxproj -> C:\Users\lean1\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\ProgramacionDeGraficos2_Clase1.exe

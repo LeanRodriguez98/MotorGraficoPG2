@@ -2,7 +2,7 @@
 
 
 
-Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale)
+Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce)
 {
 
 	sprite = new Sprite(_renderer, 1.0f);
@@ -17,6 +17,11 @@ Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale)
 	scale = _scale;
 	sprite->SetTranslation(position.x, position.y, 0.0f);
 	sprite->SetScale(scale.x, scale.y, 0);
+
+	fuel = _fuel;
+	upSpeed = _upSpeed;
+	rotationSpeed = _rotationSpeed;
+	initialForce = _initialForce;
 
 	bodyDef.type = b2BodyType::b2_dynamicBody;
 	bodyDef.position = b2Vec2(position.x, position.y);
@@ -65,26 +70,25 @@ void Ship::Update()
 	if (!firstDraw)
 	{
 		sprite->Update();
-		body->ApplyForce(b2Vec2(body->GetPosition().x + 50.0f, body->GetPosition().y), body->GetPosition(), false);
+		body->ApplyForce(b2Vec2(body->GetPosition().x + initialForce, body->GetPosition().y), body->GetPosition(), false);
 
 		firstDraw = true;
 	}
 
 	if (ImputManager::GetInstance()->GetKeyDown(LeftKey))
 	{
-		body->SetTransform(body->GetPosition(), body->GetAngle() + (((80.0f * 3.14)/180.0f)) * Time::dt);
+		body->SetTransform(body->GetPosition(), body->GetAngle() + (((rotationSpeed * 3.14)/180.0f)) * Time::dt);
 	}
 
 	if (ImputManager::GetInstance()->GetKeyDown(RightKey))
 	{
-		body->SetTransform(body->GetPosition(), body->GetAngle() - (((80.0f * 3.14) / 180.0f)) * Time::dt);
+		body->SetTransform(body->GetPosition(), body->GetAngle() - (((rotationSpeed * 3.14) / 180.0f)) * Time::dt);
 	}
 
 	if (ImputManager::GetInstance()->GetKeyDown(UpKey))
 	{
 		b2Vec2 forceDirection = body->GetWorldVector(b2Vec2(0, 1));
-
-		body->ApplyLinearImpulse((5.0f * Time::dt * forceDirection), body->GetPosition(), true);
+		body->ApplyLinearImpulse((upSpeed * Time::dt * forceDirection), body->GetPosition(), true);
 	}
 
 }

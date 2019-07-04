@@ -15,7 +15,7 @@ bool Game::OnStart() {
 	terrain = new vector<GroundChunk*>();
 	GenerateTerrain();
 
-	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f,0.4f));
+	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f,0.4f), 100.0f, 5.0f, 80.0f, 50.0f);
 
 	return true;
 }

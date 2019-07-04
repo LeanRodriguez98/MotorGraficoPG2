@@ -23,8 +23,12 @@ private:
 	vec2 scale;
 
 	bool firstDraw = false;
+	float fuel;
+	float upSpeed;
+	float rotationSpeed;
+	float initialForce;
 public:
-	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale);
+	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce);
 	~Ship();
 	void Draw();
 	void Update();
