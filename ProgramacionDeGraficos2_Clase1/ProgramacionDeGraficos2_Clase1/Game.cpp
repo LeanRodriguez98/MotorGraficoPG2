@@ -26,6 +26,7 @@ bool Game::OnStop() {
 	{
 		delete terrain->at(i);
 	}
+	delete gameWorld;
 	return false;
 }
 bool Game::OnUpdate() {

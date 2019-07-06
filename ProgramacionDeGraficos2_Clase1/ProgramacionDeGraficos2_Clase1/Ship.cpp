@@ -9,8 +9,7 @@ Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, 
 	material = new Material();
 	material->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
 	sprite->SetMaterial(material);
-	unsigned int textureBuffer = sprite->LoadTexture("rock.bmp");
-	sprite->SetTextureBufferId(textureBuffer);
+	sprite->SetTextureBufferId(sprite->LoadTexture("rock.bmp"));
 
 
 	position = _position;
@@ -85,10 +84,19 @@ void Ship::Update()
 		body->SetTransform(body->GetPosition(), body->GetAngle() - (((rotationSpeed * 3.14) / 180.0f)) * Time::dt);
 	}
 
-	if (ImputManager::GetInstance()->GetKeyDown(UpKey))
+	if (ImputManager::GetInstance()->GetKeyDown(UpKey) && fuel > 0.0f)
 	{
 		b2Vec2 forceDirection = body->GetWorldVector(b2Vec2(0, 1));
+		fuel -= Time::dt*50;
 		body->ApplyLinearImpulse((upSpeed * Time::dt * forceDirection), body->GetPosition(), true);
 	}
 
+	if (fuel > 0)
+	{
+		cout << "Fuel: " << (int)fuel << "," << (int)((fuel - (int)fuel) * 100) << endl;
+	}
+	else
+	{
+		cout << "Fuel empty" << endl;
+	}
 }

@@ -27,9 +27,7 @@
 class Game : public Gamebase {
 private:
 	
-
 	b2World * gameWorld;
-
 	vector<GroundChunk*> * terrain;
 	Ship * ship;
 
