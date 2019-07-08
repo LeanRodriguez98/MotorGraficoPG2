@@ -11,5 +11,6 @@ public:
 	~CollisionData();
 	int CollisionLayer;
 	bool isAlive = true;
+	bool checkCollisionEvent = false;
 };
 

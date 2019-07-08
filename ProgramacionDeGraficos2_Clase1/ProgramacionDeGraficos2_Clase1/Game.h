@@ -26,7 +26,7 @@
 #define VEC2_MINUS_X vec2(-1.0f,1.0f)
 #define VEC2_MINUS_Y vec2(1.0f,-1.0f)
 
-enum GameStates {game, gameOver};
+enum GameStates {game, gameOver, youWin};
 
 class Game : public Gamebase {
 private:
@@ -41,6 +41,9 @@ private:
 
 	Material * gameOverMaterial;
 	Sprite * gameOverSprite;
+
+	Material * youWinMaterial;
+	Sprite * youWinSprite;
 public:
 	Game();
 	~Game();

@@ -19,7 +19,13 @@ bool Game::OnStart() {
 	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f, 0.4f), 100.0f, 5.0f, 80.0f, 50.0f, LAYER_PLAYER);
 
 
-
+	youWinMaterial = new Material();
+	youWinMaterial->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
+	youWinSprite = new Sprite(renderer, 1.0f);
+	youWinSprite->SetMaterial(youWinMaterial);
+	unsigned int youWinTextureBufferID = youWinSprite->LoadTexture("YouWin.bmp");
+	youWinSprite->SetTextureBufferId(youWinTextureBufferID);
+	youWinSprite->SetScale(10.0f, 10.0f, 1.0f);
 
 	gameOverMaterial = new Material();
 	gameOverMaterial->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
@@ -28,7 +34,6 @@ bool Game::OnStart() {
 	unsigned int gameOverTextureBufferID = gameOverSprite->LoadTexture("GameOver.bmp");
 	gameOverSprite->SetTextureBufferId(gameOverTextureBufferID);
 	gameOverSprite->SetScale(10.0f, 10.0f, 1.0f);
-
 
 	GenerateTerrain();
 
@@ -59,16 +64,19 @@ bool Game::OnUpdate() {
 		{
 			gameState = GameStates::gameOver;
 		}
+
+		if (ship->landed)
+		{
+			gameState = GameStates::youWin;
+		}
+
 		for (int i = 0; i < cannons->size(); i++)
 		{
 			cannons->at(i)->Update();
-			if (ship)
-			{
 				if (rand() % 100 == 99)
 				{
 					bullets->push_back(cannons->at(i)->Shoot((vec2)ship->GetSprite()->GetTranslation()));
 				}
-			}
 		}
 		for (int i = 0; i < bullets->size(); i++)
 		{
@@ -90,6 +98,12 @@ bool Game::OnUpdate() {
 	case GameStates::gameOver:
 		renderer->CameraFollow(gameOverSprite->GetTranslation());
 		gameOverSprite->Update();
+
+		break;
+
+	case GameStates::youWin:
+		renderer->CameraFollow(youWinSprite->GetTranslation());
+		youWinSprite->Update();
 
 		break;
 	default:
@@ -126,6 +140,9 @@ void Game::OnDraw()
 		break;
 	case GameStates::gameOver:
 		gameOverSprite->Draw();
+		break;
+	case GameStates::youWin:
+		youWinSprite->Draw();
 		break;
 	default:
 		break;

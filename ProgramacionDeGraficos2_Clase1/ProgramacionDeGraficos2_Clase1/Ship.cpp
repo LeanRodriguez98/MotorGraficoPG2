@@ -1,13 +1,7 @@
 #include "Ship.h"
 
 
-Ship* Ship::instance = 0;
 
-Ship* Ship::GetInstance()
-{
-	
-	return instance;
-}
 
 
 Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce, int _collisionLayer) : CollisionData(_collisionLayer)
@@ -117,9 +111,23 @@ void Ship::Update()
 	{
 		//cout << "Fuel empty" << endl;
 	}
+
+	if (checkCollisionEvent)
+	{
+		Land();
+	}
 }
 void Ship::Land() 
 {
-	cout << "Land" << endl;
+	if(((body->GetAngle() * (180.0f / 3.1416f)) > -3.0f && ((body->GetAngle() * (180.0f / 3.1416f)) < 3.0f)))
+	{
+		landed = true;
+	}
+	else
+	{
+		isAlive = false;
+	}
+
+	checkCollisionEvent = false;
 }
 
