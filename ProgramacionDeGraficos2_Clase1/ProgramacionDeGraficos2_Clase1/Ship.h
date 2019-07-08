@@ -8,6 +8,8 @@
 class Ship
 {
 private:
+	static Ship* instance;
+
 	Sprite * sprite;
 	Material * material;
 	float height;
@@ -27,6 +29,9 @@ private:
 	float upSpeed;
 	float rotationSpeed;
 	float initialForce;
+
+
+
 public:
 	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce);
 	~Ship();
@@ -35,5 +40,6 @@ public:
 	vec2 GetPosition();
 	vec2 GetScale();
 	Sprite* GetSprite();
+	static Ship* GetInstance();
 };
 

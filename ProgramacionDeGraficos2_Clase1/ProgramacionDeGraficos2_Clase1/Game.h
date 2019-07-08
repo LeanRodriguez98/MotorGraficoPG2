@@ -14,6 +14,7 @@
 
 #include "GroundChunk.h"
 #include "Ship.h"
+#include "Cannon.h"
 #define PLAYER_SPEED 20.0f
 #define SCREEN_WIDHT 10.5f
 
@@ -28,7 +29,9 @@ class Game : public Gamebase {
 private:
 	
 	b2World * gameWorld;
-	vector<GroundChunk*> * terrain;
+	vector<GroundChunk * > * terrain;
+	vector<Cannon * > * cannons;
+	vector<Bullet * > * bullets;
 	Ship * ship;
 
 public:

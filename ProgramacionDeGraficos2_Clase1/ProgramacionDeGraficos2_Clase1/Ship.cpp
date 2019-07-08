@@ -1,6 +1,14 @@
 #include "Ship.h"
 
 
+Ship* Ship::instance = 0;
+
+Ship* Ship::GetInstance()
+{
+	
+	return instance;
+}
+
 
 Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce)
 {
@@ -32,6 +40,8 @@ Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, 
 	fixtureDef.friction = 0.3f;
 	fixtureDef.density = 1.0f;
 	fixtureDef.restitution = 0.0f;
+	fixtureDef.filter.categoryBits = 0x0002;
+
 	fixture = body->CreateFixture(&fixtureDef);
 	body->SetTransform(body->GetPosition(), body->GetAngle() - ((90.0f * 3.1416f)/180.0f));
 }
@@ -87,7 +97,7 @@ void Ship::Update()
 	if (ImputManager::GetInstance()->GetKeyDown(UpKey) && fuel > 0.0f)
 	{
 		b2Vec2 forceDirection = body->GetWorldVector(b2Vec2(0, 1));
-		fuel -= Time::dt*50;
+		fuel -= Time::dt;
 		body->ApplyLinearImpulse((upSpeed * Time::dt * forceDirection), body->GetPosition(), true);
 	}
 

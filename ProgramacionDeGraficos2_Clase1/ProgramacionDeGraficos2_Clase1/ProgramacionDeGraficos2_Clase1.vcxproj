@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GroundChunk.cpp" />
@@ -136,6 +137,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GroundChunk.h" />
