@@ -19,8 +19,16 @@ GroundChunk::GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position,
 	b2PolygonShape shape;
 	shape.SetAsBox(scale.x, scale.y);
 	fixtureDef.shape = &shape;
+	fixtureDef.friction = 0.3f;
+	fixtureDef.density = 1.0f;
+	fixtureDef.restitution = 0.0f;
+	fixtureDef.filter.categoryBits = 0x0008;
 	fixture = body->CreateFixture(&fixtureDef);
 	b2Wolrd = _world;
+
+	body->SetUserData((void *)this);
+
+	fixture->SetUserData((void *)this);
 }
 
 

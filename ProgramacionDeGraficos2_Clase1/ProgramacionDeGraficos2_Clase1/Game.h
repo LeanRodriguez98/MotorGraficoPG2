@@ -16,6 +16,7 @@
 #include "Ship.h"
 #include "Cannon.h"
 #include "CollisionListener.h"
+#include "CollisionData.h"
 #define PLAYER_SPEED 20.0f
 #define SCREEN_WIDHT 10.5f
 

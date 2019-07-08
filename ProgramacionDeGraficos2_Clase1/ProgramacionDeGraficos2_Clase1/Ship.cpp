@@ -33,7 +33,7 @@ Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, 
 	bodyDef.type = b2BodyType::b2_dynamicBody;
 	bodyDef.position = b2Vec2(position.x, position.y);
 	body = _world->CreateBody(&bodyDef);
-
+	world = _world;
 	b2PolygonShape shape;
 	shape.SetAsBox(scale.x , scale.y );
 	fixtureDef.shape = &shape;
@@ -53,6 +53,10 @@ Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, 
 
 Ship::~Ship()
 {
+	world->DestroyBody(body);
+
+	delete sprite;
+	delete material;
 }
 
 void Ship::Draw()

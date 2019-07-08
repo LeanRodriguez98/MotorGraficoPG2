@@ -1,4 +1,8 @@
 #pragma once
+#define LAYER_PLAYER 0
+#define LAYER_CANNON 1
+#define LAYER_BULLET 3
+#define LAYER_GROUND 4
 class CollisionData
 {
 public:

@@ -16,7 +16,7 @@ bool Game::OnStart() {
 	terrain = new vector<GroundChunk*>();
 	cannons = new vector<Cannon*>();
 	bullets = new vector<Bullet*>();
-	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f, 0.4f), 100.0f, 5.0f, 80.0f, 50.0f, 0);
+	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f, 0.4f), 100.0f, 5.0f, 80.0f, 50.0f, LAYER_PLAYER);
 
 	GenerateTerrain();
 
@@ -41,7 +41,7 @@ bool Game::OnUpdate() {
 	for (int i = 0; i < cannons->size(); i++)
 	{
 		cannons->at(i)->Update();
-		if (rand()%100 ==9)
+		if (rand()%100 ==99)
 		{
 			bullets->push_back(cannons->at(i)->Shoot((vec2)ship->GetSprite()->GetTranslation()));
 
@@ -103,27 +103,27 @@ void Game::GenerateTerrain()
 		int r = rand() % 200;
 		if (r == 199 && !landPlatformGenerated)
 		{
-			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (LAND_PLATFORM_SIZE + lastChunkSize), LAND_PLATFORM_SIZE, true);
+			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (LAND_PLATFORM_SIZE + lastChunkSize), LAND_PLATFORM_SIZE, true,LAYER_GROUND);
 			lastChunkSize = vec2(LAND_PLATFORM_SIZE.x, 0.0f);
 			landPlatformGenerated = true;
 		}
 		else if (r % 2 == 0)
 		{
-			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize), GROUND_CHUNK_SIZE, false);
+			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize), GROUND_CHUNK_SIZE, false, LAYER_GROUND);
 			lastChunkSize = vec2(GROUND_CHUNK_SIZE.x, 0.0f);
 			if (rand()% 1000 == 0)
 			{
-				cannons->push_back(new Cannon(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize) + vec2(0.0f,4.0f), vec2(0.5f, 2.0f)));
+				cannons->push_back(new Cannon(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize) + vec2(0.0f,4.0f), vec2(0.5f, 2.0f),LAYER_CANNON));
 				cannonGenerated = true;
 			}
 		}
 		else
 		{
-			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + ((GROUND_CHUNK_SIZE + lastChunkSize) * VEC2_MINUS_Y), GROUND_CHUNK_SIZE, false);
+			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + ((GROUND_CHUNK_SIZE + lastChunkSize) * VEC2_MINUS_Y), GROUND_CHUNK_SIZE, false, LAYER_GROUND);
 			lastChunkSize = vec2(GROUND_CHUNK_SIZE.x, 0.0f);
 			if (rand() % 1000 == 0)
 			{
-				cannons->push_back(new Cannon(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize) + vec2(0.0f, 4.0f), vec2(0.5f, 2.0f), 1));
+				cannons->push_back(new Cannon(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize) + vec2(0.0f, 4.0f), vec2(0.5f, 2.0f), LAYER_CANNON));
 				cannonGenerated = true;
 			}
 		}
@@ -142,7 +142,8 @@ void Game::GenerateTerrain()
 		{
 			delete cannons->at(i);
 		}
-		terrain->clear();
+		terrain->clear(); 
+		cannons->clear();
 		GenerateTerrain();
 	}
 

@@ -13,7 +13,6 @@ Cannon::Cannon(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _sca
 	scale = _scale;
 	sprite->SetTranslation(position.x, position.y, 0.0f);
 	sprite->SetScale(scale.x, scale.y, 0);
-
 	world = _world;
 	bodyDef.type = b2BodyType::b2_dynamicBody;
 	bodyDef.position = b2Vec2(position.x, position.y);
@@ -37,6 +36,10 @@ Cannon::Cannon(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _sca
 
 Cannon::~Cannon()
 {
+	world->DestroyBody(body);
+
+	delete sprite;
+	delete material;
 }
 
 
@@ -68,6 +71,6 @@ void Cannon::Update()
 
 Bullet* Cannon::Shoot(vec2 _target) 
 {
-	return new Bullet(renderer, world, vec2(sprite->GetTranslation().x, sprite->GetTranslation().y), 0.2f, _target, 2);
+	return new Bullet(renderer, world, vec2(sprite->GetTranslation().x, sprite->GetTranslation().y), 0.2f, _target, LAYER_BULLET);
 }
 

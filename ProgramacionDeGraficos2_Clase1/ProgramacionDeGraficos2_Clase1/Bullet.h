@@ -18,7 +18,7 @@ class Bullet : public CollisionData
 	b2Fixture * fixture;
 	b2FixtureDef fixtureDef;
 
-
+	b2World * world;
 	vec2 position;
 	float radius;
 

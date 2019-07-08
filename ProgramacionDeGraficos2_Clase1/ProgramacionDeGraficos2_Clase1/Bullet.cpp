@@ -16,7 +16,7 @@ Bullet::Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _ra
 	radius = _radius;
 	sprite->SetTranslation(position.x, position.y, 0.0f);
 	sprite->SetScale(radius, radius, 0);
-
+	world = _world;
 	directionShoot = _directionShoot;
 	bodyDef.type = b2BodyType::b2_dynamicBody;
 	bodyDef.position = b2Vec2(position.x, position.y);
@@ -38,6 +38,10 @@ Bullet::Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _ra
 
 Bullet::~Bullet()
 {
+	world->DestroyBody(body);
+
+	delete sprite;
+	delete material;
 }
 
 void Bullet::Draw()

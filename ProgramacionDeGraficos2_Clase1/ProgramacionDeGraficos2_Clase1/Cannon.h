@@ -23,7 +23,6 @@ private:
 	b2World * world;
 	vec2 position;
 	vec2 scale;
-
 	bool firstDraw = false;
 	float lastPositionY;
 

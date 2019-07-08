@@ -21,7 +21,7 @@ private:
 	b2Fixture * fixture;
 	b2FixtureDef fixtureDef;
 
-
+	b2World * world;
 	vec2 position;
 	vec2 scale;
 
