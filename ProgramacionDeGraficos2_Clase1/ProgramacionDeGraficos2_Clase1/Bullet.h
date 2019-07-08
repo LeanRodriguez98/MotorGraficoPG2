@@ -4,8 +4,9 @@
 #include "../EngineDll/Definitions.h"
 #include "../EngineDll/ImputManager.h"
 #include "../EngineDll/Time.h"
-#include <Box2D/Box2D.h>
-class Bullet
+#include <Box2D/Box2D.h> 
+#include "CollisionData.h"
+class Bullet : public CollisionData
 {
 	Sprite * sprite;
 	Material * material;
@@ -24,7 +25,7 @@ class Bullet
 	bool firstDraw = false;
 	vec2 directionShoot;
 public:
-	Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _radius, vec2 _directionShoot);
+	Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _radius, vec2 _directionShoot, int _collisionLayer);
 	~Bullet();
 	void Draw();
 	void Update();

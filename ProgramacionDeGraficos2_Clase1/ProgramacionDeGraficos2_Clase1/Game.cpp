@@ -12,10 +12,11 @@ bool Game::OnStart() {
 	
 	ImputManager::GetInstance()->SetWindow(window);
 	gameWorld = new b2World(b2Vec2(0.0f, -1.62));
+	gameWorld->SetContactListener(&collisionListener);
 	terrain = new vector<GroundChunk*>();
 	cannons = new vector<Cannon*>();
 	bullets = new vector<Bullet*>();
-	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f, 0.4f), 100.0f, 5.0f, 80.0f, 50.0f);
+	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f, 0.4f), 100.0f, 5.0f, 80.0f, 50.0f, 0);
 
 	GenerateTerrain();
 
@@ -36,6 +37,7 @@ bool Game::OnUpdate() {
 	UpdatePhisics();
 	renderer->CameraFollow(vec3(0.0f, ship->GetSprite()->GetTranslation().y ,0.0f));
 
+	ship->Update();
 	for (int i = 0; i < cannons->size(); i++)
 	{
 		cannons->at(i)->Update();
@@ -48,14 +50,25 @@ bool Game::OnUpdate() {
 	for (int i = 0; i < bullets->size(); i++) 
 	{
 		bullets->at(i)->Update();
-
 	}
+
+
+
+	for (int i = 0; i < bullets->size(); i++)
+	{
+		if (!bullets->at(i)->isAlive)
+		{
+			bullets->at(i)->~Bullet();
+			bullets->erase(bullets->begin() + i);
+			break;
+		}
+	}
+
 
 	if (ImputManager::GetInstance()->GetKeyDown(Escape))
 	{
 		return false;
 	}
-	ship->Update();
 
 	return true;
 }
@@ -74,7 +87,6 @@ void Game::OnDraw()
 	for (int i = 0; i < bullets->size(); i++)
 	{
 		bullets->at(i)->Draw();
-
 	}
 }
 
@@ -111,7 +123,7 @@ void Game::GenerateTerrain()
 			lastChunkSize = vec2(GROUND_CHUNK_SIZE.x, 0.0f);
 			if (rand() % 1000 == 0)
 			{
-				cannons->push_back(new Cannon(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize) + vec2(0.0f, 4.0f), vec2(0.5f, 2.0f)));
+				cannons->push_back(new Cannon(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize) + vec2(0.0f, 4.0f), vec2(0.5f, 2.0f), 1));
 				cannonGenerated = true;
 			}
 		}
@@ -125,6 +137,10 @@ void Game::GenerateTerrain()
 		for (int i = 0; i < terrain->size(); i++)
 		{
 			delete terrain->at(i);
+		}
+		for (int i = 0; i < cannons->size(); i++)
+		{
+			delete cannons->at(i);
 		}
 		terrain->clear();
 		GenerateTerrain();

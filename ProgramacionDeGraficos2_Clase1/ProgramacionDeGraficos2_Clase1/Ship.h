@@ -5,7 +5,8 @@
 #include "../EngineDll/ImputManager.h"
 #include "../EngineDll/Time.h"
 #include <Box2D/Box2D.h>
-class Ship
+#include "CollisionData.h"
+class Ship : public CollisionData
 {
 private:
 	static Ship* instance;
@@ -33,7 +34,7 @@ private:
 
 
 public:
-	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce);
+	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce, int _collisionLayer);
 	~Ship();
 	void Draw();
 	void Update();

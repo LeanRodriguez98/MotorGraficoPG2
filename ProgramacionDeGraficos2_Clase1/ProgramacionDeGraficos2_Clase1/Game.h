@@ -15,6 +15,7 @@
 #include "GroundChunk.h"
 #include "Ship.h"
 #include "Cannon.h"
+#include "CollisionListener.h"
 #define PLAYER_SPEED 20.0f
 #define SCREEN_WIDHT 10.5f
 
@@ -33,7 +34,7 @@ private:
 	vector<Cannon * > * cannons;
 	vector<Bullet * > * bullets;
 	Ship * ship;
-
+	CollisionListener collisionListener;
 public:
 	Game();
 	~Game();

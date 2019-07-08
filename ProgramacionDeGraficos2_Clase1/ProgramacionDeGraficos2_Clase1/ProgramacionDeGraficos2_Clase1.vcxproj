@@ -125,6 +125,8 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cannon.cpp" />
+    <ClCompile Include="CollisionData.cpp" />
+    <ClCompile Include="CollisionListener.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GroundChunk.cpp" />
     <ClCompile Include="main.cpp" />
@@ -139,6 +141,8 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cannon.h" />
+    <ClInclude Include="CollisionData.h" />
+    <ClInclude Include="CollisionListener.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GroundChunk.h" />
     <ClInclude Include="Player.h" />

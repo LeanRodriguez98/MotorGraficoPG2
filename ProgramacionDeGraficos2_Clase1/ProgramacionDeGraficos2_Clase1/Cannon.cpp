@@ -1,7 +1,7 @@
 #include "Cannon.h"
 
 
-Cannon::Cannon(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale)
+Cannon::Cannon(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, int _collisionLayer) : CollisionData(_collisionLayer)
 {
 	sprite = new Sprite(_renderer, 1.0f);
 	material = new Material();
@@ -28,6 +28,10 @@ Cannon::Cannon(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _sca
 	fixtureDef.filter.categoryBits = 0x0004;
 
 	fixture = body->CreateFixture(&fixtureDef);
+
+	body->SetUserData((void *)this);
+
+	fixture->SetUserData((void *)this);
 }
 
 
@@ -64,6 +68,6 @@ void Cannon::Update()
 
 Bullet* Cannon::Shoot(vec2 _target) 
 {
-	return new Bullet(renderer, world, vec2(sprite->GetTranslation().x, sprite->GetTranslation().y), 0.2f, _target);
+	return new Bullet(renderer, world, vec2(sprite->GetTranslation().x, sprite->GetTranslation().y), 0.2f, _target, 2);
 }
 

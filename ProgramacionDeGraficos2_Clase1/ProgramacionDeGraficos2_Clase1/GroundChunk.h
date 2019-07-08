@@ -6,7 +6,8 @@
 #include "../EngineDll/Time.h"
 #include "../EngineDll//Square.h"
 #include <Box2D/Box2D.h>
-class GroundChunk
+#include "CollisionData.h"
+class GroundChunk : public CollisionData
 {
 private:
 	Square * sprite;
@@ -27,7 +28,7 @@ private:
 public:
 
 
-	GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, bool _canLand);
+	GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, bool _canLand, int collisionLayer);
 	~GroundChunk();
 	void Draw();
 	vec2 GetPosition();

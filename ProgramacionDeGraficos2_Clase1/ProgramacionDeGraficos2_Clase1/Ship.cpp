@@ -10,7 +10,7 @@ Ship* Ship::GetInstance()
 }
 
 
-Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce)
+Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce, int _collisionLayer) : CollisionData(_collisionLayer)
 {
 
 	sprite = new Sprite(_renderer, 1.0f);
@@ -44,6 +44,10 @@ Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, 
 
 	fixture = body->CreateFixture(&fixtureDef);
 	body->SetTransform(body->GetPosition(), body->GetAngle() - ((90.0f * 3.1416f)/180.0f));
+
+	body->SetUserData((void *)this);
+
+	fixture->SetUserData((void *)this);
 }
 
 
@@ -86,7 +90,7 @@ void Ship::Update()
 
 	if (ImputManager::GetInstance()->GetKeyDown(LeftKey))
 	{
-		body->SetTransform(body->GetPosition(), body->GetAngle() + (((rotationSpeed * 3.14)/180.0f)) * Time::dt);
+		body->SetTransform(body->GetPosition(), body->GetAngle() + (((rotationSpeed * 3.14) / 180.0f)) * Time::dt);
 	}
 
 	if (ImputManager::GetInstance()->GetKeyDown(RightKey))

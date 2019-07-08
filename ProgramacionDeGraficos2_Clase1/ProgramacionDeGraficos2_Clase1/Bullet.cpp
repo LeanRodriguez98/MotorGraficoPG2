@@ -2,7 +2,7 @@
 
 
 
-Bullet::Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _radius, vec2 _directionShoot)
+Bullet::Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _radius, vec2 _directionShoot, int _collisionLayer) : CollisionData(_collisionLayer)
 {
 
 	sprite = new Sprite(_renderer, 1.0f);
@@ -21,7 +21,6 @@ Bullet::Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _ra
 	bodyDef.type = b2BodyType::b2_dynamicBody;
 	bodyDef.position = b2Vec2(position.x, position.y);
 	body = _world->CreateBody(&bodyDef);
-
 	b2CircleShape shape;
 	shape.m_radius = radius;
 	fixtureDef.shape = &shape;
@@ -31,6 +30,9 @@ Bullet::Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _ra
 	fixtureDef.filter.categoryBits = 0x0006;
 	fixtureDef.filter.maskBits = 0xFFFF & ~0x0004;
 	fixture = body->CreateFixture(&fixtureDef);
+	body->SetUserData((void *)this);
+	
+	fixture->SetUserData((void *)this);
 }
 
 

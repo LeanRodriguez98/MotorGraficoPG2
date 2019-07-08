@@ -6,7 +6,8 @@
 #include <Box2D/Box2D.h>
 #include "Ship.h"
 #include "Bullet.h"
-class Cannon
+#include "CollisionData.h"
+class Cannon : public CollisionData
 {
 private:
 	Sprite * sprite;
@@ -27,7 +28,7 @@ private:
 	float lastPositionY;
 
 public:
-	Cannon(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale);
+	Cannon(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, int _collisionLayer);
 	~Cannon();
 	void Draw();
 	void Update();

@@ -1,8 +1,6 @@
 #include "GroundChunk.h"
 
-
-
-GroundChunk::GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, bool _canLand)
+GroundChunk::GroundChunk(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, bool _canLand, int _collisionLayer) : CollisionData(_collisionLayer)
 {
 
 	sprite = new Square(_renderer);
