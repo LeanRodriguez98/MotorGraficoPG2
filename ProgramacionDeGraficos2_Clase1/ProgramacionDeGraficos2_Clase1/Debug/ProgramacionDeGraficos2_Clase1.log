@@ -1,4 +1,4 @@
-﻿  GroundChunk.cpp
+﻿  Cannon.cpp
 c:\users\usuario\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(14): warning C4251: 'Renderer::modelMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
   c:\users\usuario\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
 c:\users\usuario\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\renderer.h(15): warning C4251: 'Renderer::viewMatrix': struct 'glm::mat<4,4,float,0>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'Renderer'
@@ -27,4 +27,5 @@ c:\users\usuario\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedl
   c:\users\usuario\desktop\motorgraficopg2\programaciondegraficos2_clase1\external\glm-0.9.9.0\glm\detail\type_mat.hpp(303): note: vea la declaración de 'glm::mat<4,4,float,0>'
 c:\users\usuario\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\textureimporter.h(24): warning C4091: 'static ': se ha omitido a la izquierda de 'TextureImporter' cuando no hay ninguna variable declarada
 c:\users\usuario\desktop\motorgraficopg2\programaciondegraficos2_clase1\enginedll\time.h(12): warning C4091: 'static ': se ha omitido a la izquierda de 'Time' cuando no hay ninguna variable declarada
+c:\users\usuario\desktop\motorgraficopg2\programaciondegraficos2_clase1\programaciondegraficos2_clase1\cannon.cpp(6): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   ProgramacionDeGraficos2_Clase1.vcxproj -> C:\Users\Usuario\Desktop\MotorGraficoPG2\ProgramacionDeGraficos2_Clase1\Debug\ProgramacionDeGraficos2_Clase1.exe

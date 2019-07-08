@@ -17,7 +17,7 @@ Ship::Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, 
 	material = new Material();
 	material->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
 	sprite->SetMaterial(material);
-	sprite->SetTextureBufferId(sprite->LoadTexture("rock.bmp"));
+	sprite->SetTextureBufferId(sprite->LoadTexture("Ship.bmp"));
 
 
 	position = _position;
@@ -111,10 +111,15 @@ void Ship::Update()
 
 	if (fuel > 0)
 	{
-		cout << "Fuel: " << (int)fuel << "," << (int)((fuel - (int)fuel) * 100) << endl;
+		//cout << "Fuel: " << (int)fuel << "," << (int)((fuel - (int)fuel) * 100) << endl;
 	}
 	else
 	{
-		cout << "Fuel empty" << endl;
+		//cout << "Fuel empty" << endl;
 	}
 }
+void Ship::Land() 
+{
+	cout << "Land" << endl;
+}
+

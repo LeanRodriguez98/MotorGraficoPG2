@@ -18,7 +18,21 @@ bool Game::OnStart() {
 	bullets = new vector<Bullet*>();
 	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f, 0.4f), 100.0f, 5.0f, 80.0f, 50.0f, LAYER_PLAYER);
 
+
+
+
+	gameOverMaterial = new Material();
+	gameOverMaterial->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
+	gameOverSprite = new Sprite(renderer, 1.0f);
+	gameOverSprite->SetMaterial(gameOverMaterial);
+	unsigned int gameOverTextureBufferID = gameOverSprite->LoadTexture("GameOver.bmp");
+	gameOverSprite->SetTextureBufferId(gameOverTextureBufferID);
+	gameOverSprite->SetScale(10.0f, 10.0f, 1.0f);
+
+
 	GenerateTerrain();
+
+	gameState = GameStates::game;
 
 
 	return true;
@@ -34,36 +48,53 @@ bool Game::OnStop() {
 	return false;
 }
 bool Game::OnUpdate() {
-	UpdatePhisics();
-	renderer->CameraFollow(vec3(0.0f, ship->GetSprite()->GetTranslation().y ,0.0f));
-
-	ship->Update();
-	for (int i = 0; i < cannons->size(); i++)
+	switch (gameState)
 	{
-		cannons->at(i)->Update();
-		if (rand()%100 ==99)
+	case GameStates::game:
+		UpdatePhisics();
+
+		renderer->CameraFollow(vec3(0.0f, ship->GetSprite()->GetTranslation().y, 0.0f));
+		ship->Update();
+		if (!ship->isAlive)
 		{
-			bullets->push_back(cannons->at(i)->Shoot((vec2)ship->GetSprite()->GetTranslation()));
-
+			gameState = GameStates::gameOver;
 		}
-	}
-	for (int i = 0; i < bullets->size(); i++) 
-	{
-		bullets->at(i)->Update();
-	}
-
-
-
-	for (int i = 0; i < bullets->size(); i++)
-	{
-		if (!bullets->at(i)->isAlive)
+		for (int i = 0; i < cannons->size(); i++)
 		{
-			bullets->at(i)->~Bullet();
-			bullets->erase(bullets->begin() + i);
-			break;
+			cannons->at(i)->Update();
+			if (ship)
+			{
+				if (rand() % 100 == 99)
+				{
+					bullets->push_back(cannons->at(i)->Shoot((vec2)ship->GetSprite()->GetTranslation()));
+				}
+			}
 		}
-	}
+		for (int i = 0; i < bullets->size(); i++)
+		{
+			bullets->at(i)->Update();
+		}
 
+
+
+		for (int i = 0; i < bullets->size(); i++)
+		{
+			if (!bullets->at(i)->isAlive)
+			{
+				bullets->at(i)->~Bullet();
+				bullets->erase(bullets->begin() + i);
+				break;
+			}
+		}
+		break;
+	case GameStates::gameOver:
+		renderer->CameraFollow(gameOverSprite->GetTranslation());
+		gameOverSprite->Update();
+
+		break;
+	default:
+		break;
+	}
 
 	if (ImputManager::GetInstance()->GetKeyDown(Escape))
 	{
@@ -75,19 +106,32 @@ bool Game::OnUpdate() {
 
 void Game::OnDraw()
 {
-	ship->Draw();
-	for (int i = 0; i < terrain->size(); i++)
+	switch (gameState)
 	{
-		terrain->at(i)->Draw();
+	case GameStates::game:
+		ship->Draw();
+
+		for (int i = 0; i < terrain->size(); i++)
+		{
+			terrain->at(i)->Draw();
+		}
+		for (int i = 0; i < cannons->size(); i++)
+		{
+			cannons->at(i)->Draw();
+		}
+		for (int i = 0; i < bullets->size(); i++)
+		{
+			bullets->at(i)->Draw();
+		}
+		break;
+	case GameStates::gameOver:
+		gameOverSprite->Draw();
+		break;
+	default:
+		break;
+
 	}
-	for (int i = 0; i < cannons->size(); i++)
-	{
-		cannons->at(i)->Draw();
-	}
-	for (int i = 0; i < bullets->size(); i++)
-	{
-		bullets->at(i)->Draw();
-	}
+		
 }
 
 
@@ -103,13 +147,13 @@ void Game::GenerateTerrain()
 		int r = rand() % 200;
 		if (r == 199 && !landPlatformGenerated)
 		{
-			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (LAND_PLATFORM_SIZE + lastChunkSize), LAND_PLATFORM_SIZE, true,LAYER_GROUND);
+			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (LAND_PLATFORM_SIZE + lastChunkSize), LAND_PLATFORM_SIZE,LAYER_LAND_PLATFORM);
 			lastChunkSize = vec2(LAND_PLATFORM_SIZE.x, 0.0f);
 			landPlatformGenerated = true;
 		}
 		else if (r % 2 == 0)
 		{
-			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize), GROUND_CHUNK_SIZE, false, LAYER_GROUND);
+			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (GROUND_CHUNK_SIZE + lastChunkSize), GROUND_CHUNK_SIZE, LAYER_GROUND);
 			lastChunkSize = vec2(GROUND_CHUNK_SIZE.x, 0.0f);
 			if (rand()% 1000 == 0)
 			{
@@ -119,7 +163,7 @@ void Game::GenerateTerrain()
 		}
 		else
 		{
-			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + ((GROUND_CHUNK_SIZE + lastChunkSize) * VEC2_MINUS_Y), GROUND_CHUNK_SIZE, false, LAYER_GROUND);
+			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + ((GROUND_CHUNK_SIZE + lastChunkSize) * VEC2_MINUS_Y), GROUND_CHUNK_SIZE, LAYER_GROUND);
 			lastChunkSize = vec2(GROUND_CHUNK_SIZE.x, 0.0f);
 			if (rand() % 1000 == 0)
 			{

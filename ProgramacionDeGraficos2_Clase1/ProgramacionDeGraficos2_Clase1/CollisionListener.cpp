@@ -47,12 +47,51 @@ void CollisionListener::CheckCollision(CollisionData &_collisionDataA, Collision
 			_collisionDataB.isAlive = false;
 			break;
 		case LAYER_PLAYER:
-			cout << "GG" << endl;
+			_collisionDataB.isAlive = false;
 			break;
 		default:
 			break;
 		}
 
+		break;
+
+	case LAYER_CANNON:
+
+		switch (_collisionDataB.CollisionLayer)
+		{
+		case LAYER_PLAYER:
+			_collisionDataB.isAlive = false;
+			break;
+		default:
+			break;
+		}
+		break;
+
+
+
+	case LAYER_BULLET:
+
+		switch (_collisionDataB.CollisionLayer)
+		{
+		case LAYER_PLAYER:
+			_collisionDataB.isAlive = false;
+			break;
+		default:
+			break;
+		}
+		break;
+
+
+
+	case LAYER_LAND_PLATFORM:
+		switch (_collisionDataB.CollisionLayer)
+		{
+		case LAYER_PLAYER:
+			Ship::GetInstance()->Land();
+			break;
+		default:
+			break;
+		}
 		break;
 
 

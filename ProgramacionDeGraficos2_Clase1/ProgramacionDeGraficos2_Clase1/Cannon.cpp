@@ -7,7 +7,7 @@ Cannon::Cannon(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _sca
 	material = new Material();
 	material->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
 	sprite->SetMaterial(material);
-	sprite->SetTextureBufferId(sprite->LoadTexture("rock.bmp"));
+	sprite->SetTextureBufferId(sprite->LoadTexture("Cannon.bmp"));
 	renderer = _renderer;
 	position = _position;
 	scale = _scale;

@@ -26,6 +26,7 @@
 #define VEC2_MINUS_X vec2(-1.0f,1.0f)
 #define VEC2_MINUS_Y vec2(1.0f,-1.0f)
 
+enum GameStates {game, gameOver};
 
 class Game : public Gamebase {
 private:
@@ -36,6 +37,10 @@ private:
 	vector<Bullet * > * bullets;
 	Ship * ship;
 	CollisionListener collisionListener;
+	GameStates gameState;
+
+	Material * gameOverMaterial;
+	Sprite * gameOverSprite;
 public:
 	Game();
 	~Game();

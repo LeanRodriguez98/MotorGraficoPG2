@@ -42,5 +42,6 @@ public:
 	vec2 GetScale();
 	Sprite* GetSprite();
 	static Ship* GetInstance();
+	void Land();
 };
 

@@ -9,7 +9,7 @@ Bullet::Bullet(Renderer * _renderer, b2World * _world, vec2 _position, float _ra
 	material = new Material();
 	material->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
 	sprite->SetMaterial(material);
-	sprite->SetTextureBufferId(sprite->LoadTexture("rock.bmp"));
+	sprite->SetTextureBufferId(sprite->LoadTexture("Bullet.bmp"));
 
 
 	position = _position;
