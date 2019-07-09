@@ -19,6 +19,14 @@ bool Game::OnStart() {
 	ship = new Ship(renderer, gameWorld, vec2(-8.0f, 7.0f), vec2(0.4f, 0.4f), 100.0f, 5.0f, 80.0f, 50.0f, LAYER_PLAYER);
 
 
+	mainMenuMaterial = new Material();
+	mainMenuMaterial->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
+	mainMenuSprite = new Sprite(renderer, 1.0f);
+	mainMenuSprite->SetMaterial(mainMenuMaterial);
+	unsigned int mainMenuTextureBufferID = mainMenuSprite->LoadTexture("MainMenu.bmp");
+	mainMenuSprite->SetTextureBufferId(mainMenuTextureBufferID);
+	mainMenuSprite->SetScale(10.0f, 10.0f, 1.0f);
+
 	youWinMaterial = new Material();
 	youWinMaterial->LoadShaders("texturevertexshader.txt", "texturefragmentshader.txt");
 	youWinSprite = new Sprite(renderer, 1.0f);
@@ -37,7 +45,7 @@ bool Game::OnStart() {
 
 	GenerateTerrain();
 
-	gameState = GameStates::game;
+	gameState = GameStates::mainMenu;
 
 	leftLimit = new DeadLimit(gameWorld, vec2(-11.5f, 0.0f), vec2(0.5f, 10.0f), LAYER_DEAD_LIMIT);
 	rightLimit = new DeadLimit(gameWorld, vec2(11.5f,0.0f),vec2(0.5f,10.0f), LAYER_DEAD_LIMIT);
@@ -57,6 +65,15 @@ bool Game::OnStop() {
 bool Game::OnUpdate() {
 	switch (gameState)
 	{
+	case GameStates::mainMenu:
+		renderer->CameraFollow(mainMenuSprite->GetTranslation());
+		mainMenuSprite->Update();
+		if (ImputManager::GetInstance()->GetKeyDown(EnterKey))
+		{
+			gameState = GameStates::game;
+		}
+		break;
+	
 	case GameStates::game:
 		UpdatePhisics();
 
@@ -79,17 +96,15 @@ bool Game::OnUpdate() {
 		for (int i = 0; i < cannons->size(); i++)
 		{
 			cannons->at(i)->Update();
-				if (rand() % 100 == 99)
-				{
-					bullets->push_back(cannons->at(i)->Shoot((vec2)ship->GetSprite()->GetTranslation()));
-				}
+			if (rand() % 100 == 99)
+			{
+				bullets->push_back(cannons->at(i)->Shoot((vec2)ship->GetSprite()->GetTranslation()));
+			}
 		}
 		for (int i = 0; i < bullets->size(); i++)
 		{
 			bullets->at(i)->Update();
 		}
-
-
 
 		for (int i = 0; i < bullets->size(); i++)
 		{
@@ -116,7 +131,7 @@ bool Game::OnUpdate() {
 		break;
 	}
 
-	if (ImputManager::GetInstance()->GetKeyDown(Escape))
+	if (ImputManager::GetInstance()->GetKeyDown(EscapeKey))
 	{
 		return false;
 	}
@@ -128,6 +143,9 @@ void Game::OnDraw()
 {
 	switch (gameState)
 	{
+	case GameStates::mainMenu:
+		mainMenuSprite->Draw();
+		break;
 	case GameStates::game:
 		ship->Draw();
 

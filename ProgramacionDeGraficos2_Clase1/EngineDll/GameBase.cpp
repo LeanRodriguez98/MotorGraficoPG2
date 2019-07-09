@@ -14,7 +14,7 @@ bool Gamebase::Start() {
 	renderer = new Renderer();
 	if (!renderer->Start(window))
 		return false;
-	renderer->SetClearColor(0.5f, 0.5f, 0.5f, 1);
+	renderer->SetClearColor(0.0f, 0.0f, 0.0f, 1);
 	return OnStart();
 }
 void Gamebase::Loop() {
