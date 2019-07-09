@@ -29,7 +29,8 @@ private:
 	float upSpeed;
 	float rotationSpeed;
 	float initialForce;
-
+	float velocity;
+	float auxVelocity;
 
 public:
 	Ship(Renderer * _renderer, b2World * _world, vec2 _position, vec2 _scale, float _fuel, float _upSpeed, float _rotationSpeed, float _initialForce, int _collisionLayer);

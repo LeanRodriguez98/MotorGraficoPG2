@@ -94,7 +94,17 @@ void CollisionListener::CheckCollision(CollisionData &_collisionDataA, Collision
 		}
 		break;
 
+	case LAYER_DEAD_LIMIT:
 
+		switch (_collisionDataB.CollisionLayer)
+		{
+		case LAYER_PLAYER:
+			_collisionDataB.isAlive = false;
+			break;
+		default:
+			break;
+		}
+		break;
 
 	default:
 		break;

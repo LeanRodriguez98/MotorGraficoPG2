@@ -85,7 +85,8 @@ void Ship::Update()
 
 		firstDraw = true;
 	}
-
+	auxVelocity = velocity;
+	velocity = body->GetLinearVelocity().Length();
 	if (ImputManager::GetInstance()->GetKeyDown(LeftKey))
 	{
 		body->SetTransform(body->GetPosition(), body->GetAngle() + (((rotationSpeed * 3.14) / 180.0f)) * Time::dt);
@@ -105,13 +106,13 @@ void Ship::Update()
 
 	if (fuel > 0)
 	{
-		//cout << "Fuel: " << (int)fuel << "," << (int)((fuel - (int)fuel) * 100) << endl;
+		cout << "Fuel: " << (int)fuel << "." << (int)((fuel - (int)fuel) * 100) << " - Velocity: "<< (int)auxVelocity << "." << (int)((auxVelocity - (int)auxVelocity) * 100) << endl;
 	}
 	else
 	{
-		//cout << "Fuel empty" << endl;
-	}
+		cout << "Fuel empty" << " - Velocity: " << (int)auxVelocity << "." << (int)((auxVelocity - (int)auxVelocity) * 100) << endl;
 
+	}
 	if (checkCollisionEvent)
 	{
 		Land();
@@ -119,7 +120,7 @@ void Ship::Update()
 }
 void Ship::Land() 
 {
-	if(((body->GetAngle() * (180.0f / 3.1416f)) > -3.0f && ((body->GetAngle() * (180.0f / 3.1416f)) < 3.0f)))
+	if(((body->GetAngle() * (180.0f / 3.1416f)) > -3.0f && ((body->GetAngle() * (180.0f / 3.1416f)) < 3.0f)) && auxVelocity <= 1.0f)
 	{
 		landed = true;
 	}
@@ -127,7 +128,7 @@ void Ship::Land()
 	{
 		isAlive = false;
 	}
-
+	
 	checkCollisionEvent = false;
 }
 

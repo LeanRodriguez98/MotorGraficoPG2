@@ -17,6 +17,7 @@
 #include "Cannon.h"
 #include "CollisionListener.h"
 #include "CollisionData.h"
+#include "DeadLimit.h"
 #define PLAYER_SPEED 20.0f
 #define SCREEN_WIDHT 10.5f
 
@@ -44,6 +45,9 @@ private:
 
 	Material * youWinMaterial;
 	Sprite * youWinSprite;
+
+	DeadLimit * leftLimit;
+	DeadLimit * rightLimit;
 public:
 	Game();
 	~Game();

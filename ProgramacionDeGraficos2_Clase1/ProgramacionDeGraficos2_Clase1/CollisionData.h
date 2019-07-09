@@ -4,6 +4,7 @@
 #define LAYER_BULLET 3
 #define LAYER_GROUND 4
 #define LAYER_LAND_PLATFORM 5
+#define LAYER_DEAD_LIMIT 6
 class CollisionData
 {
 public:

@@ -39,6 +39,8 @@ bool Game::OnStart() {
 
 	gameState = GameStates::game;
 
+	leftLimit = new DeadLimit(gameWorld, vec2(-11.5f, 0.0f), vec2(0.5f, 10.0f), LAYER_DEAD_LIMIT);
+	rightLimit = new DeadLimit(gameWorld, vec2(11.5f,0.0f),vec2(0.5f,10.0f), LAYER_DEAD_LIMIT);
 
 	return true;
 }
@@ -60,6 +62,10 @@ bool Game::OnUpdate() {
 
 		renderer->CameraFollow(vec3(0.0f, ship->GetSprite()->GetTranslation().y, 0.0f));
 		ship->Update();
+
+		leftLimit->UpdatePosition(ship->GetSprite()->GetTranslation());
+		rightLimit->UpdatePosition(ship->GetSprite()->GetTranslation());
+
 		if (!ship->isAlive)
 		{
 			gameState = GameStates::gameOver;
@@ -161,8 +167,8 @@ void Game::GenerateTerrain()
 	for (float i = SCREEN_WIDHT; i > 0; i+=0)
 	{
 		GroundChunk * groundChunk;
-		int r = rand() % 200;
-		if (r == 199 && !landPlatformGenerated)
+		int r = rand() % 100;
+		if (r == 99 && !landPlatformGenerated)
 		{
 			groundChunk = new GroundChunk(renderer, gameWorld, lastPositionGenerated + (LAND_PLATFORM_SIZE + lastChunkSize), LAND_PLATFORM_SIZE,LAYER_LAND_PLATFORM);
 			lastChunkSize = vec2(LAND_PLATFORM_SIZE.x, 0.0f);

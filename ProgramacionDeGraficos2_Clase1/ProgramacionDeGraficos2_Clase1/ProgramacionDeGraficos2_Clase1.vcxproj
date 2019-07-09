@@ -127,6 +127,7 @@
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="CollisionData.cpp" />
     <ClCompile Include="CollisionListener.cpp" />
+    <ClCompile Include="DeadLimit.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GroundChunk.cpp" />
     <ClCompile Include="main.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="CollisionData.h" />
     <ClInclude Include="CollisionListener.h" />
+    <ClInclude Include="DeadLimit.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GroundChunk.h" />
     <ClInclude Include="Player.h" />
