@@ -4,7 +4,7 @@
 #include "TypeDefs.h"
 #include <iostream>
 #include "Time.h"
-
+#include "Node.h"
 using namespace std;
 class ENGINEDLL_API Gamebase {
 private:
@@ -15,7 +15,7 @@ public:
 	Gamebase();
 	~Gamebase();
 	Window * window;
-
+	Node * sceneNode;
 	bool Start();
 	bool Stop();
 	void Loop();
@@ -23,6 +23,7 @@ public:
 	void SetScreenWidth(int _screenWidth);
 	int GetScreenHeight();
 	int GetScreenWidth();
+	void SetSceneNode(Node * _sceneNode);
 protected:
 	Renderer * renderer;
 	virtual bool OnStart() = 0;

@@ -24,10 +24,12 @@ void Gamebase::Loop() {
 	while (loop && !window->ShouldClose())
 	{
 		Time::Measure();
-
-		loop = OnUpdate();
+		if (sceneNode)
+			sceneNode->Update();
+		OnUpdate();
 		renderer->ClearWindow();
-		OnDraw();
+		if (sceneNode)
+			sceneNode->Draw();
 		renderer->SwapBuffer();
 		window->PollEvents();
 	}
@@ -59,3 +61,7 @@ int Gamebase::GetScreenWidth()
 	return screenWidth;
 }
 
+void Gamebase::SetSceneNode(Node * _sceneNode)
+{
+	sceneNode = _sceneNode;
+}

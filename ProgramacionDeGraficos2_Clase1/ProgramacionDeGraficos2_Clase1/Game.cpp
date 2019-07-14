@@ -13,14 +13,16 @@ bool Game::OnStart() {
 	ImputManager::GetInstance()->SetWindow(window);
 
 	camera = new Camera(renderer);
-	
+	mainCameraNode = new Node(renderer);
+	mainCameraNode->AddComponent(camera);
 	theNodoOne = new Node(renderer);
 	theNodoTwo = new Node(renderer);
-
-	theNodoOne->AddComponent(camera);
 	theNodoOne->AddChild(theNodoTwo);
-
+	sceneNode = new Node(renderer);
+	sceneNode->AddChild(mainCameraNode);
+	sceneNode->AddChild(theNodoOne);
 	MeshLoader::GetInstance()->LoadMesh("3DAssets\\Car.fbx", "3DAssets\\CarTexture.bmp", theNodoTwo, renderer);
+	SetSceneNode(sceneNode);
 	return true;
 }
 bool Game::OnStop() {
@@ -87,7 +89,7 @@ bool Game::OnUpdate() {
 
 void Game::OnDraw()
 {
-	theNodoOne->Draw();
+	//theNodoOne->Draw();
 	//theNodoTwo->GetNode(3)->Draw();
 	//theNodoTwo->GetNode(2)->Draw();
 }

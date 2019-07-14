@@ -32,7 +32,8 @@ private:
 
 
 	Camera * camera;
-
+	Node * sceneNode;
+	Node * mainCameraNode;
 	Node * theNodoOne;
 	Node * theNodoTwo;
 
