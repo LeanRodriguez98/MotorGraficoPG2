@@ -10,3 +10,12 @@ enum  Layers
 	count
 
 };
+
+enum ComponentsType {
+	MeshRender = 0,
+	CameraComponent,
+	ColliderComponent,
+	ScriptComponent,
+	Transform,
+	nullComponent
+};

@@ -208,10 +208,18 @@ void Renderer::UpdateModelViewProjectionMatrix()
 {
 	modelViewProjectionMatrix = projectionMatrix * viewMatrix * modelMatrix;
 }
-glm::mat4& Renderer::GetModelViewProjectionMatrix()
+
+mat4& Renderer::GetModelViewProjectionMatrix()
 {
 	return modelViewProjectionMatrix;
 }
+
+mat4 Renderer::GetViewMatrix()
+{
+	return viewMatrix;
+}
+
+
 void Renderer::MultiplyWorldMatrix(glm::mat4 mat)
 {
 	modelMatrix *= mat;
@@ -241,4 +249,10 @@ void Renderer::SetProjectionPerspective(float _fovy, float _aspect, float _zNear
 void Renderer::SetViewMatrix(glm::vec3 _eye, glm::vec3 _center, glm::vec3 _up)
 {
 	viewMatrix = glm::lookAt(_eye, _center, _up);
+}
+
+void Renderer::SetViewMatrix(mat4 _viewMatrix) 
+{
+	viewMatrix = _viewMatrix;
+	UpdateModelViewProjectionMatrix();
 }

@@ -42,6 +42,7 @@ public:
 	void DestroyBuffer(unsigned int buffer);
 	void UpdateModelViewProjectionMatrix();
 	mat4&  GetModelViewProjectionMatrix();
+	mat4 GetViewMatrix();
 	void LoadIdentityMatrix();
 	void MultiplyModelMatrix(mat4 mat);
 	void MultiplyWorldMatrix(mat4 mat);
@@ -50,5 +51,5 @@ public:
 	void SetProjectionOrtho(float _left, float _right, float _bottom, float _top, float _zNear, float _zFar);
 	void SetProjectionPerspective(float _fovy, float _aspect, float _zNear, float _zFar);
 	void SetViewMatrix(vec3 _eye, vec3 _center, vec3 _up);
-
+	void SetViewMatrix(mat4 _viewMatrix);
 };
