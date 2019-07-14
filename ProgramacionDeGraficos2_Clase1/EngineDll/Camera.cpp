@@ -3,7 +3,7 @@
 #include <glm/gtx/transform.hpp>
 
 
-Camera::Camera(Renderer *_renderer)
+Camera::Camera(Renderer *_renderer) : Component(_renderer)
 {
 	renderer = _renderer;
 	eyePosition = vec3(0.0f, 0.0f, 10.0f);
@@ -15,6 +15,7 @@ Camera::Camera(Renderer *_renderer)
 	up = vec4(0.0f, 1.0f, 0.0f, 0.0f);
 
 	cameraPosition = eyePosition + (vec3)forward;
+	type = ComponentType::CameraComponent;
 }
 
 Camera::~Camera()

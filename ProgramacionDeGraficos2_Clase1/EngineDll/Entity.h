@@ -3,7 +3,8 @@
 #include "Renderer.h"
 #include "Definitions.h"
 #include "Collider.h"
-
+#include "Material.h"
+#include "TextureImporter.h"
 #include<iostream>
 using namespace std;
 using namespace glm;
@@ -25,6 +26,8 @@ protected:
 	mat4 rotationMatrix;
 	mat4 scaleMatrix;
 	void UpdateModel();
+	Material * material;
+	BMPData header;
 public:
 
 	Entity(Renderer * renderer);

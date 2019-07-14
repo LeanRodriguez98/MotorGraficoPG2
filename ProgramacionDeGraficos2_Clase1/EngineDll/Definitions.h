@@ -8,14 +8,12 @@ enum  Layers
 	not_walkeable,
 	tiles,
 	count
-
 };
 
-enum ComponentsType {
-	MeshRender = 0,
+enum ComponentType 
+{
+	MeshRendererComponent = 0,
 	CameraComponent,
-	ColliderComponent,
-	ScriptComponent,
-	Transform,
-	nullComponent
+	NullComponent,
+	Count
 };

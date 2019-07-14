@@ -1,69 +1,78 @@
 #include "MeshLoader.h"
+#include "Mesh.h"
+
 // http://ogldev.atspace.co.uk/www/tutorial22/tutorial22.html
+
 MeshLoader * MeshLoader::instance = NULL;
 
 MeshLoader::MeshLoader()
 {
 }
 
-void MeshLoader::LoadMesh(const string& _modelPath, const string& _texturePath, vector<MeshEntry>& _meshEntries, vector<BMPData>& _meshTextures, Renderer* _renderer)
+void MeshLoader::LoadMesh(const char * _modelPath, const char * _texturePath, Node * _rootNode, Renderer* _renderer)
 {
 	Importer Importer;
-	const aiScene* pScene = Importer.ReadFile(_modelPath.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_JoinIdenticalVertices);
-	if (pScene)
-	{
-		InitFromScene(pScene, _texturePath, _meshEntries, _meshTextures, _renderer);
-	}
-	else
-	{
-		printf("Error parsing '%s': '%s'\n", _modelPath.c_str(), Importer.GetErrorString());
-	}
-}
-void MeshLoader::InitFromScene(const aiScene* _pScene, const string& _texturePath, vector<MeshEntry>& _meshEntries, vector<BMPData>& _meshTextures, Renderer* _renderer)
-{
-	_meshEntries.resize(_pScene->mNumMeshes);
-	_meshTextures.resize(_pScene->mNumMaterials);
+	const aiScene* pScene = Importer.ReadFile(_modelPath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_SortByPType);
 
-	for (int i = 0; i < _meshEntries.size(); i++)
+	if (!pScene)
 	{
-		const aiMesh* paiMesh = _pScene->mMeshes[i];
-		InitMesh(i, paiMesh, _meshEntries, _renderer);
+		return;
 	}
 
-	for (int i = 0; i < _pScene->mNumMaterials; i++)
+	if (!pScene->HasMeshes())
 	{
-		_meshTextures[i] = TextureImporter::LoadBMP(_texturePath.c_str());
+		return;
 	}
+
+	ProcessNodes(_modelPath, _texturePath, _rootNode, pScene->mRootNode, pScene, _renderer);
 }
 
-void MeshLoader::InitMesh(unsigned int _index, const aiMesh* _paiMesh, vector<MeshEntry>& _meshEntries, Renderer* _renderer)
-{
 
-	vector<Vertex> Vertices;
-	vector<unsigned int> Indices;
+void MeshLoader::ProcessNodes(const char * _modelPath, const char * _texturePath, Node * _rootNode,	aiNode * _aiNode, const aiScene * _aiScene, Renderer * _renderer)
+{
+	for (int i = 0; i < (int)_aiNode->mNumMeshes; i++) 
+	{
+		Mesh * mesh = new Mesh(_renderer, _modelPath, _texturePath, _rootNode);
+		InitMesh(_aiScene->mMeshes[_aiNode->mMeshes[i]], mesh);
+		Node * child = new Node(_renderer);
+		child->AddComponent((Component*)mesh);
+		_rootNode->AddChild(child);
+	}
+
+	for (int i = 0; i < (int)_aiNode->mNumChildren; i++) 
+	{
+		ProcessNodes(_modelPath, _texturePath, _rootNode, _aiNode->mChildren[i], _aiScene, _renderer);
+	}
+}
+
+void MeshLoader::InitMesh(const aiMesh* _paiMesh, Mesh * _mesh)
+{
+	MeshEntry * mesh = _mesh->GetMeshEntry();
+	mesh->vertexArray = new std::vector<float>();
+	mesh->uvArray = new std::vector<float>();
+	mesh->indexArray = new std::vector<unsigned int>();
 
 	const aiVector3D Zero3D(0.0f, 0.0f, 0.0f);
 
-	for (int i = 0; i < _paiMesh->mNumVertices; i++)
-	{
+	for (unsigned int i = 0; i < _paiMesh->mNumVertices; i++) {
 		const aiVector3D* pPos = &(_paiMesh->mVertices[i]);
 		const aiVector3D* pNormal = &(_paiMesh->mNormals[i]);
 		const aiVector3D* pTexCoord = _paiMesh->HasTextureCoords(0) ? &(_paiMesh->mTextureCoords[0][i]) : &Zero3D;
 
-		Vertex v(vec3(pPos->x, (float)pPos->y, (float)pPos->z), vec2((float)pTexCoord->x, (float)pTexCoord->y), vec3((float)pNormal->x, (float)pNormal->y, (float)pNormal->z));
-
-		Vertices.push_back(v);
+		mesh->vertexArray->push_back(pPos->y);
+		mesh->vertexArray->push_back(pPos->x);
+		mesh->vertexArray->push_back(pPos->z);
+		mesh->uvArray->push_back(pTexCoord->x);
+		mesh->uvArray->push_back(pTexCoord->y);
 	}
 
-	for (int i = 0; i < _paiMesh->mNumFaces; i++)
-	{
+	for (unsigned int i = 0; i < _paiMesh->mNumFaces; i++) {
 		const aiFace& Face = _paiMesh->mFaces[i];
 		assert(Face.mNumIndices == 3);
-		Indices.push_back(Face.mIndices[0]);
-		Indices.push_back(Face.mIndices[1]);
-		Indices.push_back(Face.mIndices[2]);
+		mesh->indexArray->push_back(Face.mIndices[0]);
+		mesh->indexArray->push_back(Face.mIndices[1]);
+		mesh->indexArray->push_back(Face.mIndices[2]);
 	}
 
-	_meshEntries[_index].Init(Vertices, Indices, _renderer);
+	_mesh->SetMeshEntry(mesh);
 }
-

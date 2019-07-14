@@ -4,18 +4,23 @@
 #include "Definitions.h"
 #include "MeshLoader.h"
 #include "TextureImporter.h"
+#include "Component.h"
+#include "Node.h"
 
-class ENGINEDLL_API Mesh : public Shape
+class ENGINEDLL_API Mesh : public Component
 {
 private:
-	char* texturePath;
-	vector<MeshEntry> meshEntries;
-	vector<BMPData> meshTextures;
-	vector<unsigned int> buffersTextureID;
+
+	unsigned int textureID;
+	const char * textureFile;
+	MeshData * meshData;
+	MeshEntry * meshEntry;
+	BMPData BMPTexture;
 
 public:
-	void Draw() override;
-	void Update();
-	Mesh(string _modelPath, string _texturePath, Renderer* _renderer);
+	Mesh(Renderer * _renderer, const char* _meshFile, const char * _textureFile, Node * _rootNode);
 	~Mesh();
+	MeshEntry * GetMeshEntry();
+	void SetMeshEntry(MeshEntry * _meshEntry);
+	void Draw() override;
 };

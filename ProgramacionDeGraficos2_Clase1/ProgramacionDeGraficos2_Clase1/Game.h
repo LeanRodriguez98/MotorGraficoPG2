@@ -11,6 +11,8 @@
 #include "../EngineDll/ImputManager.h"
 #include "../EngineDll/Camera.h"
 #include "../EngineDll/Mesh.h"
+#include "../EngineDll/Node.h"
+#include "../EngineDll/MeshLoader.h"
 
 #include "Player.h"
 #include "CollectableItem.h"
@@ -31,11 +33,8 @@ private:
 
 	Camera * camera;
 
-	Mesh * mesh1;
-	Material * materialMesh1;
-
-	Mesh * mesh2;
-	Material * materialMesh2;
+	Node * theNodoOne;
+	Node * theNodoTwo;
 
 public:
 	Game();

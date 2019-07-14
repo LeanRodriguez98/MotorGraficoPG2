@@ -15,9 +15,12 @@
 #include "../external/glfw-3.2.1/include/GLFW/glfw3.h"
 #include "../external/glm-0.9.9.0/glm/glm.hpp"
 #include "../external/glm-0.9.9.0/glm/glm.hpp"
-
+#include "Node.h"
 using namespace std;
 using namespace Assimp;
+
+class Mesh;
+
 class ENGINEDLL_API MeshLoader
 {
 private:
@@ -25,11 +28,10 @@ private:
 	static MeshLoader *instance;
 	const aiScene* scene = NULL;
 	Importer importer;
-	void InitFromScene(const aiScene* _pScene, const string& _texturePath, vector<MeshEntry>& _meshEntries, vector<BMPData>& _meshTextures, Renderer* _renderer);
-	void InitMesh(unsigned int _index, const aiMesh* _paiMesh, vector<MeshEntry>& _meshEntries, Renderer* _renderer);
-
+	void InitMesh(const aiMesh* paiMesh, Mesh* mesh);
+    void ProcessNodes(const char * fbxFile, const char * textFile, Node * rootNode, aiNode * node, const aiScene * scene, Renderer * render);
 public:
-	void LoadMesh(const string& _modelPath, const string& _texturePath, vector<MeshEntry>& _meshEntries, vector<BMPData>& _meshTextures, Renderer* _renderer);
+	void LoadMesh(const char * _modelPath, const char * _texturePath, Node * _rootNode, Renderer* _renderer);
 	static MeshLoader* GetInstance()
 	{
 		if (instance == NULL)

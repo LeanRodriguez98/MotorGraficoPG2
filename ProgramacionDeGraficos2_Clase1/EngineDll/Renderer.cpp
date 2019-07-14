@@ -124,6 +124,14 @@ unsigned int Renderer::GenerateIndexBuffer(vector<unsigned int> index)
 	return indexbuffer;
 }
 
+unsigned int Renderer::GenerateMeshBuffer(unsigned int * indices, int size) {
+	unsigned int elementbuffer;
+	glGenBuffers(1, &elementbuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, GL_STATIC_DRAW);
+	return elementbuffer;
+}
+
 void Renderer::BindMeshBuffer(unsigned int indexbuffer)
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexbuffer);
@@ -144,6 +152,18 @@ void Renderer::DrawIndexBuffer(int indexcount)
 		(void*)0
 	);
 }
+
+
+void Renderer::DrawIndexMesh(int size, unsigned int indexBuffer) {
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+	glDrawElements(
+		GL_TRIANGLES,		
+		size,				
+		GL_UNSIGNED_INT,	
+		(void*)0			
+	);
+}
+
 
 void Renderer::DestroyBuffer(unsigned int buffer)
 {
@@ -192,6 +212,17 @@ void Renderer::BindTextureBuffer(unsigned int txtrebuffer, unsigned int atribId)
 
 
 
+
+void Renderer::BindTexture(unsigned int texture, unsigned int textureID) 
+{
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glUniform1i(textureID, 0);
+}
+
+
+
+
 void Renderer::EnableVertexAttribute(unsigned int atribId)
 {
 	glEnableVertexAttribArray(atribId);
@@ -219,6 +250,15 @@ mat4 Renderer::GetViewMatrix()
 	return viewMatrix;
 }
 
+mat4 Renderer::GetModelMatrix()
+{
+	return modelMatrix;
+}
+
+mat4 Renderer::GetProjectionMatrix()
+{
+	return projectionMatrix;
+}
 
 void Renderer::MultiplyWorldMatrix(glm::mat4 mat)
 {
@@ -255,4 +295,14 @@ void Renderer::SetViewMatrix(mat4 _viewMatrix)
 {
 	viewMatrix = _viewMatrix;
 	UpdateModelViewProjectionMatrix();
+}
+
+
+void  Renderer::SetModelMatrix(mat4 _modelMatrix)
+{
+	modelMatrix = _modelMatrix;
+}
+void  Renderer::SetProjectionMatrix(mat4 _projectionMatrix) 
+{
+	projectionMatrix = _projectionMatrix;
 }

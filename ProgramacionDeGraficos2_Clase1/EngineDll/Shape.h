@@ -11,8 +11,7 @@
 class  ENGINEDLL_API Shape :public Entity
 {
 protected:
-	Material * material;
-	BMPData header;
+
 
 	unsigned int vertexBufferID;
 	unsigned int colorBufferID;

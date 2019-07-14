@@ -1,11 +1,11 @@
 #include "Node.h"
 
 
-Node::Node(Renderer * _renderer)
+Node::Node(Renderer * _renderer) : Entity(_renderer)
 {
-	render = _renderer;
-	nodes = new list<Node *>();
-	components = new list<Component *>();
+	renderer = _renderer;
+	nodes = new vector<Node *>();
+	components = new vector<Component *>();
 }
 
 
@@ -18,20 +18,22 @@ void Node::AddComponent(Component * _component)
 	components->push_back(_component);
 }
 
-Component * Node::GetComponent(ComponentsType _type)
+Component * Node::GetComponentByType(ComponentType _type)
 {
-	for (std::list<Component*>::iterator it = components->begin(); it != components->end(); ++it)
+	for (size_t i = 0; i < components->size(); i++)
 	{
-		if ((*it)->type == _type)
-			return (*it);
+		if (components->at(i)->type == _type)
+			return components->at(i);
 	}
-	return new Component(render);
+	return nullptr;
 }
 
-void Node::RemoveComponent(int _index)
+
+
+void Node::RemoveComponentByIndex(int _index)
 {
 	int i = 0;
-	for (std::list<Component*>::iterator it = components->begin(); it != components->end(); ++it)
+	for (vector<Component*>::iterator it = components->begin(); it != components->end(); ++it)
 	{
 		i++;
 		if (i == _index)
@@ -42,10 +44,10 @@ void Node::RemoveComponent(int _index)
 	}
 }
 
-void Node::RemoveChild(int _index)
+void Node::RemoveChildByIndex(int _index)
 {
 	int i = 0;
-	for (std::list<Node*>::iterator it = nodes->begin(); it != nodes->end(); ++it)
+	for (vector<Node*>::iterator it = nodes->begin(); it != nodes->end(); ++it)
 	{
 		i++;
 		if (i == _index)
@@ -61,30 +63,74 @@ void Node::AddChild(Node * _node)
 	nodes->push_back(_node);
 }
 
-void Node::Update(mat4 vMatrix, int i)
+vector<Node*>* Node::GetChildsVector() {
+	if (nodes == nullptr || nodes->size() == 0)
+	{
+		return nullptr;
+	}
+	return nodes;
+}
+
+vector<Component*>* Node::GetComponentsVector()
 {
-	viewMatrix *= render->GetViewMatrix();
-	for (std::list<Component*>::iterator it = components->begin(); it != components->end(); ++it)
+	if (components == nullptr || components->size() == 0)
 	{
-		(*it)->Update(viewMatrix);
+		return nullptr;
+	}
+	return components;
+}
+
+Node * Node::GetChildByIndex(int index)
+{
+	if (index > nodes->size())
+	{
+		return nodes->at(nodes->size() - 1);
+	}
+	return nodes->at(index);
+}
+
+Component * Node::GetComponentByIndex(int _index) {
+	if (_index > components->size())
+	{
+		return components->at(components->size() - 1);
+	}
+	return components->at(_index);
+}
+
+void Node::Update()
+{
+	for (int i = 0; i < components->size(); i++)
+	{
+		components->at(i)->Update();
 	}
 
-	for (std::list<Node*>::iterator it = nodes->begin(); it != nodes->end(); ++it)
+	for (int i = 0; i < nodes->size(); i++)
 	{
-		(*it)->Update(render->GetViewMatrix(), i + 1);
+		nodes->at(i)->Update();
 	}
-
-	render->SetViewMatrix(viewMatrix);
 }
 
 void Node::Draw()
 {
-	for (std::list<Component*>::iterator it = components->begin(); it != components->end(); ++it)
+
+	originalModelMatrix = renderer->GetModelMatrix();
+	originalViewMatrix = renderer->GetViewMatrix();
+	originalProjectionMatrix = renderer->GetProjectionMatrix();
+	renderer->SetModelMatrix(originalModelMatrix * model);
+
+	for (int i = 0; i < components->size(); i++)
 	{
-		(*it)->Draw();
+		components->at(i)->Draw();
 	}
-	for (std::list<Node*>::iterator it = nodes->begin(); it != nodes->end(); ++it)
+
+	for (int i = 0; i < nodes->size(); i++)
 	{
-		(*it)->Draw();
+		nodes->at(i)->Draw();
 	}
+
+	renderer->SetViewMatrix(viewMatrix);
+	renderer->SetViewMatrix(originalViewMatrix);
+	renderer->SetModelMatrix(originalModelMatrix);
+	renderer->SetProjectionMatrix(originalProjectionMatrix);
 }
+

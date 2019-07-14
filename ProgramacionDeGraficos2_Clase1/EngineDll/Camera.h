@@ -1,8 +1,9 @@
 #include "Exports.h"
 #include "Renderer.h"
-
+#include "Component.h"
+#include "Definitions.h"
 using namespace glm;
-class ENGINEDLL_API Camera
+class ENGINEDLL_API Camera : public Component
 {
 private:
 	Renderer * renderer;

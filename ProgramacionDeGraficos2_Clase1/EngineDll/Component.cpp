@@ -2,10 +2,10 @@
 
 Component::Component(Renderer * render) : Entity(render)
 {
-	type = ComponentsType::nullComponent;
+	type = ComponentType::NullComponent;
 }
 
-void Component::Update(mat4 ViewMatrix)
+void Component::Update()
 {
 
 }
