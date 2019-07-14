@@ -14,10 +14,7 @@
 #include "../EngineDll/Node.h"
 #include "../EngineDll/MeshLoader.h"
 
-#include "Player.h"
-#include "CollectableItem.h"
-#include "StaticObject.h"
-#include "mobileObject.h"
+
 #include <iostream>
 
 

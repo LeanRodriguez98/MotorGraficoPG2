@@ -161,9 +161,6 @@
     <ClCompile Include="MeshLoader.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="MeshImporter.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Node.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
