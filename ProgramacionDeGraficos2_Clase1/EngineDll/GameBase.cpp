@@ -38,7 +38,6 @@ bool Gamebase::Stop() {
 	OnStop();
 	renderer->Stop();
 	window->Stop();
-
 	delete renderer;
 	delete window;
 	return true;

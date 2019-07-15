@@ -1,4 +1,5 @@
 #pragma once 
+#define CANT_BOUNDING_BOX_VERTEX 8
 
 enum  Layers
 {
@@ -16,4 +17,14 @@ enum ComponentType
 	CameraComponent,
 	NullComponent,
 	Count
+};
+
+enum Planes {
+	TOP = 0,
+	BOTTOM, 
+	LEFT,
+	RIGHT,
+	NEARP,
+	FARP, 
+	COUNT
 };

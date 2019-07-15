@@ -27,7 +27,6 @@ protected:
 	bool dispuseColor;
 	int vertexCount;
 	int colorVertexCount;
-	//int indexVertexCount;
 
 public:
 	Shape(Renderer *render);

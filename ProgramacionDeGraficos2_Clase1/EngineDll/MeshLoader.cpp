@@ -7,10 +7,14 @@ MeshLoader * MeshLoader::instance = NULL;
 
 MeshLoader::MeshLoader()
 {
+
 }
 
 void MeshLoader::LoadMesh(const char * _modelPath, const char * _texturePath, Node * _rootNode, Renderer* _renderer, Camera * _camera)
 {
+
+	boundingBoxMin = vec3(0.0f, 0.0f, 0.0f);
+	boundingBoxMax = vec3(0.0f, 0.0f, 0.0f);
 	Importer Importer;
 	const aiScene* pScene = Importer.ReadFile(_modelPath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_SortByPType);
 
@@ -50,14 +54,11 @@ void MeshLoader::InitMesh(const aiMesh* _paiMesh, Mesh * _mesh)
 
 	const aiVector3D Zero3D(0.0f, 0.0f, 0.0f);
 
-	boundingBoxMin = vec3(0.0f, 0.0f, 0.0f);
-	boundingBoxMax = vec3(0.0f, 0.0f, 0.0f);
 
 	for (unsigned int i = 0; i < _paiMesh->mNumVertices; i++) {
 		const aiVector3D* pPos = &(_paiMesh->mVertices[i]);
 		const aiVector3D* pNormal = &(_paiMesh->mNormals[i]);
 		const aiVector3D* pTexCoord = _paiMesh->HasTextureCoords(0) ? &(_paiMesh->mTextureCoords[0][i]) : &Zero3D;
-
 
 		if (pPos->x < boundingBoxMin.x)
 			boundingBoxMin.x = pPos->x;
@@ -79,7 +80,8 @@ void MeshLoader::InitMesh(const aiMesh* _paiMesh, Mesh * _mesh)
 		mesh->uvArray->push_back(pTexCoord->y);
 	}
 
-	for (unsigned int i = 0; i < _paiMesh->mNumFaces; i++) {
+	for (unsigned int i = 0; i < _paiMesh->mNumFaces; i++) 
+	{
 		const aiFace& Face = _paiMesh->mFaces[i];
 		assert(Face.mNumIndices == 3);
 		mesh->indexArray->push_back(Face.mIndices[0]);
@@ -107,9 +109,9 @@ void MeshLoader::GenerateBoundingBox(Node * _rootNode)
 	
 	for (int i = 0; i < _rootNode->GetChildsVector()->size(); i++)
 	{
-		if (_rootNode->GetChildByIndex(1)->GetComponentByType(ComponentType::MeshRendererComponent) != nullptr)
+		if (_rootNode->GetChildByIndex(i)->GetComponentByType(ComponentType::MeshRendererComponent) != nullptr)
 		{
-			((Mesh *)_rootNode->GetChildByIndex(1)->GetComponentByType(ComponentType::MeshRendererComponent))->boundingBox3D->SetVertex(boundingBoxVertices);
+			((Mesh *)_rootNode->GetChildByIndex(i)->GetComponentByType(ComponentType::MeshRendererComponent))->boundingBox3D->SetVertex(boundingBoxVertices);
 		}
 	}
 	

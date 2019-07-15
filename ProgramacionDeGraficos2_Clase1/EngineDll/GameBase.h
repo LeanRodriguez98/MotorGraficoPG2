@@ -8,7 +8,6 @@
 using namespace std;
 class ENGINEDLL_API Gamebase {
 private:
-
 	int screenHeight;
 	int screenWidth;
 public:

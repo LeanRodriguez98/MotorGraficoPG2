@@ -43,7 +43,7 @@ public:
 	void DrawIndexMesh(int size, unsigned int indexBuffer);
 	void DestroyBuffer(unsigned int buffer);
 	void UpdateModelViewProjectionMatrix();
-	mat4&  GetModelViewProjectionMatrix();
+	mat4& GetModelViewProjectionMatrix();
 	mat4 GetViewMatrix();
 	mat4 GetProjectionMatrix();
 	mat4 GetModelMatrix();
@@ -58,7 +58,4 @@ public:
 	void SetViewMatrix(mat4 _viewMatrix);
 	void SetModelMatrix(mat4 _modelMatrix);
 	void SetProjectionMatrix(mat4 _projectionMatrix);
-
-
-
 };

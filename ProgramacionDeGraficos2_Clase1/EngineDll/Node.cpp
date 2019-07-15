@@ -80,18 +80,18 @@ vector<Component*>* Node::GetComponentsVector()
 	return components;
 }
 
-Node * Node::GetChildByIndex(int index)
+Node * Node::GetChildByIndex(int _index)
 {
 	if (nodes->size() == 0)
 	{
 		return nullptr;
 	}
 
-	if (index > nodes->size())
+	if (_index > nodes->size())
 	{
 		return nodes->at(nodes->size() - 1);
 	}
-	return nodes->at(index);
+	return nodes->at(_index);
 }
 
 Component * Node::GetComponentByIndex(int _index) {

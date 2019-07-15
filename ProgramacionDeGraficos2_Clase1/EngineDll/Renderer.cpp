@@ -26,7 +26,6 @@ bool Renderer::Start(Window * windowPTR) {
 		glGenVertexArrays(1, &VertexArray);
 		glBindVertexArray(VertexArray);
 
-		projectionMatrix = ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.0f, 100.f);
 		viewMatrix = lookAt(
 			glm::vec3(0, 0, 3),
 			glm::vec3(0, 0, 0),
@@ -279,11 +278,14 @@ void Renderer::CameraFollow(vec3 _playerPosition)
 void Renderer::SetProjectionOrtho(float _left, float _right, float _bottom, float _top, float _zNear, float _zFar)
 {
 	projectionMatrix = ortho(_left, _right, _bottom, _top, _zNear, _zFar);
+	UpdateModelViewProjectionMatrix();
+
 }
 
 void Renderer::SetProjectionPerspective(float _fovy, float _aspect, float _zNear, float _zFar)
 {
 	projectionMatrix = perspective(_fovy, _aspect, _zNear, _zFar);
+	UpdateModelViewProjectionMatrix();
 }
 
 void Renderer::SetViewMatrix(glm::vec3 _eye, glm::vec3 _center, glm::vec3 _up)
