@@ -21,7 +21,8 @@ bool Game::OnStart() {
 	sceneNode = new Node(renderer);
 	sceneNode->AddChild(mainCameraNode);
 	sceneNode->AddChild(theNodoOne);
-	MeshLoader::GetInstance()->LoadMesh("3DAssets\\Car.fbx", "3DAssets\\CarTexture.bmp", theNodoTwo, renderer);
+	MeshLoader::GetInstance()->LoadMesh("3DAssets\\Car.fbx", "3DAssets\\CarTexture.bmp", theNodoTwo, renderer, camera);
+
 	SetSceneNode(sceneNode);
 	return true;
 }
@@ -32,6 +33,7 @@ bool Game::OnStop() {
 }
 bool Game::OnUpdate() {
 
+	theNodoOne->SetTranslationX(theNodoOne->GetTranslationX() - 10 * Time::dt);
 
 	if (ImputManager::GetInstance()->GetKeyDown(DownKey))
 	{
@@ -51,27 +53,27 @@ bool Game::OnUpdate() {
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(AKey))
 	{
-		camera->CameraRoll(10.0F * Time::dt);
+		camera->CameraRoll(2.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(DKey))
 	{
-		camera->CameraRoll(-10.0F * Time::dt);
+		camera->CameraRoll(-2.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(WKey))
 	{
-		camera->CameraPitch(10.0F * Time::dt);
+		camera->CameraPitch(2.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(SKey))
 	{
-		camera->CameraPitch(-10.0F * Time::dt);
+		camera->CameraPitch(-2.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(QKey))
 	{
-		camera->CameraYaw(10.0F * Time::dt);
+		camera->CameraYaw(2.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(EKey))
 	{
-		camera->CameraYaw(-10.0F * Time::dt);
+		camera->CameraYaw(-2.0F * Time::dt);
 	}
 
 	theNodoOne->Update();
@@ -80,7 +82,7 @@ bool Game::OnUpdate() {
 	{
 		return false;
 	}
-
+	theNodoTwo->SetRotationX(theNodoTwo->GetRotationX() + Time::dt);
 	theNodoTwo->GetChildByIndex(1)->SetRotationZ(theNodoTwo->GetChildByIndex(1)->GetRotationZ() + Time::dt);
 	theNodoTwo->GetChildByIndex(2)->SetRotationZ(theNodoTwo->GetChildByIndex(2)->GetRotationZ() + Time::dt);
 

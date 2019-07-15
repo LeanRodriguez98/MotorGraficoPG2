@@ -82,6 +82,11 @@ vector<Component*>* Node::GetComponentsVector()
 
 Node * Node::GetChildByIndex(int index)
 {
+	if (nodes->size() == 0)
+	{
+		return nullptr;
+	}
+
 	if (index > nodes->size())
 	{
 		return nodes->at(nodes->size() - 1);
@@ -90,6 +95,12 @@ Node * Node::GetChildByIndex(int index)
 }
 
 Component * Node::GetComponentByIndex(int _index) {
+
+	if (components->size() == 0)
+	{
+		return nullptr;
+	}
+
 	if (_index > components->size())
 	{
 		return components->at(components->size() - 1);

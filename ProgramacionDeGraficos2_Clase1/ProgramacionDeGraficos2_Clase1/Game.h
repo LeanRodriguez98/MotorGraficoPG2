@@ -20,13 +20,6 @@
 
 class Game : public Gamebase {
 private:
-	enum GameState 
-	{
-		MainMenu,
-		InGame,
-		GameOver 
-	};
-
 
 	Camera * camera;
 	Node * sceneNode;

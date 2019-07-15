@@ -15,23 +15,29 @@
 #include "../external/glfw-3.2.1/include/GLFW/glfw3.h"
 #include "../external/glm-0.9.9.0/glm/glm.hpp"
 #include "../external/glm-0.9.9.0/glm/glm.hpp"
-#include "Node.h"
+#include "Camera.h"
 using namespace std;
 using namespace Assimp;
 
+class Renderer;
 class Mesh;
+class Node;
 
 class ENGINEDLL_API MeshLoader
 {
+
 private:
 	MeshLoader();
 	static MeshLoader *instance;
 	const aiScene* scene = NULL;
 	Importer importer;
-	void InitMesh(const aiMesh* paiMesh, Mesh* mesh);
-    void ProcessNodes(const char * fbxFile, const char * textFile, Node * rootNode, aiNode * node, const aiScene * scene, Renderer * render);
+	void InitMesh(const aiMesh* _paiMesh, Mesh* _mesh);
+    void ProcessNodes(const char * _texturePath, Node * _rootNode, aiNode * _node, const aiScene * _aiScene, Renderer * _renderer, Camera * _camera);
+	void GenerateBoundingBox(Node * _rootNode);
+	vec3 boundingBoxMin;
+	vec3 boundingBoxMax;
 public:
-	void LoadMesh(const char * _modelPath, const char * _texturePath, Node * _rootNode, Renderer* _renderer);
+	void LoadMesh(const char * _modelPath, const char * _texturePath, Node * _rootNode, Renderer* _renderer, Camera * _camera);
 	static MeshLoader* GetInstance()
 	{
 		if (instance == NULL)

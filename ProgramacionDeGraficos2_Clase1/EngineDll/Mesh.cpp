@@ -1,11 +1,13 @@
 #include "Mesh.h"
 
-Mesh::Mesh(Renderer * render, const char* fbxFile, const char * _textureFile, Node * rootNode) :Component(render)
+Mesh::Mesh(Renderer * _renderer,  const char * _textureFile, Camera * _camera) :Component(_renderer)
 {
 	type = ComponentType::MeshRendererComponent;
 	textureFile = _textureFile;
 	meshData = new MeshData;
 	meshEntry = new MeshEntry();
+	camera = _camera;
+	boundingBox3D = new BoundingBox3D(_renderer);
 }
 
 void Mesh::SetMeshEntry(MeshEntry * _meshEntry)
@@ -41,19 +43,23 @@ void Mesh::SetMeshEntry(MeshEntry * _meshEntry)
 
 void Mesh::Draw()
 {
-	if (meshData->material != NULL) 
+	if (camera->BoxInFrustum(boundingBox3D))
 	{
-		meshData->material->Bind();
-		meshData->material->SetMatrixProperty("WVP", renderer->GetModelViewProjectionMatrix());
+		if (meshData->material != NULL) 
+		{
+			meshData->material->Bind();
+			meshData->material->SetMatrixProperty("WVP", renderer->GetModelViewProjectionMatrix());
+		}
+		renderer->BindTexture(meshData->textureBufferID, meshData->uvBufferID);
+		renderer->EnableVertexAttribute(0);
+		renderer->BindBuffer(meshData->vertexBufferID,0);
+		renderer->EnableVertexAttribute(1);
+		renderer->BindTextureBuffer(meshData->uvBufferID,1);
+		renderer->DrawIndexMesh(meshData->indexCount, meshData->indexBufferID);
+		renderer->DisableVertexAttribute(0);
+		renderer->DisableVertexAttribute(1);
 	}
-	renderer->BindTexture(meshData->textureBufferID, meshData->uvBufferID);
-	renderer->EnableVertexAttribute(0);
-	renderer->BindBuffer(meshData->vertexBufferID,0);
-	renderer->EnableVertexAttribute(1);
-	renderer->BindTextureBuffer(meshData->uvBufferID,1);
-	renderer->DrawIndexMesh(meshData->indexCount, meshData->indexBufferID);
-	renderer->DisableVertexAttribute(0);
-	renderer->DisableVertexAttribute(1);
+
 }
 
 MeshEntry * Mesh::GetMeshEntry()
