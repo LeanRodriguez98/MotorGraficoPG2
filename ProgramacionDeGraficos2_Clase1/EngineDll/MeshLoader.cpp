@@ -13,8 +13,8 @@ MeshLoader::MeshLoader()
 void MeshLoader::LoadMesh(const char * _modelPath, const char * _texturePath, Node * _rootNode, Renderer* _renderer, Camera * _camera)
 {
 
-	boundingBoxMin = vec3(0.0f, 0.0f, 0.0f);
-	boundingBoxMax = vec3(0.0f, 0.0f, 0.0f);
+	boundingBoxMin = vec3(99999, 99999, 99999);
+	boundingBoxMax = vec3(-99999, -99999, -99999);
 	Importer Importer;
 	const aiScene* pScene = Importer.ReadFile(_modelPath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_SortByPType);
 
@@ -73,8 +73,8 @@ void MeshLoader::InitMesh(const aiMesh* _paiMesh, Mesh * _mesh)
 		if (pPos->z > boundingBoxMax.z)
 			boundingBoxMax.z = pPos->z;
 
-		mesh->vertexArray->push_back(pPos->y);
 		mesh->vertexArray->push_back(pPos->x);
+		mesh->vertexArray->push_back(pPos->y);
 		mesh->vertexArray->push_back(pPos->z);
 		mesh->uvArray->push_back(pTexCoord->x);
 		mesh->uvArray->push_back(pTexCoord->y);
@@ -94,7 +94,7 @@ void MeshLoader::InitMesh(const aiMesh* _paiMesh, Mesh * _mesh)
 
 void MeshLoader::GenerateBoundingBox(Node * _rootNode) 
 {
-	vec3 boundingBoxVertices[8] =
+	vec3 boundingBoxVertices[CANT_BOUNDING_BOX_VERTEX] =
 	{
 		vec3(boundingBoxMin.x, boundingBoxMin.y, boundingBoxMin.z),
 		vec3(boundingBoxMin.x, boundingBoxMax.y, boundingBoxMin.z),

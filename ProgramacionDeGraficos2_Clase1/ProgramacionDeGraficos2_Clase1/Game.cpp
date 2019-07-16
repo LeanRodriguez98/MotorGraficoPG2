@@ -81,9 +81,9 @@ bool Game::OnUpdate() {
 	{
 		return false;
 	}
-	//theNodoTwo->SetRotationX(theNodoTwo->GetRotationX() + Time::dt);
-	//theNodoTwo->GetChildByIndex(1)->SetRotationZ(theNodoTwo->GetChildByIndex(1)->GetRotationZ() + Time::dt);
-	//theNodoTwo->GetChildByIndex(2)->SetRotationZ(theNodoTwo->GetChildByIndex(2)->GetRotationZ() + Time::dt);
+	theNodoTwo->SetRotationX(theNodoTwo->GetRotationX() + Time::dt);
+	theNodoTwo->GetChildByIndex(1)->SetRotationZ(theNodoTwo->GetChildByIndex(1)->GetRotationZ() + Time::dt);
+	theNodoTwo->GetChildByIndex(2)->SetRotationZ(theNodoTwo->GetChildByIndex(2)->GetRotationZ() + Time::dt);
 	cout<<"End of frame"<<endl;
 	return true;
 }

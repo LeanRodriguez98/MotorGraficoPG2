@@ -110,10 +110,10 @@ void Camera::SetCameraDefinitions()
 	vec3 topPlaneVec = (nearCenter + upFrustrum * nearHight) - (vec3)cameraPosition;
 	vec3 bottomPlaneVec = (nearCenter - upFrustrum * nearHight) - (vec3)cameraPosition;
 
-	vec3 normalLeft = glm::normalize(glm::cross(leftPlaneVec, upFrustrum));
-	vec3 normalRight = -glm::normalize(glm::cross(rightPlaneVec, upFrustrum));
-	vec3 normalTop = glm::normalize(glm::cross(topPlaneVec, rightFrustrum));
-	vec3 normalBottom = -glm::normalize(glm::cross(bottomPlaneVec, rightFrustrum));
+	vec3 normalLeft = normalize(glm::cross(leftPlaneVec, upFrustrum));
+	vec3 normalRight = -normalize(glm::cross(rightPlaneVec, upFrustrum));
+	vec3 normalTop = normalize(glm::cross(topPlaneVec, rightFrustrum));
+	vec3 normalBottom = -normalize(glm::cross(bottomPlaneVec, rightFrustrum));
 
 	planes[NEARP] = GeneratePlane(-(vec3)forward, nearCenter);
 	planes[FARP] = GeneratePlane((vec3)forward, farCenter);

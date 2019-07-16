@@ -4,7 +4,7 @@ vec3 BoundingBox3D::GetVertex(int _index)
 {
 	vec4 globalRotatedPos(boundingBox3D[_index].x, boundingBox3D[_index].y, boundingBox3D[_index].z, 1.0f);
 
-	globalRotatedPos = renderer->GetModelViewProjectionMatrix() * globalRotatedPos;
+	globalRotatedPos = renderer->GetModelMatrix() * globalRotatedPos;
 
 	return (vec3)globalRotatedPos;
 }

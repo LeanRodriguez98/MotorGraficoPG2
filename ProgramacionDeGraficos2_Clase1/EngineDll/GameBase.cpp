@@ -26,10 +26,17 @@ void Gamebase::Loop() {
 		Time::Measure();
 		if (sceneNode)
 			sceneNode->Update();
+		else
+			OnDraw();
+
 		OnUpdate();
+
 		renderer->ClearWindow();
+
 		if (sceneNode)
 			sceneNode->Draw();
+		else
+			OnDraw();
 		renderer->SwapBuffer();
 		window->PollEvents();
 	}
