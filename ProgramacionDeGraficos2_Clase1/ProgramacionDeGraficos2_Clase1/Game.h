@@ -26,6 +26,7 @@ private:
 	Node * mainCameraNode;
 	Node * theNodoOne;
 	Node * theNodoTwo;
+	Node * theNodoTree;
 
 public:
 	Game();

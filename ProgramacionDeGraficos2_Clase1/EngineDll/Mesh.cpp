@@ -45,7 +45,6 @@ void Mesh::Draw()
 {
 	if (camera->BoxInFrustum(boundingBox3D))
 	{
-		cout << "La tenes adentro" << endl;
 		if (meshData->material != NULL) 
 		{
 			meshData->material->Bind();
@@ -60,10 +59,7 @@ void Mesh::Draw()
 		renderer->DisableVertexAttribute(0);
 		renderer->DisableVertexAttribute(1);
 	}
-	else
-	{
-		cout << "la tenes afuera"<<endl;
-	}
+
 }
 
 MeshEntry * Mesh::GetMeshEntry()

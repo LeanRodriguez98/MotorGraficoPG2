@@ -16,11 +16,14 @@ bool Game::OnStart() {
 	mainCameraNode->AddComponent(camera);
 	theNodoOne = new Node(renderer);
 	theNodoTwo = new Node(renderer);
+	theNodoTree = new Node(renderer);
 	theNodoOne->AddChild(theNodoTwo);
 	sceneNode = new Node(renderer);
 	sceneNode->AddChild(mainCameraNode);
 	sceneNode->AddChild(theNodoOne);
+	theNodoOne->AddChild(theNodoTree);
 	MeshLoader::GetInstance()->LoadMesh("3DAssets\\Car.fbx", "3DAssets\\CarTexture.bmp", theNodoTwo, renderer, camera);
+	MeshLoader::GetInstance()->LoadMesh("3DAssets\\Toad.obj", "3DAssets\\ToadTexture.bmp", theNodoTree, renderer, camera);
 	theNodoTwo->SetScale(0.5F, 0.5F, 0.5F);
 	SetSceneNode(sceneNode);
 	return true;
@@ -84,6 +87,7 @@ bool Game::OnUpdate() {
 	theNodoTwo->SetRotationX(theNodoTwo->GetRotationX() + Time::dt);
 	theNodoTwo->GetChildByIndex(1)->SetRotationZ(theNodoTwo->GetChildByIndex(1)->GetRotationZ() + Time::dt);
 	theNodoTwo->GetChildByIndex(2)->SetRotationZ(theNodoTwo->GetChildByIndex(2)->GetRotationZ() + Time::dt);
+
 	cout<<"End of frame"<<endl;
 	return true;
 }
