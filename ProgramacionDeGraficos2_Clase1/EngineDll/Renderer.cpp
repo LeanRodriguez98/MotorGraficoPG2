@@ -27,11 +27,11 @@ bool Renderer::Start(Window * windowPTR) {
 		glBindVertexArray(VertexArray);
 
 		viewMatrix = lookAt(
-			glm::vec3(0, 0, 3),
-			glm::vec3(0, 0, 0),
-			glm::vec3(0, 1, 0)
+			vec3(0, 0, 3),
+			vec3(0, 0, 0),
+			vec3(0, 1, 0)
 		);
-		modelMatrix = glm::mat4(1.0f);
+		modelMatrix = mat4(1.0f);
 
 		UpdateModelViewProjectionMatrix();
 
@@ -232,7 +232,7 @@ void Renderer::DisableVertexAttribute(unsigned int atribId)
 }
 void Renderer::LoadIdentityMatrix()
 {
-	modelMatrix = glm::mat4(1.0f);
+	modelMatrix = mat4(1.0f);
 }
 void Renderer::UpdateModelViewProjectionMatrix()
 {
@@ -259,12 +259,12 @@ mat4 Renderer::GetProjectionMatrix()
 	return projectionMatrix;
 }
 
-void Renderer::MultiplyWorldMatrix(glm::mat4 mat)
+void Renderer::MultiplyWorldMatrix(mat4 mat)
 {
 	modelMatrix *= mat;
 	UpdateModelViewProjectionMatrix();
 }
-void Renderer::MultiplyModelMatrix(glm::mat4 mat)
+void Renderer::MultiplyModelMatrix(mat4 mat)
 {
 	modelMatrix = mat;
 	UpdateModelViewProjectionMatrix();
@@ -288,9 +288,9 @@ void Renderer::SetProjectionPerspective(float _fovy, float _aspect, float _zNear
 	UpdateModelViewProjectionMatrix();
 }
 
-void Renderer::SetViewMatrix(glm::vec3 _eye, glm::vec3 _center, glm::vec3 _up)
+void Renderer::SetViewMatrix(vec3 _eye, vec3 _center, vec3 _up)
 {
-	viewMatrix = glm::lookAt(_eye, _center, _up);
+	viewMatrix = lookAt(_eye, _center, _up);
 }
 
 void Renderer::SetViewMatrix(mat4 _viewMatrix) 
@@ -298,7 +298,6 @@ void Renderer::SetViewMatrix(mat4 _viewMatrix)
 	viewMatrix = _viewMatrix;
 	UpdateModelViewProjectionMatrix();
 }
-
 
 void  Renderer::SetModelMatrix(mat4 _modelMatrix)
 {

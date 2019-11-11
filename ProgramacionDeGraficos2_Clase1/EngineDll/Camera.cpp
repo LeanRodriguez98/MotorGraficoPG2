@@ -1,37 +1,40 @@
 #include "Camera.h"
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/transform.hpp>
-
+#include "Mesh.h"
 
 Camera::Camera(Renderer * _renderer) : Component(_renderer)
 {
 	type: ComponentType::CameraComponent;
 	renderer = _renderer;
 
-	right = glm::vec4(1, 0, 0, 0);
-	up = glm::vec4(0, 1, 0, 0);
-	forward = glm::vec4(0, 0, 1, 0);
+	right = vec4(1, 0, 0, 0);
+	up = vec4(0, 1, 0, 0);
+	forward = vec4(0, 0, 1, 0);
 
-	cameraPosition = glm::vec4(0, 0, -50, 1);
+	cameraPosition = vec4(0, 0, -50, 1);
 	point = (cameraPosition + forward);
 	upVector = up;
-	viewMatrix = glm::lookAt((vec3)cameraPosition,(vec3)point,(vec3)upVector);
+	viewMatrix = lookAt((vec3)cameraPosition,(vec3)point,(vec3)upVector);
 
 	nearDistance = 0.1f;
 	farDistance = 10000.0f;
 	aspectRatio = 4.0f / 3.0f;
-	angle = glm::radians(45.0f);
+	angle = radians(45.0f);
 
 	renderer->SetProjectionPerspective(angle, aspectRatio, nearDistance, farDistance);
 	SetCameraInternals();
 	SetCameraDefinitions();
 	renderer->SetViewMatrix(viewMatrix);
+
+	bspPlanes = new vector<vec4>();
+	bspPlanesNormals = new vector<vec3>();
 }
 
 void Camera::CameraWalk(float _direction)
 {
-	cameraPosition = glm::translate(glm::mat4(1.0f), (glm::vec3)(forward * _direction)) * cameraPosition;
-	viewMatrix = glm::lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
+	cameraPosition = translate(mat4(1.0f), (vec3)(forward * _direction)) * cameraPosition;
+	viewMatrix = lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
 
 	SetCameraDefinitions();
 	renderer->SetViewMatrix(viewMatrix);
@@ -39,19 +42,19 @@ void Camera::CameraWalk(float _direction)
 
 void Camera::CameraStrafe(float _direction)
 {
-	cameraPosition = glm::translate(glm::mat4(1.0f), (glm::vec3)(right * _direction)) * cameraPosition;
+	cameraPosition = translate(mat4(1.0f), (vec3)(right * _direction)) * cameraPosition;
 
-	viewMatrix = glm::lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
+	viewMatrix = lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
 
 	SetCameraDefinitions();
 	renderer->SetViewMatrix(viewMatrix);
 }
 
-void Camera::CameraTranslate(glm::vec3 _direction)
+void Camera::CameraTranslate(vec3 _direction)
 {
-	cameraPosition = glm::translate(glm::mat4(1.0f), (glm::vec3)((right * _direction.x) + (forward * _direction.z))) * cameraPosition;
+	cameraPosition = translate(mat4(1.0f), (vec3)((right * _direction.x) + (forward * _direction.z))) * cameraPosition;
 
-	viewMatrix = glm::lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
+	viewMatrix = lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
 
 	SetCameraDefinitions();
 	renderer->SetViewMatrix(viewMatrix);
@@ -59,10 +62,10 @@ void Camera::CameraTranslate(glm::vec3 _direction)
 
 void Camera::CameraPitch(float _degrees)
 {
-	forward = glm::rotate(glm::mat4(1.0f), _degrees, glm::vec3(right.x, right.y, right.z)) * forward;
-	up = glm::rotate(glm::mat4(1.0f), _degrees, glm::vec3(right.x, right.y, right.z)) * up;
+	forward = rotate(mat4(1.0f), _degrees, vec3(right.x, right.y, right.z)) * forward;
+	up = rotate(mat4(1.0f), _degrees, vec3(right.x, right.y, right.z)) * up;
 
-	viewMatrix = glm::lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
+	viewMatrix = lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
 
 	SetCameraDefinitions();
 	renderer->SetViewMatrix(viewMatrix);
@@ -70,10 +73,10 @@ void Camera::CameraPitch(float _degrees)
 
 void Camera::CameraYaw(float _degrees)
 {
-	forward = glm::rotate(glm::mat4(1.0f), _degrees, glm::vec3(up.x, up.y, up.z)) * forward;
-	right = glm::rotate(glm::mat4(1.0f), _degrees, glm::vec3(up.x, up.y, up.z)) * right;
+	forward = rotate(mat4(1.0f), _degrees, vec3(up.x, up.y, up.z)) * forward;
+	right = rotate(mat4(1.0f), _degrees, vec3(up.x, up.y, up.z)) * right;
 
-	viewMatrix = glm::lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
+	viewMatrix = lookAt((vec3)cameraPosition,(vec3)(cameraPosition + forward),(vec3)up);
 
 	SetCameraDefinitions();
 	renderer->SetViewMatrix(viewMatrix);
@@ -110,10 +113,10 @@ void Camera::SetCameraDefinitions()
 	vec3 topPlaneVec = (nearCenter + upFrustrum * nearHight) - (vec3)cameraPosition;
 	vec3 bottomPlaneVec = (nearCenter - upFrustrum * nearHight) - (vec3)cameraPosition;
 
-	vec3 normalLeft = normalize(glm::cross(leftPlaneVec, upFrustrum));
-	vec3 normalRight = -normalize(glm::cross(rightPlaneVec, upFrustrum));
-	vec3 normalTop = normalize(glm::cross(topPlaneVec, rightFrustrum));
-	vec3 normalBottom = -normalize(glm::cross(bottomPlaneVec, rightFrustrum));
+	vec3 normalLeft = normalize(cross(leftPlaneVec, upFrustrum));
+	vec3 normalRight = -normalize(cross(rightPlaneVec, upFrustrum));
+	vec3 normalTop = normalize(cross(topPlaneVec, rightFrustrum));
+	vec3 normalBottom = -normalize(cross(bottomPlaneVec, rightFrustrum));
 
 	planes[NEARP] = GeneratePlane(-(vec3)forward, nearCenter);
 	planes[FARP] = GeneratePlane((vec3)forward, farCenter);
@@ -124,14 +127,24 @@ void Camera::SetCameraDefinitions()
 
 }
 
-glm::vec4 Camera::GeneratePlane(glm::vec3 _normal, glm::vec3 _point)
+void Camera::AddBSP(Mesh * _plane, vec3 nodepos)
 {
-	glm::vec4 plane;
+	if (!_plane->GetIsBsp())
+		return;
+
+	bspPlanes->push_back(GeneratePlane(nodepos, _plane->GetForwardBSP()));
+	bspPlanesNormals->push_back(_plane->GetForwardBSP());
+}
+
+
+vec4 Camera::GeneratePlane(vec3 _normal, vec3 _point)
+{
+	vec4 plane;
 
 	plane.x = _normal.x;
 	plane.y = _normal.y;
 	plane.z = _normal.z;
-	plane.w = -glm::dot(_normal, _point);
+	plane.w = -dot(_normal, _point);
 
 	return plane;
 }
@@ -150,12 +163,12 @@ bool Camera::BoxInFrustum(BoundingBox3D * _boundingBox3D)
 		allOutsideCurrentPlane = false;
 		float dist[8];
 
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < CANT_BOUNDING_BOX_VERTEX; j++)
 		{
 			vec3 vertexPosition = _boundingBox3D->GetVertex(j);
-			vec3 planeNormal = glm::vec3(planes[i]);
+			vec3 planeNormal = vec3(planes[i]);
 
-			dist[j] = glm::dot(planeNormal, vertexPosition) + planes[i].w;
+			dist[j] = dot(planeNormal, vertexPosition) + planes[i].w;
 			if (dist[j] < 0.0f)
 				break;
 			if (j == CANT_BOUNDING_BOX_VERTEX - 1)
@@ -170,6 +183,35 @@ bool Camera::BoxInFrustum(BoundingBox3D * _boundingBox3D)
 		}
 	}
 	return isInsideFrustum;
+}
+
+bool Camera::BoxInBSP(BoundingBox3D * _boundingBox3D)
+{
+	bool inTheSamePosition = false;
+	for (int i = 0; i < bspPlanes->size(); i++) 
+	{
+		float cameraDistanceToPlane = GetDistanceToPlane(cameraPosition, bspPlanes->at(i), bspPlanesNormals->at(i));
+		float cameraDistanceSign = sign(cameraDistanceToPlane);
+		for (int j = 0; j < CANT_BOUNDING_BOX_VERTEX; j++)
+		{
+			vec3 vertexPosition = _boundingBox3D->GetVertex(j);
+			float vertexDistanceToPlane = GetDistanceToPlane(vertexPosition, bspPlanes->at(i), bspPlanesNormals->at(i));
+			float vertexDistanceSign = sign(vertexDistanceToPlane);
+
+			if (vertexDistanceSign == cameraDistanceSign)
+				break;
+			if (j == CANT_BOUNDING_BOX_VERTEX - 1)
+				inTheSamePosition = true;
+		}
+	}
+	return inTheSamePosition;
+}
+
+float Camera::GetDistanceToPlane(vec3 point, vec4 _plane, vec3 _planeNormal)
+{
+	float distance = 0.0f;
+	distance = dot(_planeNormal, point) + _plane.w;
+	return distance;
 }
 
 Camera::~Camera()

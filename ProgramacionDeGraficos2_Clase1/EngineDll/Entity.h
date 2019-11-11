@@ -40,6 +40,9 @@ public:
 	void SetRotationX(float x);
 	void SetRotationY(float y);
 	void SetRotationZ(float z);
+	void SetRotationMatrix(float x, float y, float z, float w);
+	void ConvertToEulerAngles(const vec4  quaternion, float & pitch, float & yaw, float & roll);
+	void ClampEulerRotation();
 	void SetScale(float x, float y, float z);
 	void SetScaleX(float x);
 	void SetScaleY(float y);
@@ -48,6 +51,7 @@ public:
 	float GetTranslationX();
 	float GetTranslationY();
 	float GetTranslationZ();
+	mat4 GetRotationMatrix();
 	vec3 GetRotation();
 	float GetRotationX();
 	float GetRotationY();

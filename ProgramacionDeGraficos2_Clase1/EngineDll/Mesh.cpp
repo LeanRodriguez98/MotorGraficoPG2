@@ -41,9 +41,27 @@ void Mesh::SetMeshEntry(MeshEntry * _meshEntry)
 	meshData->material->BindTexture("myTextureSampler", meshData->textureBufferID);
 }
 
+void Mesh::SetBSP( Node * node)
+{
+	isBsp = true;
+	bspForward = normalize((vec3)(node->GetRotationMatrix() * vec4(0.0f, 0.0f, 1.0f, 0.0f)));
+
+	camera->AddBSP(this, node->GetTranslation());
+}
+
+bool Mesh::GetIsBsp()
+{
+	return isBsp;
+}
+
+vec3 Mesh::GetForwardBSP()
+{
+	return bspForward;
+}
+
 void Mesh::Draw()
 {
-	if (camera->BoxInFrustum(boundingBox3D))
+	if(!(camera->BoxInBSP(boundingBox3D) || !camera->BoxInFrustum(boundingBox3D)))
 	{
 		if (meshData->material != NULL) 
 		{
@@ -59,7 +77,6 @@ void Mesh::Draw()
 		renderer->DisableVertexAttribute(0);
 		renderer->DisableVertexAttribute(1);
 	}
-
 }
 
 MeshEntry * Mesh::GetMeshEntry()

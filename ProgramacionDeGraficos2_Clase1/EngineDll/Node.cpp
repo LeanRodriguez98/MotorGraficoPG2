@@ -4,6 +4,7 @@
 Node::Node(Renderer * _renderer) : Entity(_renderer)
 {
 	renderer = _renderer;
+	model = _renderer->GetModelMatrix();
 	nodes = new vector<Node *>();
 	components = new vector<Component *>();
 }
@@ -127,7 +128,7 @@ void Node::Draw()
 	originalModelMatrix = renderer->GetModelMatrix();
 	originalViewMatrix = renderer->GetViewMatrix();
 	originalProjectionMatrix = renderer->GetProjectionMatrix();
-	renderer->SetModelMatrix(originalModelMatrix * model);
+	renderer->MultiplyWorldMatrix(originalModelMatrix * model);
 
 	for (int i = 0; i < components->size(); i++)
 	{

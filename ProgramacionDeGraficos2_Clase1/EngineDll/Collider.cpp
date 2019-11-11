@@ -2,7 +2,7 @@
 
 
 
-Collider::Collider(glm::vec2 _pivotPosition, float _height, float _width, Layers _layer, bool _isStatic)
+Collider::Collider(vec2 _pivotPosition, float _height, float _width, Layers _layer, bool _isStatic)
 {
 	pivotPosition = _pivotPosition;
 	height = _height;
@@ -24,7 +24,7 @@ unsigned int Collider::GetYPosition()
 {
 	return pivotPosition.y;
 }
-glm::vec2 Collider::GetPivot()
+vec2 Collider::GetPivot()
 {
 	return pivotPosition;
 }

@@ -7,6 +7,8 @@
 #include "BoundingBox3D.h"
 using namespace glm;
 
+class Mesh;
+
 class ENGINEDLL_API Camera : public Component {
 private:
 	Renderer * renderer;
@@ -36,6 +38,10 @@ private:
 	float nearWidht;
 	float nearHight;
 
+
+	vector<vec4> * bspPlanes;
+	vector<vec3> * bspPlanesNormals;
+
 public:
 	void CameraWalk(float _direction);
 	void CameraStrafe(float _direction);
@@ -47,6 +53,9 @@ public:
 	void SetCameraDefinitions();
 	vec4 GeneratePlane(vec3 _normal, vec3 _point);
 	bool BoxInFrustum(BoundingBox3D * _boundingBox3D);
+	void AddBSP(Mesh * _BSPPlane, vec3 nodePosition);
+	bool BoxInBSP(BoundingBox3D * _boundingBox3D);
+	float GetDistanceToPlane(vec3 _point, vec4 _plane, vec3 _planeNormal);
 	Camera(Renderer * _renderer);
 	~Camera();
 };

@@ -28,12 +28,15 @@ class ENGINEDLL_API MeshLoader
 
 private:
 	MeshLoader();
-	static MeshLoader *instance;
-	const aiScene* scene = NULL;
+	static MeshLoader * instance;
+	const aiScene * scene = NULL;
 	Importer importer;
-	void InitMesh(const aiMesh* _paiMesh, Mesh* _mesh);
+	void InitMesh(const aiMesh* _paiMesh, Mesh* _mesh, Mesh * _childMesh);
     void ProcessNodes(const char * _texturePath, Node * _rootNode, aiNode * _node, const aiScene * _aiScene, Renderer * _renderer, Camera * _camera);
 	void GenerateBoundingBox(Node * _rootNode);
+	void SetNodeTransform(aiNode * _aiNode, Node * _node);
+	void TrySetBspNode(const aiMesh * _paiMesh, Node * _node, Mesh * _meshComponent);
+
 	vec3 boundingBoxMin;
 	vec3 boundingBoxMax;
 public:

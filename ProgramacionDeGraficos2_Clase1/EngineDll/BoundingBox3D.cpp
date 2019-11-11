@@ -9,7 +9,7 @@ vec3 BoundingBox3D::GetVertex(int _index)
 	return (vec3)globalRotatedPos;
 }
 
-void BoundingBox3D::SetVertex(glm::vec3 _boundingBox3D[CANT_BOUNDING_BOX_VERTEX])
+void BoundingBox3D::SetVertex(vec3 _boundingBox3D[CANT_BOUNDING_BOX_VERTEX])
 {
 	for (int i = 0; i < CANT_BOUNDING_BOX_VERTEX; i++)
 	{

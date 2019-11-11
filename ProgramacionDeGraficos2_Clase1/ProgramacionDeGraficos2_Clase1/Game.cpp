@@ -22,9 +22,9 @@ bool Game::OnStart() {
 	sceneNode->AddChild(mainCameraNode);
 	sceneNode->AddChild(theNodoOne);
 	theNodoOne->AddChild(theNodoTree);
-	MeshLoader::GetInstance()->LoadMesh("3DAssets\\Car.fbx", "3DAssets\\CarTexture.bmp", theNodoTwo, renderer, camera);
-	MeshLoader::GetInstance()->LoadMesh("3DAssets\\Toad.obj", "3DAssets\\ToadTexture.bmp", theNodoTree, renderer, camera);
-	theNodoTwo->SetScale(0.5F, 0.5F, 0.5F);
+	MeshLoader::GetInstance()->LoadMesh("3DAssets\\sapitoBSP.fbx", "3DAssets\\ToadTexture.bmp", theNodoTwo, renderer, camera);
+	theNodoTwo->SetTranslationY(theNodoTwo->GetTranslationY() - 50.0f);
+
 	SetSceneNode(sceneNode);
 	return true;
 }
@@ -38,64 +38,53 @@ bool Game::OnUpdate() {
 
 	if (ImputManager::GetInstance()->GetKeyDown(DownKey))
 	{
-		camera->CameraWalk(-1000.0F * Time::dt);
+		camera->CameraWalk(-100.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(UpKey))
 	{
-		camera->CameraWalk(1000.0F * Time::dt);
+		camera->CameraWalk(100.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(LeftKey))
 	{
-		camera->CameraStrafe(-1000.0F * Time::dt);
+		camera->CameraStrafe(100.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(RightKey))
 	{
-		camera->CameraStrafe(1000.0F * Time::dt);
+		camera->CameraStrafe(-100.0F * Time::dt);
 
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(AKey))
 	{
-		camera->CameraRoll(2.0F * Time::dt);
+		camera->CameraRoll(3.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(DKey))
 	{
-		camera->CameraRoll(-2.0F * Time::dt);
+		camera->CameraRoll(-3.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(WKey))
 	{
-		camera->CameraPitch(2.0F * Time::dt);
+		camera->CameraPitch(3.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(SKey))
 	{
-		camera->CameraPitch(-2.0F * Time::dt);
+		camera->CameraPitch(-3.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(QKey))
 	{
-		camera->CameraYaw(2.0F * Time::dt);
+		camera->CameraYaw(3.0F * Time::dt);
 	}
 	else if (ImputManager::GetInstance()->GetKeyDown(EKey))
 	{
-		camera->CameraYaw(-2.0F * Time::dt);
+		camera->CameraYaw(-3.0F * Time::dt);
 	}
-
-	theNodoOne->Update();
-
 	if (ImputManager::GetInstance()->GetKeyDown(Escape))
 	{
 		return false;
 	}
-	theNodoTwo->SetRotationX(theNodoTwo->GetRotationX() + Time::dt);
-	theNodoTwo->GetChildByIndex(1)->SetRotationZ(theNodoTwo->GetChildByIndex(1)->GetRotationZ() + Time::dt);
-	theNodoTwo->GetChildByIndex(2)->SetRotationZ(theNodoTwo->GetChildByIndex(2)->GetRotationZ() + Time::dt);
-
-	cout<<"End of frame"<<endl;
 	return true;
 }
 
 void Game::OnDraw()
 {
-	//theNodoOne->Draw();
-	//theNodoTwo->GetNode(3)->Draw();
-	//theNodoTwo->GetNode(2)->Draw();
 }
 

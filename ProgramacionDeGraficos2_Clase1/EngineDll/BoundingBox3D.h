@@ -15,7 +15,7 @@ private:
 	Renderer * renderer;
 public:
 	vec3 GetVertex(int _index);
-	void SetVertex(glm::vec3 _boundingBox3D[CANT_BOUNDING_BOX_VERTEX]);
+	void SetVertex(vec3 _boundingBox3D[CANT_BOUNDING_BOX_VERTEX]);
 	bool loaded;
 	BoundingBox3D(Renderer * _renderer);
 };
