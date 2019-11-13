@@ -8,6 +8,7 @@
 #include "Node.h"
 #include "BoundingBox3D.h"
 #include "Camera.h"
+#include "WhireCube.h"
 class ENGINEDLL_API Mesh : public Component
 {
 private:
@@ -31,4 +32,7 @@ public:
 	vec3 GetForwardBSP();
 	void SetMeshEntry(MeshEntry * _meshEntry);
 	void Draw() override;
+	WhireCube * whireFrame;
+	vec3 boundingBoxMin = vec3(INT_MAX, INT_MAX, INT_MAX);
+	vec3 boundingBoxMax = vec3(INT_MIN, INT_MIN, INT_MIN);
 };

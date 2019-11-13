@@ -9,5 +9,6 @@ public:
 	static double Measure();
 	static void FirstMeasure();
 	static double GetDT();
+	static int drawedObjets;
 };
 

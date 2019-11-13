@@ -33,12 +33,10 @@ private:
 	Importer importer;
 	void InitMesh(const aiMesh* _paiMesh, Mesh* _mesh, Mesh * _childMesh);
     void ProcessNodes(const char * _texturePath, Node * _rootNode, aiNode * _node, const aiScene * _aiScene, Renderer * _renderer, Camera * _camera);
-	void GenerateBoundingBox(Node * _rootNode);
+	void GenerateBoundingBox(Node * _rootNode, Mesh * _mesh);
 	void SetNodeTransform(aiNode * _aiNode, Node * _node);
 	void TrySetBspNode(const aiMesh * _paiMesh, Node * _node, Mesh * _meshComponent);
 
-	vec3 boundingBoxMin;
-	vec3 boundingBoxMax;
 public:
 	void LoadMesh(const char * _modelPath, const char * _texturePath, Node * _rootNode, Renderer* _renderer, Camera * _camera);
 	static MeshLoader* GetInstance()

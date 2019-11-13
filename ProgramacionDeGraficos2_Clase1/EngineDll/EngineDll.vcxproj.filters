@@ -123,6 +123,9 @@
     <ClInclude Include="Component.h">
       <Filter>Archivos de encabezado\NodeSystem</Filter>
     </ClInclude>
+    <ClInclude Include="WhireCube.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -196,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="Node.cpp">
       <Filter>Archivos de origen\NodeSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="WhireCube.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

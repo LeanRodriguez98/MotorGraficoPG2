@@ -6,6 +6,7 @@
 #include <iostream>
 #include "../external/glm-0.9.9.0/glm/glm.hpp"
 #include "../external/glm-0.9.9.0/glm/gtc/matrix_transform.hpp"
+#include "WhireCube.h"
 using namespace std;
 using namespace glm;
 class ENGINEDLL_API BoundingBox3D
@@ -18,5 +19,6 @@ public:
 	void SetVertex(vec3 _boundingBox3D[CANT_BOUNDING_BOX_VERTEX]);
 	bool loaded;
 	BoundingBox3D(Renderer * _renderer);
+	void SetWireCubeVertex(WhireCube * _whireCube);
 };
 

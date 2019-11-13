@@ -13,8 +13,6 @@ MeshLoader::MeshLoader()
 void MeshLoader::LoadMesh(const char * _modelPath, const char * _texturePath, Node * _rootNode, Renderer* _renderer, Camera * _camera)
 {
 
-	boundingBoxMin = vec3(INT_MAX, INT_MAX, INT_MAX);
-	boundingBoxMax = vec3(INT_MIN, INT_MIN, INT_MIN);
 	Importer Importer;
 	const aiScene* pScene = Importer.ReadFile(_modelPath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_SortByPType);
 
@@ -24,7 +22,6 @@ void MeshLoader::LoadMesh(const char * _modelPath, const char * _texturePath, No
 	}
 
 	ProcessNodes(_texturePath, _rootNode, pScene->mRootNode, pScene, _renderer, _camera);
-	GenerateBoundingBox(_rootNode);
 
 }
 
@@ -40,6 +37,7 @@ void MeshLoader::ProcessNodes(const char * _texturePath, Node * _rootNode, aiNod
 		_rootNode->AddChild(child);
 		SetNodeTransform(_aiNode, child);
 		TrySetBspNode(_aiScene->mMeshes[_aiNode->mMeshes[i]], child, mesh);
+		GenerateBoundingBox(_rootNode, mesh);
 	}
 
 	for (int i = 0; i < (int)_aiNode->mNumChildren; i++)
@@ -63,18 +61,18 @@ void MeshLoader::InitMesh(const aiMesh* _paiMesh, Mesh * _mesh, Mesh * _childMes
 		const aiVector3D* pNormal = &(_paiMesh->mNormals[i]);
 		const aiVector3D* pTexCoord = _paiMesh->HasTextureCoords(0) ? &(_paiMesh->mTextureCoords[0][i]) : &Zero3D;
 
-		if (pPos->x < boundingBoxMin.x)
-			boundingBoxMin.x = pPos->x;
-		if (pPos->x > boundingBoxMax.x)
-			boundingBoxMax.x = pPos->x;
-		if (pPos->y < boundingBoxMin.y)
-			boundingBoxMin.y = pPos->y;
-		if (pPos->y > boundingBoxMax.y)
-			boundingBoxMax.y = pPos->y;
-		if (pPos->z < boundingBoxMin.z)
-			boundingBoxMin.z = pPos->z;
-		if (pPos->z > boundingBoxMax.z)
-			boundingBoxMax.z = pPos->z;
+		if (pPos->x < _mesh->boundingBoxMin.x)
+			_mesh->boundingBoxMin.x = pPos->x;
+		if (pPos->x > _mesh->boundingBoxMax.x)
+			_mesh->boundingBoxMax.x = pPos->x;
+		if (pPos->y < _mesh->boundingBoxMin.y)
+			_mesh->boundingBoxMin.y = pPos->y;
+		if (pPos->y > _mesh->boundingBoxMax.y)
+			_mesh->boundingBoxMax.y = pPos->y;
+		if (pPos->z < _mesh->boundingBoxMin.z)
+			_mesh->boundingBoxMin.z = pPos->z;
+		if (pPos->z > _mesh->boundingBoxMax.z)
+			_mesh->boundingBoxMax.z = pPos->z;
 
 		mesh->vertexArray->push_back(pPos->x);
 		mesh->vertexArray->push_back(pPos->y);
@@ -95,18 +93,18 @@ void MeshLoader::InitMesh(const aiMesh* _paiMesh, Mesh * _mesh, Mesh * _childMes
 	_mesh->SetMeshEntry(mesh);
 }
 
-void MeshLoader::GenerateBoundingBox(Node * _rootNode)
+void MeshLoader::GenerateBoundingBox(Node * _rootNode, Mesh * _mesh)
 {
 	vec3 boundingBoxVertices[CANT_BOUNDING_BOX_VERTEX] =
 	{
-		vec3(boundingBoxMin.x, boundingBoxMin.y, boundingBoxMin.z),
-		vec3(boundingBoxMin.x, boundingBoxMax.y, boundingBoxMin.z),
-		vec3(boundingBoxMin.x, boundingBoxMin.y, boundingBoxMax.z),
-		vec3(boundingBoxMin.x, boundingBoxMax.y, boundingBoxMax.z),
-		vec3(boundingBoxMax.x, boundingBoxMin.y, boundingBoxMin.z),
-		vec3(boundingBoxMax.x, boundingBoxMax.y, boundingBoxMin.z),
-		vec3(boundingBoxMax.x, boundingBoxMin.y, boundingBoxMax.z),
-		vec3(boundingBoxMax.x, boundingBoxMax.y, boundingBoxMax.z)
+		vec3(_mesh->boundingBoxMin.x, _mesh->boundingBoxMin.y, _mesh->boundingBoxMin.z),
+		vec3(_mesh->boundingBoxMin.x, _mesh->boundingBoxMax.y, _mesh->boundingBoxMin.z),
+		vec3(_mesh->boundingBoxMin.x, _mesh->boundingBoxMin.y, _mesh->boundingBoxMax.z),
+		vec3(_mesh->boundingBoxMin.x, _mesh->boundingBoxMax.y, _mesh->boundingBoxMax.z),
+		vec3(_mesh->boundingBoxMax.x, _mesh->boundingBoxMin.y, _mesh->boundingBoxMin.z),
+		vec3(_mesh->boundingBoxMax.x, _mesh->boundingBoxMax.y, _mesh->boundingBoxMin.z),
+		vec3(_mesh->boundingBoxMax.x, _mesh->boundingBoxMin.y, _mesh->boundingBoxMax.z),
+		vec3(_mesh->boundingBoxMax.x, _mesh->boundingBoxMax.y, _mesh->boundingBoxMax.z)
 	};
 
 

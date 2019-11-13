@@ -157,6 +157,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="TypeDefs.h" />
+    <ClInclude Include="WhireCube.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +184,7 @@
     <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="WhireCube.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

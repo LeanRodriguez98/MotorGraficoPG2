@@ -1,6 +1,6 @@
 #include "Mesh.h"
-
-Mesh::Mesh(Renderer * _renderer,  const char * _textureFile, Camera * _camera) :Component(_renderer)
+#include "Time.h"
+Mesh::Mesh(Renderer * _renderer, const char * _textureFile, Camera * _camera) :Component(_renderer)
 {
 	type = ComponentType::MeshRendererComponent;
 	textureFile = _textureFile;
@@ -17,7 +17,7 @@ void Mesh::SetMeshEntry(MeshEntry * _meshEntry)
 	meshData->indexCount = meshEntry->indexArray->size();
 	meshData->UVCount = meshEntry->uvArray->size();
 	meshData->vertex = new float[meshData->vertexCount];
-	for (int i = 0; i < meshData->vertexCount; i++) 
+	for (int i = 0; i < meshData->vertexCount; i++)
 	{
 		meshData->vertex[i] = meshEntry->vertexArray->at(i);
 	}
@@ -29,7 +29,7 @@ void Mesh::SetMeshEntry(MeshEntry * _meshEntry)
 	}
 	meshData->uvBufferID = renderer->GenerateBuffer(meshData->UVVertex, sizeof(float)* meshData->UVCount);
 	meshData->index = new unsigned int[meshData->indexCount];
-	for (int i = 0; i < meshData->indexCount; i++) 
+	for (int i = 0; i < meshData->indexCount; i++)
 	{
 		meshData->index[i] = meshEntry->indexArray->at(i);
 	}
@@ -39,9 +39,12 @@ void Mesh::SetMeshEntry(MeshEntry * _meshEntry)
 	BMPTexture = TextureImporter::LoadBMP(textureFile);
 	meshData->textureBufferID = renderer->GenerateTextureBuffer(BMPTexture.width, BMPTexture.height, BMPTexture.data);
 	meshData->material->BindTexture("myTextureSampler", meshData->textureBufferID);
+
+
+
 }
 
-void Mesh::SetBSP( Node * node)
+void Mesh::SetBSP(Node * node)
 {
 	isBsp = true;
 	bspForward = normalize((vec3)(node->GetRotationMatrix() * vec4(0.0f, 0.0f, 1.0f, 0.0f)));
@@ -61,21 +64,27 @@ vec3 Mesh::GetForwardBSP()
 
 void Mesh::Draw()
 {
-	if(!(camera->BoxInBSP(boundingBox3D) || !camera->BoxInFrustum(boundingBox3D)))
+	if (isBsp)
 	{
-		if (meshData->material != NULL) 
+		return;
+	}
+
+	if (!(camera->BoxInBSP(boundingBox3D) || !camera->BoxInFrustum(boundingBox3D)))
+	{
+		if (meshData->material != NULL)
 		{
 			meshData->material->Bind();
 			meshData->material->SetMatrixProperty("WVP", renderer->GetModelViewProjectionMatrix());
 		}
 		renderer->BindTexture(meshData->textureBufferID, meshData->uvBufferID);
 		renderer->EnableVertexAttribute(0);
-		renderer->BindBuffer(meshData->vertexBufferID,0);
+		renderer->BindBuffer(meshData->vertexBufferID, 0);
 		renderer->EnableVertexAttribute(1);
-		renderer->BindTextureBuffer(meshData->uvBufferID,1);
+		renderer->BindTextureBuffer(meshData->uvBufferID, 1);
 		renderer->DrawIndexMesh(meshData->indexCount, meshData->indexBufferID);
 		renderer->DisableVertexAttribute(0);
 		renderer->DisableVertexAttribute(1);
+		Time::drawedObjets++;
 	}
 }
 
@@ -84,7 +93,7 @@ MeshEntry * Mesh::GetMeshEntry()
 	return meshEntry;
 }
 
-Mesh::~Mesh() 
+Mesh::~Mesh()
 {
 	delete[] meshData->vertex;
 	delete[] meshData->UVVertex;

@@ -22,9 +22,9 @@ bool Game::OnStart() {
 	sceneNode->AddChild(mainCameraNode);
 	sceneNode->AddChild(theNodoOne);
 	theNodoOne->AddChild(theNodoTree);
-	MeshLoader::GetInstance()->LoadMesh("3DAssets\\sapitoBSP.fbx", "3DAssets\\ToadTexture.bmp", theNodoTwo, renderer, camera);
+	MeshLoader::GetInstance()->LoadMesh("3DAssets\\BSPfinal.fbx", "3DAssets\\ToadTexture.bmp", theNodoTwo, renderer, camera);
 	theNodoTwo->SetTranslationY(theNodoTwo->GetTranslationY() - 50.0f);
-
+	Time::drawedObjets = 0;
 	SetSceneNode(sceneNode);
 	return true;
 }
@@ -35,6 +35,8 @@ bool Game::OnStop() {
 }
 bool Game::OnUpdate() {
 
+	cout << "Drawed Obj: " << Time::drawedObjets << endl;
+	Time::drawedObjets = 0;
 
 	if (ImputManager::GetInstance()->GetKeyDown(DownKey))
 	{

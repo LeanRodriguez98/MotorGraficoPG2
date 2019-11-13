@@ -5,7 +5,7 @@
 double Time::lastTime;
 double Time::time;
 float Time::dt;
-
+int Time::drawedObjets;
 
 double Time::Measure() 
 {
@@ -23,3 +23,6 @@ double Time::GetDT()
 {
 	return dt;
 }
+
+
+
