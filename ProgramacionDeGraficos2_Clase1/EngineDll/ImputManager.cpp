@@ -26,10 +26,10 @@ bool ImputManager::GetKeyDown(Key _key)
 }
 
 
+
 ImputManager::ImputManager()
 {
 }
-
 
 ImputManager::~ImputManager()
 {

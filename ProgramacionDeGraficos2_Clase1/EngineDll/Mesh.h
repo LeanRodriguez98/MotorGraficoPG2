@@ -18,7 +18,6 @@ private:
 	MeshEntry * meshEntry;
 	BMPData BMPTexture;
 	Camera * camera;
-
 	bool isBsp = false;
 	vec3 bspForward;
 public:
@@ -31,4 +30,5 @@ public:
 	vec3 GetForwardBSP();
 	void SetMeshEntry(MeshEntry * _meshEntry);
 	void Draw() override;
+	int bspIndex;
 };

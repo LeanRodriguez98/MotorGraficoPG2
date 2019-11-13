@@ -1,5 +1,6 @@
 #include "Mesh.h"
-
+#include "Time.h"
+#include "ImputManager.h"
 Mesh::Mesh(Renderer * _renderer,  const char * _textureFile, Camera * _camera) :Component(_renderer)
 {
 	type = ComponentType::MeshRendererComponent;
@@ -8,6 +9,7 @@ Mesh::Mesh(Renderer * _renderer,  const char * _textureFile, Camera * _camera) :
 	meshEntry = new MeshEntry();
 	camera = _camera;
 	boundingBox3D = new BoundingBox3D(_renderer);
+	
 }
 
 void Mesh::SetMeshEntry(MeshEntry * _meshEntry)
@@ -61,7 +63,22 @@ vec3 Mesh::GetForwardBSP()
 
 void Mesh::Draw()
 {
-	if(!(camera->BoxInBSP(boundingBox3D) || !camera->BoxInFrustum(boundingBox3D)))
+	if (isBsp)
+	{
+		if (ImputManager::GetInstance()->GetKeyDown(Space))
+		{
+			cout<<endl;
+		}
+	}
+	if (isBsp)
+	{
+		if (!camera->BoxInBSP(boundingBox3D, bspIndex))
+		{
+			return;
+		}
+	}
+
+	if(!camera->BoxInBSP(boundingBox3D, -1) && camera->BoxInFrustum(boundingBox3D))
 	{
 		if (meshData->material != NULL) 
 		{
@@ -76,6 +93,7 @@ void Mesh::Draw()
 		renderer->DrawIndexMesh(meshData->indexCount, meshData->indexBufferID);
 		renderer->DisableVertexAttribute(0);
 		renderer->DisableVertexAttribute(1);
+		Time::drawedObjets++;
 	}
 }
 

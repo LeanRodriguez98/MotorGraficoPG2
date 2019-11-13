@@ -6,9 +6,8 @@ Game::Game()
 Game::~Game()
 {
 }
-bool Game::OnStart() {
-	
-
+bool Game::OnStart() 
+{
 	ImputManager::GetInstance()->SetWindow(window);
 
 	camera = new Camera(renderer);
@@ -33,9 +32,10 @@ bool Game::OnStop() {
 
 	return false;
 }
-bool Game::OnUpdate() {
-
-
+bool Game::OnUpdate()
+{
+	cout << "Drawed Objets: " <<Time::drawedObjets << endl;
+	Time::ResetDrawedObjets();
 	if (ImputManager::GetInstance()->GetKeyDown(DownKey))
 	{
 		camera->CameraWalk(-100.0F * Time::dt);

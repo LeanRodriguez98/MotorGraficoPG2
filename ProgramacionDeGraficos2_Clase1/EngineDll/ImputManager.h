@@ -34,5 +34,6 @@ public:
 	
 	void SetWindow(Window* _window);
 	bool GetKeyDown(Key _key);
+
 };
 

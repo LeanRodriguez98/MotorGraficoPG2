@@ -38,7 +38,7 @@ private:
 	float nearWidht;
 	float nearHight;
 
-
+	int bspIndex;
 	vector<vec4> * bspPlanes;
 	vector<vec3> * bspPlanesNormals;
 
@@ -54,7 +54,7 @@ public:
 	vec4 GeneratePlane(vec3 _normal, vec3 _point);
 	bool BoxInFrustum(BoundingBox3D * _boundingBox3D);
 	void AddBSP(Mesh * _BSPPlane, vec3 nodePosition);
-	bool BoxInBSP(BoundingBox3D * _boundingBox3D);
+	bool BoxInBSP(BoundingBox3D * _boundingBox3D, int _bspIndex);
 	float GetDistanceToPlane(vec3 _point, vec4 _plane, vec3 _planeNormal);
 	Camera(Renderer * _renderer);
 	~Camera();

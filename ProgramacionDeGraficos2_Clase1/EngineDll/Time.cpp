@@ -5,7 +5,7 @@
 double Time::lastTime;
 double Time::time;
 float Time::dt;
-
+int Time::drawedObjets;
 
 double Time::Measure() 
 {
@@ -14,6 +14,12 @@ double Time::Measure()
 	lastTime = time;
 	return  dt;
 }
+
+void Time::ResetDrawedObjets()
+{
+	drawedObjets = 0;
+}
+
 void Time::FirstMeasure() 
 {
 	lastTime = glfwGetTime();

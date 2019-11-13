@@ -29,6 +29,7 @@ Camera::Camera(Renderer * _renderer) : Component(_renderer)
 
 	bspPlanes = new vector<vec4>();
 	bspPlanesNormals = new vector<vec3>();
+	bspIndex = 0;
 }
 
 void Camera::CameraWalk(float _direction)
@@ -131,7 +132,8 @@ void Camera::AddBSP(Mesh * _plane, vec3 nodepos)
 {
 	if (!_plane->GetIsBsp())
 		return;
-
+	_plane->bspIndex = bspIndex;
+	bspIndex++;
 	bspPlanes->push_back(GeneratePlane(nodepos, _plane->GetForwardBSP()));
 	bspPlanesNormals->push_back(_plane->GetForwardBSP());
 }
@@ -185,11 +187,15 @@ bool Camera::BoxInFrustum(BoundingBox3D * _boundingBox3D)
 	return isInsideFrustum;
 }
 
-bool Camera::BoxInBSP(BoundingBox3D * _boundingBox3D)
+bool Camera::BoxInBSP(BoundingBox3D * _boundingBox3D, int _bspIndex)
 {
 	bool inTheSamePosition = false;
 	for (int i = 0; i < bspPlanes->size(); i++) 
 	{
+		if (i == _bspIndex)
+		{
+			return true;
+		}
 		float cameraDistanceToPlane = GetDistanceToPlane(cameraPosition, bspPlanes->at(i), bspPlanesNormals->at(i));
 		float cameraDistanceSign = sign(cameraDistanceToPlane);
 		for (int j = 0; j < CANT_BOUNDING_BOX_VERTEX; j++)
@@ -197,7 +203,6 @@ bool Camera::BoxInBSP(BoundingBox3D * _boundingBox3D)
 			vec3 vertexPosition = _boundingBox3D->GetVertex(j);
 			float vertexDistanceToPlane = GetDistanceToPlane(vertexPosition, bspPlanes->at(i), bspPlanesNormals->at(i));
 			float vertexDistanceSign = sign(vertexDistanceToPlane);
-
 			if (vertexDistanceSign == cameraDistanceSign)
 				break;
 			if (j == CANT_BOUNDING_BOX_VERTEX - 1)
